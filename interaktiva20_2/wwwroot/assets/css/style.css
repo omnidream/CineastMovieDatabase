@@ -45,7 +45,10 @@
   /*top: 50%;
   left: 50%;*/
 }
-
-
 /* End of search bar CSS */
+
+.headerImg {
+    position: relative;
+    width: 100%;
+}
 
