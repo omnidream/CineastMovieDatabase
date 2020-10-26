@@ -1,0 +1,259 @@
+﻿<!--Det som ska vara gemensamt på alla sidor-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cineast Movie Database - Home</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v={random string}"> <!--la till ?v={random string} för att tvinga browsern att reloada css varje gång-->
+    <!--<link rel="stylesheet" href="/assets/css/flickety.css"> Inte säkert att vi ska använda denna-->
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="headerContainer">
+                <div class="headerTextContainer">
+                    <h1>Cineast Movie Database</h1>
+                    <p>Home for movie lovers</p>
+                </div>
+                <img class="headerImg" src="/assets/images/hero.jpg">
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Top Rated Movies</a></li>
+                <li><a href="#">Most Popular Movies</a></li>
+                <li><a href="#">Never Rated Movies</a></li>
+            </ul>
+        </nav>
+
+        <!--Search bar from https://codepen.io/huange/pen/rbqsD -->
+        <div class="searchWrap">
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"><img></i>
+                    <!--Behöver ett förstoringsglas här-->
+                </button>
+            </div>
+        </div>
+        <!--End of search bar-->
+        <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
+
+        <h2>Top Rated Movies</h2>
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 1</h3>
+                    <h4 class="movieTitle">Titel 1</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 2</h3>
+                    <h4 class="movieTitle">Titel 2</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 3</h3>
+                    <h4 class="movieTitle">Titel 3</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 4</h3>
+                    <h4 class="movieTitle">Titel 4</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 5</h3>
+                    <h4 class="movieTitle">Titel 5</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Most Popular Movies</h2>
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 1</h3>
+                    <h4 class="movieTitle">Titel 1</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 2</h3>
+                    <h4 class="movieTitle">Titel 2</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 3</h3>
+                    <h4 class="movieTitle">Titel 3</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 4</h3>
+                    <h4 class="movieTitle">Titel 4</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 5</h3>
+                    <h4 class="movieTitle">Titel 5</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Never Rated Movies</h2>
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 1</h3>
+                    <h4 class="movieTitle">Titel 1</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 2</h3>
+                    <h4 class="movieTitle">Titel 2</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 3</h3>
+                    <h4 class="movieTitle">Titel 3</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 4</h3>
+                    <h4 class="movieTitle">Titel 4</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No 5</h3>
+                    <h4 class="movieTitle">Titel 5</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+
+</html>
