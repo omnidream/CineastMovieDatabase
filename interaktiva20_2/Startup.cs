@@ -25,7 +25,7 @@ namespace interaktiva20_2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles(); //Säger att vi är medvetna om att vi exponerar filerna i wwwroot på webben. Måste ha med för att få in våra assets
+            app.UseStaticFiles(); //Säger att vi är medvetna om att vi exponerar filerna i wwwroot på webben. Måste ha med för att få in våra assets.
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
