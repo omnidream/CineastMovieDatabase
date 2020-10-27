@@ -8,6 +8,8 @@ namespace interaktiva20_2.Data
 {
     public class CMDbRepository : ICMDbRepository
     {
+        private string baseUrl;
+        IApiClient apiClient;
         public Task<IEnumerable<MovieDetailsDto>> GetMovieDetails()
         {
             throw new NotImplementedException(); //Ta bort sen
