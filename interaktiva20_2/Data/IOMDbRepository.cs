@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace interaktiva20_2.Data
 {
-    interface IOMDbRepository
+    public interface IOMDbRepository
     {
+        Task<MovieDetailsDto> GetMovieDetails();
     }
 }

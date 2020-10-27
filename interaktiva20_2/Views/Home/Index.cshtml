@@ -1,5 +1,13 @@
-﻿ 
-@section MyHeader 
+﻿@model IEnumerable<TopListDto>
+
+
+@foreach (var movie in Model)
+{
+    <p> @Html.DisplayFor(item => movie.ImdbId)</p>
+}
+
+
+@section MyHeader
 {
     <header>
         <div class="headerContainer">
@@ -11,7 +19,7 @@
         </div>
     </header>
 }
-    
+
 <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
 <div id="anchorTopRated">
     <h2>Top Rated Movies</h2>
