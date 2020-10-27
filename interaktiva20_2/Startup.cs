@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using interaktiva20_2.Data;
+using interaktiva20_2.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,14 +18,14 @@ namespace interaktiva20_2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IApiClient, ApiClient>();
+            services.AddScoped<ICMDbRepository, CMDbRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseStaticFiles(); //Säger att vi är medvetna om att vi exponerar filerna i wwwroot på webben. Måste ha med för att få in våra assets.
             app.UseRouting();

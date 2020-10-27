@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using interaktiva20_2.Infra;
+using Microsoft.Extensions.Configuration;
 
 namespace interaktiva20_2.Data
 {
@@ -10,9 +12,15 @@ namespace interaktiva20_2.Data
     {
         private string baseUrl;
         IApiClient apiClient;
-        public Task<IEnumerable<MovieDetailsDto>> GetMovieDetails()
+
+        public CMDbRepository(IConfiguration configuration, IApiClient apiClient)
         {
-            throw new NotImplementedException(); //Ta bort sen
+            baseUrl = configuration.GetValue<string>("CMDbApi:BaseUrl");
+            this.apiClient = apiClient;
+        }
+        public async Task<IEnumerable<TopListDto>> GetToplist()
+        {
+            return await apiClient.GetAsync<IEnumerable<TopListDto>>(baseUrl + "toplist/?count=5");
         }
     }
 }

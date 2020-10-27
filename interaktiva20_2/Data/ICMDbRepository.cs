@@ -6,8 +6,8 @@ using interaktiva20_2.Models.DTO;
 
 namespace interaktiva20_2.Data
 {
-    interface ICMDbRepository
+    public interface ICMDbRepository
     {
-        Task<IEnumerable<MovieDetailsDto>> GetMovieDetails();
+        Task<IEnumerable<TopListDto>> GetToplist();
     }
 }

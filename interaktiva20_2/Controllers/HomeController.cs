@@ -17,21 +17,8 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await cmdbRepository.GetMovieDetails();
-            return View(model);
+            var myModel = await cmdbRepository.GetToplist();
+            return View(myModel);
         }
-
-
-        public async Task<IActionResult> Summary()
-        {
-            //TODO: Fixa så att man kan skicka in både summary och country
-            var summary = await covidRepository.GetSummary();
-            return View(summary);
-        }
-
-
-
-
-
     }
 }
