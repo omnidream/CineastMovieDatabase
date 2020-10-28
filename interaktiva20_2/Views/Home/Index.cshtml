@@ -1,11 +1,6 @@
 ﻿@model IEnumerable<CmdbMovieDto>
 
 
-@foreach (var movie in Model)
-{
-    <p> @Html.DisplayFor(item => movie.ImdbId)</p>
-}
-
 
 @section MyHeader
 {
@@ -20,77 +15,28 @@
     </header>
 }
 
-<!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
-<div id="anchorTopRated">
-    <h2>Top Rated Movies</h2>
-    <div class="movieContainer">
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 1</h3>
-                <h4 class="movieTitle">Titel 1</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 2</h3>
-                <h4 class="movieTitle">Titel 2</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 3</h3>
-                <h4 class="movieTitle">Titel 3</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 4</h3>
-                <h4 class="movieTitle">Titel 4</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 5</h3>
-                <h4 class="movieTitle">Titel 5</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
+@foreach (var movie in Model)
+{ 
+    <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
+    <div id="anchorTopRated">
+        <h2>Top Rated Movies</h2>
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No []</h3>
+                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.ImdbId)</h4>
+                    <img class="movieImg">
+                    <p>Rating</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <p>Read more</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
 
 <div id="anchorMostPopular">
     <h2>Most Popular Movies</h2>
