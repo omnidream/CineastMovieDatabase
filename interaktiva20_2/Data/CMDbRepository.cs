@@ -18,10 +18,22 @@ namespace interaktiva20_2.Data
             baseUrl = configuration.GetValue<string>("CMDbApi:BaseUrl");
             this.apiClient = apiClient;
         }
-        public async Task<IEnumerable<CmdbMovieDto>> GetToplist()
+        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
         {
             return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?count=5");
         }
+
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
+        {
+            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?sort=asc&count=5");
+        }
+
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
+        {
+            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?type=popularity&count=5");
+        }
+
+
     }
 }
  

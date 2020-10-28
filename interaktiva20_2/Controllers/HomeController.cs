@@ -17,7 +17,7 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var topFiveFromCmdb = await cmdbRepo.GetToplist(); //Fem bästa
+            var topFiveFromCmdb = await cmdbRepo.GetTopRatedFiveList(); //Fem bästa
             
             return View(topFiveFromCmdb);
         }

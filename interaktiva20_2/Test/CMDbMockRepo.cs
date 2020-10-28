@@ -27,12 +27,22 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetToplist()
+        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
         {
             string testFile = "CMDbMock.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
             await Task.Delay(0);
             return result;
+        }
+
+        public Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
