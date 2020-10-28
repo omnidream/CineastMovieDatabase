@@ -8,6 +8,7 @@ namespace interaktiva20_2.Data
 {
     public interface IOMDbRepository
     {
-        Task<MovieDetailsDto> GetMovieDetails();
+        Task<MovieDetailsDto> GetMovieDetails(string imdbId);
+
     }
 }
