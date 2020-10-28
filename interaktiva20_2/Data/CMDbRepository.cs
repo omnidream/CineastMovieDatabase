@@ -20,17 +20,22 @@ namespace interaktiva20_2.Data
         }
         public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
         {
-            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?count=5");
+            return await CallCmdbApi("toplist/?count=5");
         }
 
         public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
         {
-            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?sort=asc&count=5");
+            return await CallCmdbApi("toplist/?sort=asc&count=5");
         }
 
         public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
         {
-            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?type=popularity&count=5");
+            return await CallCmdbApi("toplist/?type=popularity&count=5");
+        }
+
+        private Task<IEnumerable<CmdbMovieDto>> CallCmdbApi(string apiKey)
+        {
+            return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + apiKey);
         }
 
 
