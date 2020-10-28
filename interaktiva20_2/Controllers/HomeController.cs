@@ -18,6 +18,8 @@ namespace interaktiva20_2.Controllers
         public async Task<IActionResult> Index()
         {
             var topFiveFromCmdb = await cmdbRepo.GetTopRatedFiveList(); //Fem bästa
+            //var mostPopularFiveFromCmdb = await cmdbRepo.GetMostPopularFiveList();
+            //var mostDislikedFiveFromCmdb = await cmdbRepo.GetMostDislikedFiveList();
             
             return View(topFiveFromCmdb);
         }
