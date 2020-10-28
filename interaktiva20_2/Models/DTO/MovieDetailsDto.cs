@@ -8,16 +8,17 @@ namespace interaktiva20_2.Models.DTO
 {
     public class MovieDetailsDto
     {
-        public string MovieTitel { get; set; }
-        public int MovieYear { get; set; }
-        public string MovieRuntime { get; set; }
-        public string MovieGenre { get; set; }
-        public string MovieDirector { get; set; }
-        public string MovieActors { get; set; }
-        public string MoviePlot { get; set; }
-        public string MovieLanguage { get; set; }
-        public string MovieCountry { get; set; }
-        public string MovieAwards { get; set; }
-        public string MovieImdbRating { get; set; }
+        public string Titel { get; set; }
+        public int Year { get; set; }
+        public string Runtime { get; set; }
+        public string Genre { get; set; }
+        public string Director { get; set; }
+        public string Actors { get; set; }
+        public string Plot { get; set; }
+        public string Language { get; set; }
+        public string Country { get; set; }
+        public string Poster { get; set; }
+        public string Awards { get; set; }
+        public string ImdbRating { get; set; }
     }
 }
