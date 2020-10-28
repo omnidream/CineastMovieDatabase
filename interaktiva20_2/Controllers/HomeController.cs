@@ -9,16 +9,17 @@ namespace interaktiva20_2.Controllers
 {
     public class HomeController : Controller
     {
-        private ICMDbRepository cmdbRepository;
-        public HomeController(ICMDbRepository cmdbRepository)
+        private ICMDbRepository cmdbRepo;
+        public HomeController(ICMDbRepository cmdbRepo, IOMDbRepository omdbRepo)
         {
-            this.cmdbRepository = cmdbRepository;
+            this.cmdbRepo = cmdbRepo;
         }
 
         public async Task<IActionResult> Index()
         {
-            var myModel = await cmdbRepository.GetToplist(); //Fem bästa
-            return View(myModel);
+            var topFiveFromCmdb = await cmdbRepo.GetToplist(); //Fem bästa
+            
+            return View(topFiveFromCmdb);
         }
     }
 }
