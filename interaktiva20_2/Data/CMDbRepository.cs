@@ -18,9 +18,9 @@ namespace interaktiva20_2.Data
             baseUrl = configuration.GetValue<string>("CMDbApi:BaseUrl");
             this.apiClient = apiClient;
         }
-        public async Task<IEnumerable<TopListDto>> GetToplist()
+        public async Task<IEnumerable<CmdbMovieDto>> GetToplist()
         {
-            return await apiClient.GetAsync<IEnumerable<TopListDto>>(baseUrl + "toplist/?count=5");
+            return await apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(baseUrl + "toplist/?count=5");
         }
     }
 }

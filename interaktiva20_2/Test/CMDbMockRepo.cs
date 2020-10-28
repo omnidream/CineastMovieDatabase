@@ -27,10 +27,10 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<TopListDto>> GetToplist()
+        public async Task<IEnumerable<CmdbMovieDto>> GetToplist()
         {
             string testFile = "CMDbMock.json";
-            var result = GetTestData<IEnumerable<TopListDto>>(testFile);
+            var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
             await Task.Delay(0);
             return result;
         }

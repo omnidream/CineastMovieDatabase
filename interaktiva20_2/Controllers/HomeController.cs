@@ -10,7 +10,7 @@ namespace interaktiva20_2.Controllers
     public class HomeController : Controller
     {
         private ICMDbRepository cmdbRepo;
-        public HomeController(ICMDbRepository cmdbRepo, IOMDbRepository omdbRepo)
+        public HomeController(ICMDbRepository cmdbRepo)
         {
             this.cmdbRepo = cmdbRepo;
         }

@@ -8,6 +8,6 @@ namespace interaktiva20_2.Data
 {
     public interface ICMDbRepository
     {
-        Task<IEnumerable<TopListDto>> GetToplist();
+        Task<IEnumerable<CmdbMovieDto>> GetToplist();
     }
 }
