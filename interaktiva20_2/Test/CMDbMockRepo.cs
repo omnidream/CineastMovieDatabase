@@ -16,7 +16,7 @@ namespace interaktiva20_2.Test
 
         public CMDbMockRepo(IWebHostEnvironment webHostEnv)
         {
-            myBasePath = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\";
+            myBasePath = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\Cmdb\\";
         }
 
         private T GetTestData<T>(string testFile)
@@ -29,20 +29,26 @@ namespace interaktiva20_2.Test
 
         public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
         {
-            string testFile = "CMDbMock.json";
+            string testFile = "CMDbMockTopRated.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
             await Task.Delay(0);
             return result;
         }
 
-        public Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
         {
-            throw new NotImplementedException();
+            string testFile = "CMDbMockMostDisliked.json";
+            var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
+            await Task.Delay(0);
+            return result;
         }
 
-        public Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
         {
-            throw new NotImplementedException();
+            string testFile = "CMDbMockMostPopular.json";
+            var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
+            await Task.Delay(0);
+            return result;
         }
     }
 }
