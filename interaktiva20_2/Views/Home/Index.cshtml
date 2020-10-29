@@ -24,7 +24,7 @@
             <div class="movieCell">
                 <img class="ticketImg">
                 <div class="movieCellContent">
-                    <h3 class="movieNumber">No []</h3>
+                    <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                     <img src="@Html.DisplayFor(item => movie.Poster)">
                     <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>

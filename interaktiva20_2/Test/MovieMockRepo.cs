@@ -66,11 +66,14 @@ namespace interaktiva20_2.Test
             var topFiveList = await GetTopRatedFiveList();
 
             List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+            int movieNumber = 0;
+
 
             foreach (var movie in topFiveList)
             {
+                movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails);
+                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails, movieNumber);
                 movieViewModels.Add(myMovieViewModel);
             }
 

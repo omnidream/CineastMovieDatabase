@@ -26,6 +26,7 @@ namespace interaktiva20_2.Data
             return await CallCmdbApi("toplist/?count=5");
         }
 
+        //TODO: Fixa en lista för "Not yet rated" istället
         public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
         {
             return await CallCmdbApi("toplist/?sort=asc&count=5");
@@ -54,15 +55,18 @@ namespace interaktiva20_2.Data
             //var myTaskList = new List<Task>();
             var topFiveList = await GetTopRatedFiveList();
             
+            
             //myTaskList.Add(topFiveList);
             //await Task.WhenAll(myTaskList);
 
             List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+            int movieNumber = 0;
 
             foreach(var movie in topFiveList)
             {
+                movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails);
+                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails, movieNumber);
                 movieViewModels.Add(myMovieViewModel);
             }
 
