@@ -51,24 +51,28 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(cmdbUrl + apiKey);
         }
 
-        public async Task<MovieViewModel> GetMovieViewModel()
+        public async Task<IEnumerable<MovieViewModel>> GetMovieViewModel()
         {
-            var myTaskList = new List<Task>();
-            var topList = GetTopRatedFiveList();
-            //var movies = apiClient.GetAsync<IEnumerable<CountryDto>>(baseUrl + "countries");
-            //var summary = apiClient.GetAsync<SummaryDTO>(baseUrl + "summary");
+            //var myTaskList = new List<Task>();
+            var topFiveList = await GetTopRatedFiveList();
+            
+            //myTaskList.Add(topFiveList);
+            //await Task.WhenAll(myTaskList);
 
-            myTaskList.Add(topList);
-            await Task.WhenAll(myTaskList); // kör alla trådar, parallellt
-            return null;
-            /*SummaryDetailDto summaryDetail = summary.Result.Countries
-                .Where(c => c.Country.Equals(country))
-                .FirstOrDefault();
-            return new SummaryViewModel(countries.Result, summaryDetail);*/
+            List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+
+            foreach(var movie in topFiveList)
+            {
+                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
+                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails);
+                movieViewModels.Add(myMovieViewModel);
+            }
+
+            return movieViewModels;
         }
 
 
-        private async Task<MovieDetailsDto> GetDetailsForEachMovie(IEnumerable<CmdbMovieDto> topList)
+        /*private async Task<MovieDetailsDto> GetDetailsForEachMovie(IEnumerable<CmdbMovieDto> topList)
         {
             List<MovieDetailsDto> myReturnList = null;
             foreach (var movie in topList)
@@ -77,7 +81,7 @@ namespace interaktiva20_2.Data
                 myReturnList.Add(myMovieDetails);
             }
             return null;
-        }
+        }*/
 
 
 
