@@ -9,15 +9,15 @@ namespace interaktiva20_2.Controllers
 {
     public class HomeController : Controller
     {
-        private ICMDbRepository cmdbRepo;
-        public HomeController(ICMDbRepository cmdbRepo)
+        private IMovieRepo movieRepo;
+        public HomeController(IMovieRepo movieRepo)
         {
-            this.cmdbRepo = cmdbRepo;
+            this.movieRepo = movieRepo;
         }
 
         public async Task<IActionResult> Index()
         {
-            var topFiveFromCmdb = await cmdbRepo.GetTopRatedFiveList(); //Fem bästa
+            var topFiveFromCmdb = await movieRepo.GetTopRatedFiveList(); //Fem bästa
             //var mostPopularFiveFromCmdb = await cmdbRepo.GetMostPopularFiveList();
             //var mostDislikedFiveFromCmdb = await cmdbRepo.GetMostDislikedFiveList();
             

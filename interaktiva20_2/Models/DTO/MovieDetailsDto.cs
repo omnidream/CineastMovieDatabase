@@ -20,5 +20,6 @@ namespace interaktiva20_2.Models.DTO
         public string Poster { get; set; }
         public string Awards { get; set; }
         public string ImdbRating { get; set; }
+        public string imdbID { get; set; }
     }
 }

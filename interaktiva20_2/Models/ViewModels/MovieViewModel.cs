@@ -22,6 +22,8 @@ namespace interaktiva20_2.Models.ViewModels
         public string Poster { get; set; }
         public string ImdbRating { get; set; }
         public string Plot { get; set; }
+        public int NumberOfLikes { get; set; }
+        public int NumberOfDislikes { get; set; }
 
 
         public MovieViewModel()
