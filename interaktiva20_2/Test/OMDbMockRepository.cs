@@ -19,7 +19,7 @@ namespace interaktiva20_2.Test
             myBasePath = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\Omdb\\";
         }
 
-        public async Task<MovieDetailsDto> GetMovieDetails()
+        public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
         {
             string testFile = "OMDbMockAllRelevantMovies.json";
             var result = GetTestData<MovieDetailsDto>(testFile);
