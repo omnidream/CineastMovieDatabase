@@ -1,22 +1,27 @@
-﻿using System;
+﻿using interaktiva20_2.Data;
+using interaktiva20_2.Infra;
+using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using interaktiva20_2.Data;
-using interaktiva20_2.Models.DTO;
-using Microsoft.AspNetCore.Hosting;
-using Newtonsoft.Json;
-
 
 namespace interaktiva20_2.Test
 {
-    public class CMDbMockRepo : ICMDbRepository
+    public class MovieMockRepo : IMovieRepo
     {
         string myBasePath;
+        private string omdbUrl;
+        IApiClient apiClient;
 
-        public CMDbMockRepo(IWebHostEnvironment webHostEnv)
+        public MovieMockRepo(IWebHostEnvironment webHostEnv, IConfiguration configuration, IApiClient apiClient)
         {
             myBasePath = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\Cmdb\\";
+            omdbUrl = configuration.GetValue<string>("OMDbApi:BaseUrl");
+            this.apiClient = apiClient;
         }
 
         private T GetTestData<T>(string testFile)
@@ -49,6 +54,27 @@ namespace interaktiva20_2.Test
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
             await Task.Delay(0);
             return result;
+        }
+
+        public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
+        {
+            return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
+        }
+
+        public async Task<IEnumerable<MovieViewModel>> GetMovieViewModel()
+        {
+            var topFiveList = await GetTopRatedFiveList();
+
+            List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+
+            foreach (var movie in topFiveList)
+            {
+                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
+                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails);
+                movieViewModels.Add(myMovieViewModel);
+            }
+
+            return movieViewModels;
         }
     }
 }

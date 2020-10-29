@@ -8,7 +8,7 @@ namespace interaktiva20_2.Models.DTO
 {
     public class MovieDetailsDto
     {
-        public string Titel { get; set; }
+        public string Title { get; set; }
         public int Year { get; set; }
         public string Runtime { get; set; }
         public string Genre { get; set; }

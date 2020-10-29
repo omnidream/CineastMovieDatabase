@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CmdbMovieDto>
+﻿@model IEnumerable<interaktiva20_2.Models.ViewModels.MovieViewModel>
 
 
 
@@ -15,21 +15,21 @@
     </header>
 }
 
+    <h2>Top Rated Movies</h2>
 @foreach (var movie in Model)
 { 
     <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
     <div id="anchorTopRated">
-        <h2>Top Rated Movies</h2>
         <div class="movieContainer">
             <div class="movieCell">
                 <img class="ticketImg">
                 <div class="movieCellContent">
                     <h3 class="movieNumber">No []</h3>
-                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.ImdbId)</h4>
-                    <img class="movieImg">
-                    <p>Rating</p>
+                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
+                    <img src="@Html.DisplayFor(item => movie.Poster)">
+                    <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
                     <div class="plot">
-                        <blockquote class="moviePlot">Lorem Ipsum</blockquote>
+                        <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
                         <p>Read more</p>
                     </div>
                 </div>

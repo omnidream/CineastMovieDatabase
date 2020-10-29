@@ -1,10 +1,5 @@
 [
   {
-    "imdbID": "tt0076759",
-    "numberOfLikes": 85,
-    "numberOfDislikes": 6
-  },
-  {
     "imdbID": "tt0347149",
     "numberOfLikes": 40,
     "numberOfDislikes": 18
@@ -23,5 +18,10 @@
     "imdbID": "tt0245429",
     "numberOfLikes": 57,
     "numberOfDislikes": 46
+  },
+  {
+    "imdbID": "tt0076759",
+    "numberOfLikes": 10,
+    "numberOfDislikes": 6
   }
 ]

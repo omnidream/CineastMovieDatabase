@@ -2,10 +2,7 @@
 using interaktiva20_2.Models.DTO;
 using interaktiva20_2.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace interaktiva20_2.Data
@@ -51,6 +48,7 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(cmdbUrl + apiKey);
         }
 
+        //TODO: Få det att funka med Tasklist
         public async Task<IEnumerable<MovieViewModel>> GetMovieViewModel()
         {
             //var myTaskList = new List<Task>();

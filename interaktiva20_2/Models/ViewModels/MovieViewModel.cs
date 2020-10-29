@@ -29,7 +29,12 @@ namespace interaktiva20_2.Models.ViewModels
 
         public MovieViewModel(CmdbMovieDto myMovie, MovieDetailsDto movieDetails)
         {
-
+            Title = movieDetails.Title;
+            Poster = movieDetails.Poster;
+            ImdbRating = movieDetails.ImdbRating;
+            Plot = movieDetails.Plot;
+            NumberOfLikes = myMovie.NumberOfLikes;
+            NumberOfDislikes = myMovie.NumberOfDislikes;
         }
 
 
