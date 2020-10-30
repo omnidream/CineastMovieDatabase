@@ -60,64 +60,12 @@ namespace interaktiva20_2.Test
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
 
-        /*public async Task<IEnumerable<MovieViewModel>> GetMovieViewModel()
+        public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
         {
-            var topFiveList = await GetTopRatedFiveList();
-
-            List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
-            int movieNumber = 0;
-
-
-            foreach (var movie in topFiveList)
-            {
-                movieNumber++;
-                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails, movieNumber);
-                movieViewModels.Add(myMovieViewModel);
-            }
-
-            return movieViewModels;
-        }*/
-
-        public async Task<IEnumerable<MovieSummaryDto>> GetTopFiveMoviesSummary()
-        {
-            var topFiveList = await GetTopRatedFiveList();
             List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
             int movieNumber = 0;
 
-            foreach (var movie in topFiveList)
-            {
-                movieNumber++;
-                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
-                movieSummaries.Add(myMovieSummary);
-            }
-            return movieSummaries;
-        }
-
-        public async Task<IEnumerable<MovieSummaryDto>> GetMostPopularMoviesSummary()
-        {
-            var mostPopularList = await GetMostPopularFiveList();
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
-            int movieNumber = 0;
-
-            foreach (var movie in mostPopularList)
-            {
-                movieNumber++;
-                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
-                movieSummaries.Add(myMovieSummary);
-            }
-            return movieSummaries;
-        }
-
-        public async Task<IEnumerable<MovieSummaryDto>> GetMostDislikedMoviesSummary()
-        {
-            var mostDislikedList = await GetMostDislikedFiveList();
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
-            int movieNumber = 0;
-
-            foreach (var movie in mostDislikedList)
+            foreach (var movie in myToplist)
             {
                 movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);

@@ -49,46 +49,12 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(cmdbUrl + apiKey);
         }
 
-        //TODO: Upprepa inte koden!
-        public async Task<IEnumerable<MovieSummaryDto>> GetTopFiveMoviesSummary()
+        public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
         {
-            var topFiveList = await GetTopRatedFiveList();
             List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
             int movieNumber = 0;
 
-            foreach(var movie in topFiveList)
-            {
-                movieNumber++;
-                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
-                movieSummaries.Add(myMovieSummary);
-            }
-            return movieSummaries;
-        }
-
-        public async Task<IEnumerable<MovieSummaryDto>> GetMostPopularMoviesSummary()
-        {
-            var mostPopularList = await GetMostPopularFiveList();
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
-            int movieNumber = 0;
-
-            foreach (var movie in mostPopularList)
-            {
-                movieNumber++;
-                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
-                movieSummaries.Add(myMovieSummary);
-            }
-            return movieSummaries;
-        }
-
-        public async Task<IEnumerable<MovieSummaryDto>> GetMostDislikedMoviesSummary()
-        {
-            var mostDislikedList = await GetMostDislikedFiveList();
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
-            int movieNumber = 0;
-
-            foreach (var movie in mostDislikedList)
+            foreach (var movie in myToplist)
             {
                 movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
