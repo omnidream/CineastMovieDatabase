@@ -39,12 +39,12 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetNeverRatedMovies(int numberOfMovies, string imdbId)
+        public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
             string testFile = "CMDbMockMostDisliked.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
-            await Task.Delay(0);
-            return result;
+            //await Task.Delay(0);
+            return (List<CmdbMovieDto>)result;
         }
 
         public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)

@@ -10,14 +10,14 @@ namespace interaktiva20_2.Models.ViewModels
     {
         public IEnumerable<MovieSummaryDto> TopRatedMovies { get; set; }
         public IEnumerable<MovieSummaryDto> MostPopularMovies { get; set; }
-        public IEnumerable<MovieSummaryDto> MostDislikedMovies { get; set; }
+        public IEnumerable<MovieSummaryDto> NeverRatedMovies { get; set; }
 
         
         public MovieViewModel()
         {
             TopRatedMovies = new List<MovieSummaryDto>();
             MostPopularMovies = new List<MovieSummaryDto>();
-            MostDislikedMovies = new List<MovieSummaryDto>();
+            NeverRatedMovies = new List<MovieSummaryDto>();
         }
     }
 }

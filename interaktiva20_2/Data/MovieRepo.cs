@@ -1,6 +1,7 @@
 ﻿using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,7 +11,9 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
-        private int numberOfMovies = 5;
+        Random rnd = new Random();
+        List<CmdbMovieDto> myNeverRatedList;
+        CmdbMovieDto myMovie = null;
         IApiClient apiClient;
 
         #region Constructor
@@ -31,9 +34,68 @@ namespace interaktiva20_2.Data
         {
             return await CallCmdbApi($"toplist/?type=popularity&count={numberOfMovies}");
         }
-        public async Task<IEnumerable<CmdbMovieDto>> GetNeverRatedMovies(int numberOfMovies, string imdbId)
+        public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
-            return await CallCmdbApi($"toplist/?sort=asc&count={numberOfMovies}");
+            myNeverRatedList = new List<CmdbMovieDto>();
+            string imdbId = GetRandomImdbId();
+            while (MovieIsNotInCMDb(imdbId) && ListIsNotFull(numberOfMovies))
+            {
+                AddToNeverRatedList(imdbId);
+                imdbId = GetRandomImdbId();
+            }
+            return myNeverRatedList;
+        }
+        //TODO: Gör så att cmdb-kollen kommer FÖRE kollen mot omdb
+        private string GetRandomImdbId()
+        {
+            string returnImdbId;
+            do
+                returnImdbId = "tt" + GenerateNumberAsString();
+            while (MovieHasNoPoster(returnImdbId));
+
+            return returnImdbId;
+        }
+
+        private bool MovieHasNoPoster(string imdbId)
+        {
+            bool result = false;
+            MovieDetailsDto myTempMovie = GetMovieDetails(imdbId).Result;
+            if (myTempMovie.Poster == "N/A" || myTempMovie.Poster == null)
+                result = true;
+            return result;
+
+        }
+
+        private string GenerateNumberAsString()
+        {
+            int maxIdLength = 7;
+            string tempId = rnd.Next(8000000, 8004663).ToString();
+            while (tempId.Length < maxIdLength)
+                tempId = tempId.Insert(0, "0");
+            return tempId;
+        }
+
+        private bool ListIsNotFull(int numberOfMovies)
+        {
+            bool result = false;
+            if (myNeverRatedList == null || myNeverRatedList.Count < numberOfMovies)
+                result = true;
+            return result;
+        }
+
+        private void AddToNeverRatedList(string imdbId)
+        {
+            myMovie = new CmdbMovieDto();
+            myMovie.ImdbId = imdbId;
+            myNeverRatedList.Add(myMovie);
+        }
+
+        private bool MovieIsNotInCMDb(string imdbId)
+        {
+            bool result = true;
+            if (CallCmdbApi($"{imdbId}") == null)
+                result = false;
+            return result;
         }
         #endregion
 
@@ -41,7 +103,7 @@ namespace interaktiva20_2.Data
         //TODO: Skapa kontroll så att data faktiskt existerar.
         public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
         {
-            return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
+            return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full&year=2010");
         }
         #endregion
         private Task<IEnumerable<CmdbMovieDto>> CallCmdbApi(string apiKey)
