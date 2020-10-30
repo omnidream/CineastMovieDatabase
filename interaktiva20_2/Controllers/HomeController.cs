@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using interaktiva20_2.Data;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
@@ -17,11 +15,13 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var topFiveFromCmdb = await movieRepo.GetTopRatedFiveList(); //Fem bästa
-            //var mostPopularFiveFromCmdb = await cmdbRepo.GetMostPopularFiveList();
-            //var mostDislikedFiveFromCmdb = await cmdbRepo.GetMostDislikedFiveList();
+            var viewModel = new MovieViewModel
+            {
+                TopRatedMovies = await movieRepo.GetTopFiveMoviesSummary(),
+                MostPopularMovies = await movieRepo.GetMostPopularMoviesSummary(),
+                MostDislikedMovies = await movieRepo.GetMostDislikedMoviesSummary()
+            };
 
-            var viewModel = await movieRepo.GetMovieViewModel();
             return View(viewModel);
         }
     }

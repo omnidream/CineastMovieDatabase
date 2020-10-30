@@ -1,6 +1,5 @@
 ﻿using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
-using interaktiva20_2.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -39,6 +38,7 @@ namespace interaktiva20_2.Data
         #endregion
 
         #region OMDbRepo
+        //TODO: Skapa kontroll så att data faktiskt existerar.
         public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
         {
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
@@ -49,43 +49,53 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(cmdbUrl + apiKey);
         }
 
-        //TODO: Få det att funka med Tasklist
-        public async Task<IEnumerable<MovieViewModel>> GetMovieViewModel()
+        //TODO: Upprepa inte koden!
+        public async Task<IEnumerable<MovieSummaryDto>> GetTopFiveMoviesSummary()
         {
-            //var myTaskList = new List<Task>();
             var topFiveList = await GetTopRatedFiveList();
-            
-            
-            //myTaskList.Add(topFiveList);
-            //await Task.WhenAll(myTaskList);
-
-            List<MovieViewModel> movieViewModels = new List<MovieViewModel>();
+            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
             int movieNumber = 0;
 
             foreach(var movie in topFiveList)
             {
                 movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                MovieViewModel myMovieViewModel = new MovieViewModel(movie, myMovieDetails, movieNumber);
-                movieViewModels.Add(myMovieViewModel);
+                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
+                movieSummaries.Add(myMovieSummary);
             }
-
-            return movieViewModels;
+            return movieSummaries;
         }
 
-
-        /*private async Task<MovieDetailsDto> GetDetailsForEachMovie(IEnumerable<CmdbMovieDto> topList)
+        public async Task<IEnumerable<MovieSummaryDto>> GetMostPopularMoviesSummary()
         {
-            List<MovieDetailsDto> myReturnList = null;
-            foreach (var movie in topList)
+            var mostPopularList = await GetMostPopularFiveList();
+            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
+            int movieNumber = 0;
+
+            foreach (var movie in mostPopularList)
             {
-                var myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                myReturnList.Add(myMovieDetails);
+                movieNumber++;
+                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
+                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
+                movieSummaries.Add(myMovieSummary);
             }
-            return null;
-        }*/
+            return movieSummaries;
+        }
 
+        public async Task<IEnumerable<MovieSummaryDto>> GetMostDislikedMoviesSummary()
+        {
+            var mostDislikedList = await GetMostDislikedFiveList();
+            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
+            int movieNumber = 0;
 
-
+            foreach (var movie in mostDislikedList)
+            {
+                movieNumber++;
+                MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
+                MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
+                movieSummaries.Add(myMovieSummary);
+            }
+            return movieSummaries;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<interaktiva20_2.Models.ViewModels.MovieViewModel>
+﻿@model interaktiva20_2.Models.ViewModels.MovieViewModel
 
 
 
@@ -15,11 +15,11 @@
     </header>
 }
 
-    <h2>Top Rated Movies</h2>
-@foreach (var movie in Model)
-{ 
-    <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
-    <div id="anchorTopRated">
+<h2>Top Rated Movies</h2>
+<div id="anchorTopRated">
+    @foreach (var movie in Model.TopRatedMovies)
+    {
+        <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
         <div class="movieContainer">
             <div class="movieCell">
                 <img class="ticketImg">
@@ -35,147 +35,49 @@
                 </div>
             </div>
         </div>
-    </div>
-}
-
-<div id="anchorMostPopular">
-    <h2>Most Popular Movies</h2>
-    <div class="movieContainer">
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 1</h3>
-                <h4 class="movieTitle">Titel 1</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 2</h3>
-                <h4 class="movieTitle">Titel 2</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 3</h3>
-                <h4 class="movieTitle">Titel 3</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 4</h3>
-                <h4 class="movieTitle">Titel 4</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 5</h3>
-                <h4 class="movieTitle">Titel 5</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </div>
 
+<h2>Most Popular Movies</h2>
+<div id="anchorMostPopular">
+    @foreach (var movie in Model.MostPopularMovies)
+    {
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
+                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
+                    <img src="@Html.DisplayFor(item => movie.Poster)">
+                    <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
+                        <p>Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Most Disliked Movies</h2>
 <div id="anchorNeverRated">
-    <h2>Never Rated Movies</h2>
-    <div class="movieContainer">
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 1</h3>
-                <h4 class="movieTitle">Titel 1</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
+    @foreach (var movie in Model.MostDislikedMovies)
+    {
+        <div class="movieContainer">
+            <div class="movieCell">
+                <img class="ticketImg">
+                <div class="movieCellContent">
+                    <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
+                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
+                    <img src="@Html.DisplayFor(item => movie.Poster)">
+                    <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
+                    <div class="plot">
+                        <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
+                        <p>Read more</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 2</h3>
-                <h4 class="movieTitle">Titel 2</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 3</h3>
-                <h4 class="movieTitle">Titel 3</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 4</h3>
-                <h4 class="movieTitle">Titel 4</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-        <div class="movieCell">
-            <img class="ticketImg">
-            <div class="movieCellContent">
-                <h3 class="movieNumber">No 5</h3>
-                <h4 class="movieTitle">Titel 5</h4>
-                <img class="movieImg">
-                <p>Rating</p>
-                <div class="plot">
-                    <blockquote class="moviePlot">Lorem Ipsum</blockquote>
-                    <p>Read more</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </div>

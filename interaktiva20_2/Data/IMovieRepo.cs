@@ -14,7 +14,11 @@ namespace interaktiva20_2.Data
         Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList();
         Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList();
         Task<MovieDetailsDto> GetMovieDetails(string imdbId);
-        Task<IEnumerable<MovieViewModel>> GetMovieViewModel();
+        Task<IEnumerable<MovieSummaryDto>> GetTopFiveMoviesSummary();
+        Task<IEnumerable<MovieSummaryDto>> GetMostPopularMoviesSummary();
+        Task<IEnumerable<MovieSummaryDto>> GetMostDislikedMoviesSummary();
+
+        //Task<IEnumerable<MovieViewModel>> GetMovieViewModel();
 
     }
 }
