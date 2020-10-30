@@ -17,8 +17,8 @@ namespace interaktiva20_2.Controllers
         {
             var viewModel = new MovieViewModel
             {
-                TopRatedMovies = await movieRepo.GetToplist(movieRepo.GetTopRatedFiveList().Result),
-                MostPopularMovies = await movieRepo.GetToplist(movieRepo.GetMostPopularFiveList().Result),
+                TopRatedMovies = await movieRepo.GetToplist(movieRepo.GetTopRatedList().Result),
+                MostPopularMovies = await movieRepo.GetToplist(movieRepo.GetMostPopularList().Result),
                 MostDislikedMovies = await movieRepo.GetToplist(movieRepo.GetMostDislikedFiveList().Result)
             };
 

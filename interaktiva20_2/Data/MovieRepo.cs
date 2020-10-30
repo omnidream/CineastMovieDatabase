@@ -10,30 +10,30 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
+        private int numberOfMovies = 5;
         IApiClient apiClient;
 
+        #region Constructor
         public MovieRepo(IConfiguration configuration, IApiClient apiClient)
         {
             cmdbUrl = configuration.GetValue<string>("CMDbApi:BaseUrl");
             omdbUrl = configuration.GetValue<string>("OMDbApi:BaseUrl");
             this.apiClient = apiClient;
-        }
+        } 
+        #endregion
 
         #region CMDbRepo
-        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedList(int numberOfMovies)
         {
-            return await CallCmdbApi("toplist/?count=5");
+            return await CallCmdbApi($"toplist/?count={numberOfMovies}");
         }
-
-        //TODO: Fixa en lista för "Not yet rated" istället
-        public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)
         {
-            return await CallCmdbApi("toplist/?sort=asc&count=5");
+            return await CallCmdbApi($"toplist/?type=popularity&count={numberOfMovies}");
         }
-
-        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetNeverRatedMovies(int numberOfMovies, string imdbId)
         {
-            return await CallCmdbApi("toplist/?type=popularity&count=5");
+            return await CallCmdbApi($"toplist/?sort=asc&count={numberOfMovies}");
         }
         #endregion
 
@@ -51,8 +51,8 @@ namespace interaktiva20_2.Data
 
         public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
         {
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
             int movieNumber = 0;
+            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
 
             foreach (var movie in myToplist)
             {

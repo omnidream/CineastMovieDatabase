@@ -31,7 +31,7 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedList(int numberOfMovies)
         {
             string testFile = "CMDbMockTopRated.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
@@ -39,7 +39,7 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetNeverRatedMovies(int numberOfMovies, string imdbId)
         {
             string testFile = "CMDbMockMostDisliked.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
@@ -47,7 +47,7 @@ namespace interaktiva20_2.Test
             return result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList()
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)
         {
             string testFile = "CMDbMockMostPopular.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);

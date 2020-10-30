@@ -10,9 +10,9 @@ namespace interaktiva20_2.Data
     public interface IMovieRepo
     {
 
-        Task<IEnumerable<CmdbMovieDto>> GetTopRatedFiveList();
-        Task<IEnumerable<CmdbMovieDto>> GetMostDislikedFiveList();
-        Task<IEnumerable<CmdbMovieDto>> GetMostPopularFiveList();
+        Task<IEnumerable<CmdbMovieDto>> GetTopRatedList(int numberOfMovies);
+        Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies);
+        Task<IEnumerable<CmdbMovieDto>> GetNeverRatedMovies(int numberOfMovies, string imdbId);
         Task<MovieDetailsDto> GetMovieDetails(string imdbId);
         Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist);
     }
