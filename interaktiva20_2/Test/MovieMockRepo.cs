@@ -1,6 +1,7 @@
 ﻿using interaktiva20_2.Data;
 using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -14,6 +15,8 @@ namespace interaktiva20_2.Test
     {
         string myBasePath;
         private string omdbUrl;
+        private int numberOfMovies = 1;
+        private int numberOfNeverRatedMovies = 1;
         IApiClient apiClient;
 
         public MovieMockRepo(IWebHostEnvironment webHostEnv, IConfiguration configuration, IApiClient apiClient)
@@ -43,7 +46,6 @@ namespace interaktiva20_2.Test
         {
             string testFile = "CMDbMockMostDisliked.json";
             var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
-            //await Task.Delay(0);
             return (List<CmdbMovieDto>)result;
         }
 
@@ -73,6 +75,22 @@ namespace interaktiva20_2.Test
                 movieSummaries.Add(myMovieSummary);
             }
             return movieSummaries;
+        }
+
+        public async Task<MovieViewModel> GetMovieListsViewModel()
+        {
+            var taskList = new List<Task>();
+
+            var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
+            var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
+            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+
+            taskList.Add(topRatedMovies);
+            taskList.Add(mostPopularMovies);
+            taskList.Add(neverRatedMovies);
+            await Task.WhenAll(taskList);
+
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
         }
     }
 }

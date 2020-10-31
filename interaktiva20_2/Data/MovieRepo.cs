@@ -1,5 +1,6 @@
 ﻿using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
+        private int numberOfMovies = 1;
+        private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
         CmdbMovieDto myMovie = null;
@@ -36,7 +39,7 @@ namespace interaktiva20_2.Data
         {
             return await CallCmdbApi($"toplist/?type=popularity&count={numberOfMovies}");
         }
-
+        //TODO: Ändra så att vi så att vi använder GET Test-anropet istället för att få fram mer relevanta filmer.
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
             var randomMovies = GetAListOfRandomMovies();
@@ -137,6 +140,22 @@ namespace interaktiva20_2.Data
                 movieSummaries.Add(myMovieSummary);
             }
             return movieSummaries;
+        }
+
+        public async Task<MovieViewModel> GetMovieListsViewModel()
+        {
+            var taskList = new List<Task>();
+
+            var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
+            var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
+            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+
+            taskList.Add(topRatedMovies);
+            taskList.Add(mostPopularMovies);
+            taskList.Add(neverRatedMovies);
+            await Task.WhenAll(taskList);
+
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
         }
     }
 }

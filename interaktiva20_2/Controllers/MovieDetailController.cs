@@ -5,23 +5,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
 {
-    public class HomeController : Controller
+    public class MovieDetailController : Controller
     {
         private IMovieRepo movieRepo;
 
-        public HomeController(IMovieRepo movieRepo)
+        public MovieDetailController(IMovieRepo movieRepo)
         {
             this.movieRepo = movieRepo;
         }
-
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(string imdbId)
         {
             try
             {
                 var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
-            //TODO: Skapa en error-sida för våra try-cath på våra controllers actionmetoder
             catch (Exception)
             {
                 return RedirectToAction("index", "error");

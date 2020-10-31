@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
 {
-    public class HomeController : Controller
+    public class SearchResultController : Controller
     {
         private IMovieRepo movieRepo;
 
-        public HomeController(IMovieRepo movieRepo)
+        public SearchResultController(IMovieRepo movieRepo)
         {
             this.movieRepo = movieRepo;
         }
-
+        //TODO: anpassa SearchResult action så den passar syftet
         public async Task<IActionResult> Index()
         {
             try
@@ -21,7 +21,6 @@ namespace interaktiva20_2.Controllers
                 var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
-            //TODO: Skapa en error-sida för våra try-cath på våra controllers actionmetoder
             catch (Exception)
             {
                 return RedirectToAction("index", "error");
