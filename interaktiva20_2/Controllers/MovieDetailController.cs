@@ -17,7 +17,7 @@ namespace interaktiva20_2.Controllers
         }
 
         [Route ("")]
-        public async Task<IActionResult> Index(MovieDetailsDto movie)
+        public async Task<IActionResult> Index(string imdbId)
         {
             try
             {
