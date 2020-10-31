@@ -39,7 +39,6 @@ namespace interaktiva20_2.Data
         {
             return await CallCmdbApi($"toplist/?type=popularity&count={numberOfMovies}");
         }
-        //TODO: Ändra så att vi så att vi använder GET Test-anropet istället för att få fram mer relevanta filmer.
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
             var randomMovies = GetAListOfRandomMovies();
