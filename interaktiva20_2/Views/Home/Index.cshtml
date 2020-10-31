@@ -15,8 +15,8 @@
     </header>
 }
 
-<h2>Top Rated Movies</h2>
 <div id="anchorTopRated">
+<h2>Top Rated Movies</h2>
     @foreach (var movie in Model.TopRatedMovies)
     {
         <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
@@ -38,8 +38,8 @@
     }
 </div>
 
-<h2>Most Popular Movies</h2>
 <div id="anchorMostPopular">
+<h2>Most Popular Movies</h2>
     @foreach (var movie in Model.MostPopularMovies)
     {
         <div class="movieContainer">
@@ -60,9 +60,9 @@
     }
 </div>
 
-@*<h2>Most Disliked Movies</h2>
 <div id="anchorNeverRated">
-    @foreach (var movie in Model.NeverRatedMovies)
+<h2>Most Disliked Movies</h2>
+    @*@foreach (var movie in Model.NeverRatedMovies)
     {
         <div class="movieContainer">
             <div class="movieCell">
@@ -79,5 +79,5 @@
                 </div>
             </div>
         </div>
-    }
-</div>*@
+    }*@
+</div>
