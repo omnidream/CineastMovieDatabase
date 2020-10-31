@@ -1,6 +1,7 @@
 ﻿using interaktiva20_2.Data;
 using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -73,6 +74,11 @@ namespace interaktiva20_2.Test
                 movieSummaries.Add(myMovieSummary);
             }
             return movieSummaries;
+        }
+
+        public Task<MovieViewModel> GetMovieViewModel()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using interaktiva20_2.Infra;
 using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
+        private int numberOfMovies = 1;
+        private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
         CmdbMovieDto myMovie = null;
@@ -126,5 +129,23 @@ namespace interaktiva20_2.Data
             }
             return movieSummaries;
         }
+
+        public async Task<MovieViewModel> GetMovieViewModel()
+        {
+
+            var taskList = new List<Task>();
+
+            var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
+            var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
+            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+
+            taskList.Add(topRatedMovies);
+            taskList.Add(mostPopularMovies);
+            taskList.Add(neverRatedMovies);
+            await Task.WhenAll(taskList);
+
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+        }
+
     }
 }

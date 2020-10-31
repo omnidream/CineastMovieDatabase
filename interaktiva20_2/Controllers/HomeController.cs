@@ -8,9 +8,6 @@ namespace interaktiva20_2.Controllers
     public class HomeController : Controller
     {
         private IMovieRepo movieRepo;
-        private int numberOfMovies = 1;
-        private int numberOfNeverRatedMovies = 1;
-
 
         public HomeController(IMovieRepo movieRepo)
         {
@@ -19,13 +16,7 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = new MovieViewModel
-            {
-                TopRatedMovies = await movieRepo.GetToplist(movieRepo.GetTopRatedList(numberOfMovies).Result),
-                MostPopularMovies = await movieRepo.GetToplist(movieRepo.GetMostPopularList(numberOfMovies).Result),
-                NeverRatedMovies = await movieRepo.GetToplist(movieRepo.GetNeverRatedMovies(numberOfNeverRatedMovies))
-            };
-
+            var viewModel = await movieRepo.GetMovieViewModel();
             return View(viewModel);
         }
     }
