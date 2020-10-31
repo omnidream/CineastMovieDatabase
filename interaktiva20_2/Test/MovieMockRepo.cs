@@ -77,7 +77,7 @@ namespace interaktiva20_2.Test
             return movieSummaries;
         }
 
-        public async Task<MovieListsViewModel> GetMovieListsViewModel()
+        public async Task<MovieViewModel> GetMovieListsViewModel()
         {
             var taskList = new List<Task>();
 
@@ -90,7 +90,7 @@ namespace interaktiva20_2.Test
             taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieListsViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
         }
     }
 }
