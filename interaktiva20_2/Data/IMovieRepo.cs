@@ -15,6 +15,6 @@ namespace interaktiva20_2.Data
         List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies);
         Task<MovieDetailsDto> GetMovieDetails(string imdbId);
         Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist);
-        Task<MovieViewModel> GetMovieViewModel();
+        Task<MovieListsViewModel> GetMovieListsViewModel();
     }
 }

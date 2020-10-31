@@ -13,12 +13,12 @@ namespace interaktiva20_2.Controllers
         {
             this.movieRepo = movieRepo;
         }
-
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(string imdbId)
         {
             try
             {
-                var viewModel = await movieRepo.GetMovieViewModel();
+                var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
             catch (Exception)

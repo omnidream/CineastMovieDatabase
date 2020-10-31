@@ -18,7 +18,7 @@ namespace interaktiva20_2.Controllers
         {
             try
             {
-                var viewModel = await movieRepo.GetMovieViewModel();
+                var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
             //TODO: Skapa en error-sida för våra try-cath på våra controllers actionmetoder
