@@ -90,7 +90,7 @@ namespace interaktiva20_2.Test
             taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
         }
     }
 }

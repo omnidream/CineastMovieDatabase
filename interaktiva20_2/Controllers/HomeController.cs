@@ -29,12 +29,5 @@ namespace interaktiva20_2.Controllers
                 return RedirectToAction("index", "error");
             }
         }
-                TopRatedMovies = await movieRepo.GetToplist(movieRepo.GetTopRatedList(numberOfMovies).Result),
-                MostPopularMovies = await movieRepo.GetToplist(movieRepo.GetMostPopularList(numberOfMovies).Result),
-                //NeverRatedMovies = await movieRepo.GetToplist(movieRepo.GetNeverRatedMovies(numberOfNeverRatedMovies))
-            };
-
-            return View(viewModel);
-        }
     }
 }

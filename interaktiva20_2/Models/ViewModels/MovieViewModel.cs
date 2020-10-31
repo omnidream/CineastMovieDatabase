@@ -13,11 +13,11 @@ namespace interaktiva20_2.Models.ViewModels
         public IEnumerable<MovieSummaryDto> NeverRatedMovies { get; set; }
 
         
-        public MovieViewModel(Task<IEnumerable<MovieSummaryDto>> topRatedMovies, Task<IEnumerable<MovieSummaryDto>> mostPopularMovies, Task<IEnumerable<MovieSummaryDto>> neverRatedMovies)
+        public MovieViewModel(Task<IEnumerable<MovieSummaryDto>> topRatedMovies, Task<IEnumerable<MovieSummaryDto>> mostPopularMovies/*, Task<IEnumerable<MovieSummaryDto>> neverRatedMovies*/)
         {
             TopRatedMovies = topRatedMovies.Result;
             MostPopularMovies = mostPopularMovies.Result;
-            NeverRatedMovies = neverRatedMovies.Result;
+            //NeverRatedMovies = neverRatedMovies.Result;
         }
     }
 }

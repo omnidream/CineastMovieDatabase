@@ -147,14 +147,14 @@ namespace interaktiva20_2.Data
 
             var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
             var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
-            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+            //var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
 
             taskList.Add(topRatedMovies);
             taskList.Add(mostPopularMovies);
-            taskList.Add(neverRatedMovies);
+            //taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
         }
     }
 }
