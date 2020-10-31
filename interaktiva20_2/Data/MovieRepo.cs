@@ -132,7 +132,6 @@ namespace interaktiva20_2.Data
 
         public async Task<MovieViewModel> GetMovieViewModel()
         {
-
             var taskList = new List<Task>();
 
             var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
