@@ -1,27 +1,45 @@
-﻿namespace interaktiva20_2.Models.DTO
-{
-    public class MovieSummaryDto
-    {
-        public int MovieNumber { get; set; }
-        public string Title { get; set; }
-        public string Year { get; set; }
-        public string Runtime { get; set; }
-        public string Genre { get; set; }
-        public string Director { get; set; }
-        public string Actors { get; set; }
-        public string Plot { get; set; }
-        public string Language { get; set; }
-        public string Country { get; set; }
-        public string Poster { get; set; }
-        public string Awards { get; set; }
-        public string ImdbRating { get; set; }
+﻿using interaktiva20_2.Models.DTO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
+namespace interaktiva20_2.Models.ViewModels
+{
+    public class MovieDetailViewModel
+    {
+        public string Title { get; set; }
+        public string Poster { get; set; }
         public int NumberOfLikes { get; set; }
         public int NumberOfDislikes { get; set; }
+        public string imdbID { get; set; }
 
-        public MovieSummaryDto(CmdbMovieDto myMovie, MovieDetailsDto movieDetails, int movieNumber)
+
+
+        [Display(Name = "Year:")]
+        public string Year { get; set; }
+        [Display(Name = "Runtime:")]
+        public string Runtime { get; set; }
+        [Display(Name = "Genre:")]
+        public string Genre { get; set; }
+        [Display(Name = "Director:")]
+        public string Director { get; set; }
+        [Display(Name = "Actors:")]
+        public string Actors { get; set; }
+        [Display(Name = "Story:")]
+        public string Plot { get; set; }
+        [Display(Name = "Language:")]
+        public string Language { get; set; }
+        [Display(Name = "Country:")]
+        public string Country { get; set; }
+        [Display(Name = "Awards:")]
+        public string Awards { get; set; }
+        [Display(Name = "IMDb Rating:")]
+        public string ImdbRating { get; set; }
+
+        public MovieDetailViewModel(MovieDetailsDto movieDetails /*, CmdbMovieDto myMovie*/)
         {
-            MovieNumber = movieNumber;
             Title = movieDetails.Title;
             Year = movieDetails.Year;
             Runtime = movieDetails.Runtime;
@@ -34,8 +52,8 @@
             Poster = movieDetails.Poster;
             Awards = movieDetails.Awards;
             ImdbRating = movieDetails.ImdbRating;
-            NumberOfLikes = myMovie.NumberOfLikes;
-            NumberOfDislikes = myMovie.NumberOfDislikes;
+            //NumberOfLikes = myMovie.NumberOfLikes;
+            //NumberOfDislikes = myMovie.NumberOfDislikes;
         }
     }
 }

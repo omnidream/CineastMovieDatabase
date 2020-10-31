@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using interaktiva20_2.Data;
+using interaktiva20_2.Models.DTO;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
@@ -13,12 +15,13 @@ namespace interaktiva20_2.Controllers
         {
             this.movieRepo = movieRepo;
         }
-        
-        public async Task<IActionResult> Index(string imdbId)
+
+        [Route ("")]
+        public async Task<IActionResult> Index(MovieDetailsDto movie)
         {
             try
             {
-                var viewModel = await movieRepo.GetMovieListsViewModel();
+                var viewModel = await movieRepo.GetMovieDetailViewModel("tt0245429");
                 return View(viewModel);
             }
             catch (Exception)

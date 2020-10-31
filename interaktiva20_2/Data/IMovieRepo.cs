@@ -16,5 +16,6 @@ namespace interaktiva20_2.Data
         Task<MovieDetailsDto> GetMovieDetails(string imdbId);
         Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist);
         Task<MovieViewModel> GetMovieListsViewModel();
+        Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId);
     }
 }
