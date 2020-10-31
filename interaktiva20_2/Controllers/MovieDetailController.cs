@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using interaktiva20_2.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,15 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = await movieRepo.GetMovieViewModel();
-            return View(viewModel);
+            try
+            {
+                var viewModel = await movieRepo.GetMovieViewModel();
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("index", "error");
+            }
         }
     }
 }
