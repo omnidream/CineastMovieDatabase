@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
 {
-    public class HomeController : Controller
+    public class SearchResultController : Controller
     {
         private IMovieRepo movieRepo;
 
-        public HomeController(IMovieRepo movieRepo)
+        public SearchResultController(IMovieRepo movieRepo)
         {
             this.movieRepo = movieRepo;
         }

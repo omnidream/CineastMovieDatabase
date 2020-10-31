@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\MovieDetail\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\assets\css\reset.css" />
     <None Include="wwwroot\assets\css\responsive.css" />
     <None Include="wwwroot\assets\css\style.css" />
