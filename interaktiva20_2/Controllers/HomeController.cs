@@ -8,6 +8,8 @@ namespace interaktiva20_2.Controllers
     public class HomeController : Controller
     {
         private IMovieRepo movieRepo;
+        private static int numberOfMovies = 1;
+        private static int numberOfNeverRatedMovies = 1;
 
         public HomeController(IMovieRepo movieRepo)
         {
@@ -26,6 +28,13 @@ namespace interaktiva20_2.Controllers
             {
                 return RedirectToAction("index", "error");
             }
+        }
+                TopRatedMovies = await movieRepo.GetToplist(movieRepo.GetTopRatedList(numberOfMovies).Result),
+                MostPopularMovies = await movieRepo.GetToplist(movieRepo.GetMostPopularList(numberOfMovies).Result),
+                //NeverRatedMovies = await movieRepo.GetToplist(movieRepo.GetNeverRatedMovies(numberOfNeverRatedMovies))
+            };
+
+            return View(viewModel);
         }
     }
 }
