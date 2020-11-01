@@ -8,8 +8,6 @@ namespace interaktiva20_2.Controllers
     public class HomeController : Controller
     {
         private IMovieRepo movieRepo;
-        private static int numberOfMovies = 1;
-        private static int numberOfNeverRatedMovies = 1;
 
         public HomeController(IMovieRepo movieRepo)
         {

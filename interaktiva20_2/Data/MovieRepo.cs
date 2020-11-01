@@ -14,7 +14,7 @@ namespace interaktiva20_2.Data
         private string cmdbUrl;
         private string omdbUrl;
         private int numberOfMovies = 1;
-        private int numberOfNeverRatedMovies = 2;
+        private int numberOfNeverRatedMovies = 3;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
         IApiClient apiClient;
@@ -69,24 +69,20 @@ namespace interaktiva20_2.Data
                 result = true;
             return result;
         }
-
         private async Task<SearchResultDto> GetAListOfRandomMovies()
         {
             SearchResultDto mySearchObject = new SearchResultDto();
             do
             {
-                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"{GetSearchWord()}&plot=full&type=movie");
+                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GeneratePageNo()}");
             } while (mySearchObject.Search == null);
 
             return mySearchObject;
         }
 
-        private string GetSearchWord()
+        private int GeneratePageNo()
         {
-            string mySearchWord = "s=Ghibli";
-            string myChars = "abcdefghijklmnop";
-            //mySearchWord = mySearchWord + myChars[(rnd.Next(0, 15))].ToString();
-            return mySearchWord;
+            return rnd.Next(1, 30);
         }
 
         private bool MovieHasPoster(MovieDetailsDto movie)
@@ -126,10 +122,10 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<T>(cmdbUrl + apiKey);
         }
 
-        public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
+        public async Task<IEnumerable<IMovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
         {
             int movieNumber = 0;
-            List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
+            List<IMovieSummaryDto> movieSummaries = new List<IMovieSummaryDto>();
 
             foreach (var movie in myToplist)
             {

@@ -7,7 +7,7 @@
         public int NumberOfDislikes { get; set; }
         public string ImdbId { get; set; }
 
-        public MovieSummaryDto(ICmdbMovieDto myMovie, IMovieSummaryDto movieDetails, int movieNumber)
+        public MovieSummaryDto(CmdbMovieDto myMovie, MovieDetailsDto movieDetails, int movieNumber)
         {
             MovieNumber = movieNumber;
             Title = movieDetails.Title;
