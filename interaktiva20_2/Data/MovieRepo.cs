@@ -14,10 +14,9 @@ namespace interaktiva20_2.Data
         private string cmdbUrl;
         private string omdbUrl;
         private int numberOfMovies = 1;
-        private int numberOfNeverRatedMovies = 1;
+        private int numberOfNeverRatedMovies = 2;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
-        CmdbMovieDto myMovie = null;
         IApiClient apiClient;
 
         #region Constructor
@@ -32,27 +31,27 @@ namespace interaktiva20_2.Data
         #region CMDbRepo
         public async Task<IEnumerable<CmdbMovieDto>> GetTopRatedList(int numberOfMovies)
         {
-            return await CallCmdbApi($"toplist/?count={numberOfMovies}");
+            return await CallCmdbApi<IEnumerable<CmdbMovieDto>>($"toplist/?count={numberOfMovies}");
         }
 
         public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)
         {
-            return await CallCmdbApi($"toplist/?type=popularity&count={numberOfMovies}");
+            return await CallCmdbApi<IEnumerable<CmdbMovieDto>>($"toplist/?type=popularity&count={numberOfMovies}");
         }
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
-            var randomMovies = GetAListOfRandomMovies();
-            //myNeverRatedList = GetMoviesWithDetailsFromList(randomMovies, numberOfMovies);
+            var randomMovies = GetAListOfRandomMovies().Result;
+            myNeverRatedList = GetMoviesWithDetailsFromList(randomMovies, numberOfMovies);
             return myNeverRatedList;
         }
 
-        private List<CmdbMovieDto> GetMoviesWithDetailsFromList(IEnumerable<MovieDetailsDto> randomMovies, int numberOfMovies)
+        private List<CmdbMovieDto> GetMoviesWithDetailsFromList(SearchResultDto randomMovies, int numberOfMovies)
         {
             int iterations = numberOfMovies;
             List<CmdbMovieDto> returnList = new List<CmdbMovieDto>();
-            foreach (var movie in randomMovies)
+            foreach (var movie in randomMovies.Search)
             {
-                if (MovieisValid(iterations, movie, myMovie))
+                if (MovieIsValid(iterations, movie))
                 {
                     CmdbMovieDto myMovie = new CmdbMovieDto();
                     myMovie.ImdbId = movie.imdbID;
@@ -63,37 +62,38 @@ namespace interaktiva20_2.Data
             return returnList;
         }
 
-        private bool MovieisValid(int iterations, MovieDetailsDto movie, CmdbMovieDto myMovie)
+        private bool MovieIsValid(int iterations, MovieDetailsDto movie)
         {
             bool result = false;
-            if (MovieHasPoster(movie) && MovieHasPlot(movie) && iterations > 0 && MovieIsInCMDb(movie.imdbID) == false)
+            if (MovieHasPoster(movie) && iterations > 0 && MovieIsInCMDb(movie.imdbID) == false)
                 result = true;
             return result;
         }
 
-        private async Task<MovieDetailsDto> GetAListOfRandomMovies()
+        private async Task<SearchResultDto> GetAListOfRandomMovies()
         {
-            return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"{GetSearchWord()}&plot=full&type=movie");
+            SearchResultDto mySearchObject = new SearchResultDto();
+            do
+            {
+                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"{GetSearchWord()}&plot=full&type=movie");
+            } while (mySearchObject.Search == null);
+
+            return mySearchObject;
         }
 
         private string GetSearchWord()
         {
-            int numberOfChars = 2;
-            string mySearchWord = "s=the ";
-
-            for (int i = 0; i < numberOfChars; i++)
-            {
-                string myChars = "abcdefghijklmnop";
-                mySearchWord = mySearchWord + myChars[(rnd.Next(0, 15))].ToString();
-            }
+            string mySearchWord = "s=Ghibli";
+            string myChars = "abcdefghijklmnop";
+            //mySearchWord = mySearchWord + myChars[(rnd.Next(0, 15))].ToString();
             return mySearchWord;
         }
 
         private bool MovieHasPoster(MovieDetailsDto movie)
         {
-            bool result = false;
-            if (movie.Poster != "N/A" || movie.Poster != null)
-                result = true;
+            bool result = true;
+            if (movie.Poster == "N/A" || movie.Poster == null)
+                result = false;
             return result;
         }
 
@@ -107,9 +107,9 @@ namespace interaktiva20_2.Data
 
         private bool MovieIsInCMDb(string imdbId)
         {
-            bool result = false;
-            if (CallCmdbApi($"{imdbId}") != null)
-                result = true;
+            bool result = true;
+            if (CallCmdbApi<CmdbMovieDto>($"{imdbId}").Result == null)
+                result = false;
             return result;
         }
         #endregion
@@ -121,9 +121,9 @@ namespace interaktiva20_2.Data
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
         #endregion
-        private Task<IEnumerable<CmdbMovieDto>> CallCmdbApi(string apiKey)
+        private Task<T> CallCmdbApi<T>(string apiKey)
         {
-            return apiClient.GetAsync<IEnumerable<CmdbMovieDto>>(cmdbUrl + apiKey);
+            return apiClient.GetAsync<T>(cmdbUrl + apiKey);
         }
 
         public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)

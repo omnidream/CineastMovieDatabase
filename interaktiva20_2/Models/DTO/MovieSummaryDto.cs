@@ -16,7 +16,6 @@
         public string Awards { get; set; }
         public string ImdbRating { get; set; }
         public string imdbID { get; set; }
-
         public int NumberOfLikes { get; set; }
         public int NumberOfDislikes { get; set; }
 
