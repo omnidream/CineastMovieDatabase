@@ -1,0 +1,7 @@
+﻿function Like{
+
+}
+
+function Dislike{
+
+}
