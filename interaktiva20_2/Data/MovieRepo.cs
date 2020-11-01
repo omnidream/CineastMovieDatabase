@@ -122,7 +122,7 @@ namespace interaktiva20_2.Data
             return apiClient.GetAsync<T>(cmdbUrl + apiKey);
         }
 
-        public async Task<IEnumerable<IMovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
+        public async Task<IEnumerable<IMovieSummaryDto>> GetToplistWithDetails(IEnumerable<CmdbMovieDto> myToplist)
         {
             int movieNumber = 0;
             List<IMovieSummaryDto> movieSummaries = new List<IMovieSummaryDto>();
@@ -141,9 +141,9 @@ namespace interaktiva20_2.Data
         {
             var taskList = new List<Task>();
 
-            var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
-            var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
-            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+            var topRatedMovies = GetToplistWithDetails(GetTopRatedList(numberOfMovies).Result);
+            var mostPopularMovies = GetToplistWithDetails(GetMostPopularList(numberOfMovies).Result);
+            var neverRatedMovies = GetToplistWithDetails(GetNeverRatedMovies(numberOfNeverRatedMovies));
 
             taskList.Add(topRatedMovies);
             taskList.Add(mostPopularMovies);
