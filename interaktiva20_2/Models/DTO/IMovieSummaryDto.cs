@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace interaktiva20_2.Models.DTO
 {
-    public class SearchResultDto
+    public interface IMovieSummaryDto : ICmdbMovieDto, IMovieDetailsDto
     {
-        public List<MovieDetailsDto> Search { get; set; }
+
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace interaktiva20_2.Models.DTO
 {
-    public class CmdbMovieDto : ICmdbMovieDto
+    public interface ICmdbMovieDto
     {
         public string ImdbId { get; set; }
         public int NumberOfLikes { get; set; }
