@@ -90,7 +90,21 @@ namespace interaktiva20_2.Test
             taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
+        }
+
+        public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)
+        {
+            var taskList = new List<Task>();
+
+            var movie = GetMovieDetails(imdbId);
+            //var ratings = GetCmdbRatings(imdbId);
+
+            taskList.Add(movie);
+            //taskList.Add(ratings);
+            await Task.WhenAll(taskList);
+
+            return new MovieDetailViewModel(movie.Result);
         }
     }
 }

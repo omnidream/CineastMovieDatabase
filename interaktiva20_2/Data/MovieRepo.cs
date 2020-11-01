@@ -137,6 +137,7 @@ namespace interaktiva20_2.Data
             return movieSummaries;
         }
 
+        #region GetViewModels
         public async Task<MovieViewModel> GetMovieListsViewModel()
         {
             var taskList = new List<Task>();
@@ -147,10 +148,25 @@ namespace interaktiva20_2.Data
 
             taskList.Add(topRatedMovies);
             taskList.Add(mostPopularMovies);
-            taskList.Add(neverRatedMovies);
+            //taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
         }
+
+        public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)
+        {
+            var taskList = new List<Task>();
+
+            var movie = GetMovieDetails(imdbId);
+            //var ratings = GetCmdbRatings(imdbId);
+
+            taskList.Add(movie);
+            //taskList.Add(ratings);
+            await Task.WhenAll(taskList);
+
+            return new MovieDetailViewModel(movie.Result);
+        } 
+        #endregion
     }
 }
