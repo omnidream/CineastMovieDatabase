@@ -151,7 +151,7 @@ namespace interaktiva20_2.Data
             //taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
         }
 
         public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)

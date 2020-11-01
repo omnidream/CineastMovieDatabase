@@ -62,7 +62,7 @@ namespace interaktiva20_2.Test
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
 
-        public async Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
+        public async Task<IEnumerable<IMovieSummaryDto>> GetToplistWithDetails(IEnumerable<CmdbMovieDto> myToplist)
         {
             List<MovieSummaryDto> movieSummaries = new List<MovieSummaryDto>();
             int movieNumber = 0;
@@ -81,16 +81,16 @@ namespace interaktiva20_2.Test
         {
             var taskList = new List<Task>();
 
-            var topRatedMovies = GetToplist(GetTopRatedList(numberOfMovies).Result);
-            var mostPopularMovies = GetToplist(GetMostPopularList(numberOfMovies).Result);
-            var neverRatedMovies = GetToplist(GetNeverRatedMovies(numberOfNeverRatedMovies));
+            var topRatedMovies = GetToplistWithDetails(GetTopRatedList(numberOfMovies).Result);
+            var mostPopularMovies = GetToplistWithDetails(GetMostPopularList(numberOfMovies).Result);
+            var neverRatedMovies = GetToplistWithDetails(GetNeverRatedMovies(numberOfNeverRatedMovies));
 
             taskList.Add(topRatedMovies);
             taskList.Add(mostPopularMovies);
             taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
-            return new MovieViewModel(topRatedMovies, mostPopularMovies/*, neverRatedMovies*/);
+            return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
         }
 
         public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)

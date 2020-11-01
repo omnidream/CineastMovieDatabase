@@ -24,7 +24,6 @@
             <div class="movieCell">
                 <img class="ticketImg">
                 <div class="movieCellContent">
-                    <a href="#">
                         <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
                         <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                         <img src="@Html.DisplayFor(item => movie.Poster)">
@@ -33,7 +32,6 @@
                             <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
                             <p>Read more</p>
                         </div>
-                    </a>
                 </div>
             </div>
         </div>
@@ -64,7 +62,7 @@
 
 <div id="anchorNeverRated">
 <h2>Most Disliked Movies</h2>
-    @*@foreach (var movie in Model.NeverRatedMovies)
+    @foreach (var movie in Model.NeverRatedMovies)
     {
         <div class="movieContainer">
             <div class="movieCell">
@@ -81,5 +79,5 @@
                 </div>
             </div>
         </div>
-    }*@
+    }
 </div>

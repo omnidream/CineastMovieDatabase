@@ -16,7 +16,7 @@ namespace interaktiva20_2.Controllers
             this.movieRepo = movieRepo;
         }
 
-        [Route ("")]
+        //[Route ("")]
         public async Task<IActionResult> Index(string imdbId)
         {
             try
