@@ -45,6 +45,23 @@ namespace interaktiva20_2.Data
             return myNeverRatedList;
         }
 
+        public async Task<CmdbMovieDto> GetCmdbRatings(string imdbId)
+        {
+            var myRatings = await CallCmdbApi<CmdbMovieDto>($"movie/{imdbId}");
+
+            if (myRatings == null)
+                myRatings = GiveRatingWhenNull(myRatings);
+            return myRatings;
+        }
+
+        private CmdbMovieDto GiveRatingWhenNull(CmdbMovieDto myRatings)
+        {
+            myRatings.NumberOfLikes = 0;
+            myRatings.NumberOfDislikes = 0;
+
+            return myRatings;
+        }
+
         private List<CmdbMovieDto> GetMoviesWithDetailsFromList(SearchResultDto randomMovies, int numberOfMovies)
         {
             int iterations = numberOfMovies;
@@ -148,7 +165,7 @@ namespace interaktiva20_2.Data
 
             taskList.Add(topRatedMovies);
             taskList.Add(mostPopularMovies);
-            //taskList.Add(neverRatedMovies);
+            taskList.Add(neverRatedMovies);
             await Task.WhenAll(taskList);
 
             return new MovieViewModel(topRatedMovies, mostPopularMovies, neverRatedMovies);
@@ -159,13 +176,13 @@ namespace interaktiva20_2.Data
             var taskList = new List<Task>();
 
             var movie = GetMovieDetails(imdbId);
-            //var ratings = GetCmdbRatings(imdbId);
+            var ratings = GetCmdbRatings(imdbId);
 
             taskList.Add(movie);
-            //taskList.Add(ratings);
+            taskList.Add(ratings);
             await Task.WhenAll(taskList);
 
-            return new MovieDetailViewModel(movie.Result);
+            return new MovieDetailViewModel(movie.Result, ratings.Result);
         } 
         #endregion
     }

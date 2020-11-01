@@ -38,7 +38,7 @@ namespace interaktiva20_2.Models.ViewModels
         [Display(Name = "IMDb Rating:")]
         public string ImdbRating { get; set; }
 
-        public MovieDetailViewModel(MovieDetailsDto movieDetails /*, CmdbMovieDto myMovie*/)
+        public MovieDetailViewModel(MovieDetailsDto movieDetails, CmdbMovieDto myMovie)
         {
             Title = movieDetails.Title;
             Year = movieDetails.Year;
@@ -52,8 +52,8 @@ namespace interaktiva20_2.Models.ViewModels
             Poster = movieDetails.Poster;
             Awards = movieDetails.Awards;
             ImdbRating = movieDetails.ImdbRating;
-            //NumberOfLikes = myMovie.NumberOfLikes;
-            //NumberOfDislikes = myMovie.NumberOfDislikes;
+            NumberOfLikes = myMovie.NumberOfLikes;
+            NumberOfDislikes = myMovie.NumberOfDislikes;
         }
     }
 }

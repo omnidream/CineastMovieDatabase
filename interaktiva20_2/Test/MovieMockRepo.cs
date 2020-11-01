@@ -95,16 +95,40 @@ namespace interaktiva20_2.Test
 
         public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)
         {
-            var taskList = new List<Task>();
+            /*var taskList = new List<Task>();
 
             var movie = GetMovieDetails(imdbId);
-            //var ratings = GetCmdbRatings(imdbId);
+            var ratings = GetCmdbRatings(imdbId);
 
             taskList.Add(movie);
-            //taskList.Add(ratings);
+            taskList.Add(ratings);
             await Task.WhenAll(taskList);
 
-            return new MovieDetailViewModel(movie.Result);
+            return new MovieDetailViewModel(movie.Result, ratings.Result);*/
+            throw new System.NotImplementedException();
+
+        }
+
+        /*public async Task<CmdbMovieDto> GetCmdbRatings(string imdbId)
+        {
+            var myRatings = await CallCmdbApi<CmdbMovieDto>($"movie/{imdbId}");
+
+            if (myRatings == null)
+                myRatings = GiveRatingWhenNull(myRatings);
+            return myRatings;
+        }
+
+        private CmdbMovieDto GiveRatingWhenNull(CmdbMovieDto myRatings)
+        {
+            myRatings.NumberOfLikes = 0;
+            myRatings.NumberOfDislikes = 0;
+
+            return myRatings;
+        }*/
+
+        public Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
