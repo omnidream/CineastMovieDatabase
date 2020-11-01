@@ -56,6 +56,7 @@ namespace interaktiva20_2.Data
 
         private CmdbMovieDto GiveRatingWhenNull(CmdbMovieDto myRatings)
         {
+            myRatings = new CmdbMovieDto();
             myRatings.NumberOfLikes = 0;
             myRatings.NumberOfDislikes = 0;
 
