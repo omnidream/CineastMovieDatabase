@@ -4,7 +4,7 @@ document.querySelector(".likeBtn").addEventListener("click", like)
 let myImdbId = document.querySelector(".imdbidHidden").innerHTML;
 
 async function like() {
-    await fetch('http://localhost:5000/api/movie/' + myImdbId + '/like')
+    await fetch(cmdbUrl + myImdbId + '/like')
         .then(response => response.json())
         .then(data => (myLikes = data.numberOfLikes))
         .then(updateNumberOfLikes);
