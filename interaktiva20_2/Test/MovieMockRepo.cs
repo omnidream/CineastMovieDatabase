@@ -5,6 +5,7 @@ using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,22 +14,25 @@ namespace interaktiva20_2.Test
 {
     public class MovieMockRepo : IMovieRepo
     {
-        string myBasePath;
+        private string cmbdMockUrl;
         private string omdbUrl;
         private int numberOfMovies = 1;
-        private int numberOfNeverRatedMovies = 1;
+        private int numberOfNeverRatedMovies = 0;
+        
         IApiClient apiClient;
 
+        #region Constructor
         public MovieMockRepo(IWebHostEnvironment webHostEnv, IConfiguration configuration, IApiClient apiClient)
         {
-            myBasePath = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\Cmdb\\";
+            cmbdMockUrl = $"{ webHostEnv.ContentRootPath}\\Test\\Mockdata\\Cmdb\\";
             omdbUrl = configuration.GetValue<string>("OMDbApi:BaseUrl");
             this.apiClient = apiClient;
-        }
+        } 
+        #endregion
 
         private T GetTestData<T>(string testFile)
         {
-            string path = $"{myBasePath}{testFile}";
+            string path = $"{cmbdMockUrl}{testFile}";
             string data = File.ReadAllText(path);
             var result = JsonConvert.DeserializeObject<T>(data);
             return result;
@@ -42,6 +46,14 @@ namespace interaktiva20_2.Test
             return result;
         }
 
+        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)
+        {
+            string testFile = "CMDbMockMostPopular.json";
+            var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
+            await Task.Delay(0);
+            return result;
+        }
+
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
             string testFile = "CMDbMockMostDisliked.json";
@@ -49,12 +61,13 @@ namespace interaktiva20_2.Test
             return (List<CmdbMovieDto>)result;
         }
 
-        public async Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies)
+        public async Task<CmdbMovieDto> GetCmdbRatings(string imdbId)
         {
-            string testFile = "CMDbMockMostPopular.json";
-            var result = GetTestData<IEnumerable<CmdbMovieDto>>(testFile);
+            string testFile = "CmdbSingleMovie.json";
+            var myRatings = GetTestData<CmdbMovieDto>(testFile);
             await Task.Delay(0);
-            return result;
+
+            return myRatings;
         }
 
         public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
@@ -95,7 +108,7 @@ namespace interaktiva20_2.Test
 
         public async Task<MovieDetailViewModel> GetMovieDetailViewModel(string imdbId)
         {
-            /*var taskList = new List<Task>();
+            var taskList = new List<Task>();
 
             var movie = GetMovieDetails(imdbId);
             var ratings = GetCmdbRatings(imdbId);
@@ -104,31 +117,9 @@ namespace interaktiva20_2.Test
             taskList.Add(ratings);
             await Task.WhenAll(taskList);
 
-            return new MovieDetailViewModel(movie.Result, ratings.Result);*/
-            throw new System.NotImplementedException();
+            return new MovieDetailViewModel(movie.Result, ratings.Result);
 
         }
 
-        /*public async Task<CmdbMovieDto> GetCmdbRatings(string imdbId)
-        {
-            var myRatings = await CallCmdbApi<CmdbMovieDto>($"movie/{imdbId}");
-
-            if (myRatings == null)
-                myRatings = GiveRatingWhenNull(myRatings);
-            return myRatings;
-        }
-
-        private CmdbMovieDto GiveRatingWhenNull(CmdbMovieDto myRatings)
-        {
-            myRatings.NumberOfLikes = 0;
-            myRatings.NumberOfDislikes = 0;
-
-            return myRatings;
-        }*/
-
-        public Task<IEnumerable<MovieSummaryDto>> GetToplist(IEnumerable<CmdbMovieDto> myToplist)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
