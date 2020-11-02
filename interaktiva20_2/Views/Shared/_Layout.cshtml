@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/assets/css/style.css?v={random string}"> <!--la till ?v={random string} för att tvinga browsern att reloada css varje gång-->
     <!--<link rel="stylesheet" href="/assets/css/flickety.css"> Inte säkert att vi ska använda denna-->
     <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -17,7 +18,7 @@
     <div class="container">
 
         @RenderSection("MyHeader")
-
+        
         <nav>
             <ul>
                 <li><a href="home/index#anchorTopRated">Top Rated Movies</a></li>
@@ -26,17 +27,19 @@
             </ul>
         </nav>
 
-        <!--Search bar from https://codepen.io/huange/pen/rbqsD -->
-        <div class="searchWrap">
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"><img></i>
-                    <!--Behöver ett förstoringsglas här-->
-                </button>
+        <div class="searchContainer">
+            <!--Search bar from https://codepen.io/huange/pen/rbqsD-->
+            <div class="searchWrap">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"><img></i>
+                        <!--Behöver ett förstoringsglas här-->
+                    </button>
+                </div>
             </div>
+            <!--End of search bar-->
         </div>
-        <!--End of search bar-->
 
         
         @RenderBody()

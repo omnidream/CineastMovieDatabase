@@ -1,54 +1,135 @@
+/* || GENERAL || */
 
-
-/* Search bar CSS from https://codepen.io/huange/pen/rbqsD */
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
+body {
+    background: #2e2e2e;
 }
 
-.searchTerm {
-  width: 100%;
-  border: 3px solid #b60505;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
+p, h2, h3, h4, blockquote, nav a {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
-.searchTerm:focus{
-  color: #111111;
-}
-
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #b60505;
-  background: #b60505;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-
-.searchWrap{
-  margin-top: 2rem;
-  width: 50%;
-  /*position: fixed;*/
-  transform: translate(50%);
-
-  /*top: 50%;
-  left: 50%;*/
-}
-/* End of search bar CSS */
+/* || HEADER || */
 
 .headerImg {
-    position: relative;
     width: 100%;
 }
 
+header h1 {
+    font-family: 'Limelight', cursive;
+    font-size: 1.6rem;
+    margin: 1rem 0.5rem;
+}
+
+header p {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.1rem;
+    margin: 1rem;
+}
+
+.headerTextContainer {
+    position: absolute;
+    color: #f0e6dd;
+    margin-left: 30%;
+}
+
+/* || MENU AND SEARCH|| */
+
+nav {
+    background-color: #181818;
+    margin-top: -0.2rem;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+nav a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #f0e6dd;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.search {
+    padding: 0.3rem;
+    background: #CC1B25;
+}
+/* Search bar CSS from https://codepen.io/huange/pen/rbqsD */
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 70%;
+    margin-left: auto;
+    border: 3px solid #850202;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+    .searchTerm:focus {
+        color: #111111;
+    }
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    margin-right: auto;
+    border: 1px solid #850202;
+    background: #850202;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+/* End of search bar CSS */
+
+/* || TOPLISTS || */
+.topListHeader {
+    font-size: 1.3rem;
+    color: #f0e6dd;
+    text-align: center;
+    padding: 1rem;
+}
+
+.movieCellContent {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
+
+.movieNumber {
+    color: #850202;
+    text-shadow: -1px -1px 0 #131313;
+    font-family: 'Limelight', cursive;
+    position: absolute;
+    font-weight: bold;
+    font-size: 2.15rem;
+    transform: rotate(-27deg);
+    margin-top: 1.8rem;
+    margin-left: 1rem;
+}
+
+.movieTitle {
+    font-family: 'Poiret One', cursive;
+    font-size: 2rem;
+    margin-top: 1.2rem;
+    padding: 2rem;
+}
+
+.moviePoster {
+    margin-top: 0.5rem;
+}
+
+.ticketImg {
+    margin: 0.5rem;
+}
