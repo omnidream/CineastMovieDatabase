@@ -15,13 +15,13 @@
 <div class="movieCell">
     <img class="ticketImg">
     <h2 id="detailTitle">@Html.DisplayFor(item => Model.Title)</h2>
-<p class="imdbidHidden">@Html.DisplayFor(item => Model.imdbID)</p>
+<p class="imdbidHidden">@Model.imdbID</p>
     <div id="cmdbRating">
         <h3 id="movieRating">Rating</h3>
         <h4>Cineast Rating:</h4>
         <p class="snippety">Likes: @Html.DisplayFor(item => Model.NumberOfLikes)</p> <p>Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
 
-        <p><button class="likeBtn">Like</button><button class="dislikeBtn">Dislike</button></p>
+        <p><button class="likeBtn" id="@Model.imdbID">Like</button><button class="dislikeBtn">Dislike</button></p>
         
         <h4>@Html.DisplayNameFor(item => Model.ImdbRating)</h4>
         <p>@Html.DisplayFor(item => Model.ImdbRating)</p>

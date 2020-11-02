@@ -11,6 +11,7 @@
         {
             MovieNumber = movieNumber;
             Title = movieDetails.Title;
+            ImdbId = movieDetails.imdbID;
             Rated = movieDetails.Rated;
             Year = movieDetails.Year;
             Runtime = movieDetails.Runtime;

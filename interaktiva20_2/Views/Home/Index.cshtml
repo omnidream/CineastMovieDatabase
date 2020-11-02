@@ -32,6 +32,11 @@
                     <div class="plot">
                         <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
                         <p>Read more</p>
+                        <a href="/details/">TEST</a>
+
+                        @Html.ActionLink("MeraDetaljer", "Index", "MovieDetail", @movie.ImdbId, null)
+
+
                     </div>
                 </div>
                 <img class="ticketImg" src="~/assets/images/ticket.svg">
