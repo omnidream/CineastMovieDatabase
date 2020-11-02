@@ -37,7 +37,7 @@
                         <div class="readMore"><a class="more"></a></div>
                     </div>
                     <a href="/details/">TEST</a>
-                    @Html.ActionLink("MeraDetaljer", "Index", "MovieDetail", movie.ImdbId, null)
+                    @Html.ActionLink("MeraDetaljer", "Index", "MovieDetail", new { imdbid = movie.ImdbId })
                 </div>
                 <img class="ticketImg" src="~/assets/images/ticket.svg">
             </div>
