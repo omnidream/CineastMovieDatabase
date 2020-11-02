@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using interaktiva20_2.Data;
+using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
@@ -24,8 +26,13 @@ namespace interaktiva20_2.Controllers
             //TODO: Skapa en error-sida för våra try-cath på våra controllers actionmetoder
             catch (Exception)
             {
-                return RedirectToAction("index", "error");
+                return RedirectToAction("Error");
             }
+        }
+
+        public IActionResult Error()
+        {
+            return View();
         }
     }
 }

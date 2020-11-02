@@ -23,6 +23,8 @@ namespace interaktiva20_2
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+            else
+                app.UseExceptionHandler("/Home/Error");
 
             app.UseStaticFiles(); //Säger att vi är medvetna om att vi exponerar filerna i wwwroot på webben. Måste ha med för att få in våra assets.
             app.UseRouting();

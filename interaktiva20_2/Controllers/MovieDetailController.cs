@@ -16,18 +16,12 @@ namespace interaktiva20_2.Controllers
             this.movieRepo = movieRepo;
         }
 
-        //[Route ("")]
+        [Route ("details")]
+
         public async Task<IActionResult> Index(string imdbId)
         {
-            try
-            {
-                var viewModel = await movieRepo.GetMovieDetailViewModel("tt0245429");
+                var viewModel = await movieRepo.GetMovieDetailViewModel("tt0083907");
                 return View(viewModel);
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("index", "error");
-            }
         }
     }
 }

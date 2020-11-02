@@ -41,6 +41,7 @@ namespace interaktiva20_2.Models.ViewModels
         public MovieDetailViewModel(MovieDetailsDto movieDetails, CmdbMovieDto myMovie)
         {
             Title = movieDetails.Title;
+            imdbID = movieDetails.imdbID;
             Year = movieDetails.Year;
             Runtime = movieDetails.Runtime;
             Genre = movieDetails.Genre;
