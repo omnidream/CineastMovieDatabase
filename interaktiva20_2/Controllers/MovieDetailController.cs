@@ -20,7 +20,7 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index(string imdbId)
         {
-                var viewModel = await movieRepo.GetMovieDetailViewModel("tt0096283");
+                var viewModel = await movieRepo.GetMovieDetailViewModel(imdbId);
                 return View(viewModel);
         }
     }

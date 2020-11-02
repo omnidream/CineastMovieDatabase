@@ -27,17 +27,17 @@
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                     <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
                     <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                    @*//TODO: class istället för id och kolla varför det inte funkar med likes*@
+                    <p><button class="likeBtn" id="@movie.ImdbId">Like</button><button class="dislikeBtn">Dislike</button></p><!--Vi behöver ha class istället för id här OCH Like funkar inte härifrån-->
+
                     <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                     <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
                     <div class="plot">
-                        <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
-                        <p>Read more</p>
-                        <a href="/details/">TEST</a>
-
-                        @Html.ActionLink("MeraDetaljer", "Index", "MovieDetail", @movie.ImdbId, null)
-
-
+                        <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
+                        <div class="readMore"><a class="more"></a></div>
                     </div>
+                    <a href="/details/">TEST</a>
+                    @Html.ActionLink("MeraDetaljer", "Index", "MovieDetail", movie.ImdbId, null)
                 </div>
                 <img class="ticketImg" src="~/assets/images/ticket.svg">
             </div>

@@ -133,3 +133,30 @@ nav ul {
 .ticketImg {
     margin: 0.5rem;
 }
+
+
+/* Hidden Plot */
+.more {
+    text-decoration: underline;
+    color: #0000ff;
+}
+
+.moviePlot span.trimmedText {
+    display: none;
+}
+
+.readMore .more:before {
+    content: 'Read More';
+}
+
+.showAll .moviePlot span.moreDots {
+    display: none;
+}
+
+.showAll .moviePlot span.trimmedText {
+    display: inline;
+}
+
+.showAll .readMore .more:before {
+    content: 'Read Less';
+}

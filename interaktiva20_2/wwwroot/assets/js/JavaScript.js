@@ -1,4 +1,5 @@
-﻿let myLikes = 0;
+﻿/*LIKES AND DISLIKES*/
+let myLikes = 0;
 let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 document.querySelector(".likeBtn").addEventListener("click", like, false)
 
@@ -26,3 +27,24 @@ async function like() {
 function updateNumberOfLikes() {
     document.querySelector(".snippety").innerHTML = "Likes: " + myLikes;
 }
+
+/*READ MORE PLOT*/
+
+let readMoreText = document.querySelector('.moviePlot');
+let link = document.querySelector('.more');
+let numberOfShownChars = 120;
+
+let shownText = readMoreText.innerHTML.slice(0, numberOfShownChars);
+let hiddenText = readMoreText.innerHTML.slice(numberOfShownChars);
+
+readMoreText.innerHTML = shownText + '<span class="moreDots"> ...</span> <span class="trimmedText">' + hiddenText + '</span>'
+
+
+window.onclick = function (event) {
+    if (event.target.className === 'more') {
+        event.target.parentElement.parentElement.classList.toggle('showAll');
+        console.log(readMoreText)
+    }
+}
+
+
