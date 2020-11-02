@@ -46,11 +46,10 @@
     {
         <div class="movieContainer">
             <div class="movieCell">
-                <img class="ticketImg">
                 <div class="movieCellContent">
-                    <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
+                    <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
-                    <img src="@Html.DisplayFor(item => movie.Poster)">
+                    <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
                     <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
                     <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                     <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
@@ -59,6 +58,7 @@
                         <p>Read more</p>
                     </div>
                 </div>
+                <img class="ticketImg" src="~/assets/images/ticket.svg">
             </div>
         </div>
     }
@@ -70,11 +70,10 @@
     {
         <div class="movieContainer">
             <div class="movieCell">
-                <img class="ticketImg">
                 <div class="movieCellContent">
-                    <h3 class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</h3>
+                    <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
-                    <img src="@Html.DisplayFor(item => movie.Poster)">
+                    <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
                     <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
                     <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                     <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
@@ -83,6 +82,7 @@
                         <p>Read more</p>
                     </div>
                 </div>
+                <img class="ticketImg" src="~/assets/images/ticket.svg">
             </div>
         </div>
     }
