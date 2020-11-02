@@ -15,8 +15,8 @@ namespace interaktiva20_2
         {
             services.AddControllersWithViews();
             services.AddScoped<IApiClient, ApiClient>();
-            //services.AddScoped<IMovieRepo, MovieRepo>();
-            services.AddScoped<IMovieRepo, MovieMockRepo>();
+            services.AddScoped<IMovieRepo, MovieRepo>();
+            //services.AddScoped<IMovieRepo, MovieMockRepo>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

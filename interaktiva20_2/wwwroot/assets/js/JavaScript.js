@@ -1,5 +1,5 @@
 ﻿let myLikes = 0;
-let cmdbUrl = 'http://localhost:5000/api/';
+let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 document.querySelector(".likeBtn").addEventListener("click", like)
 let myImdbId = document.querySelector(".imdbidHidden").innerHTML;
 
