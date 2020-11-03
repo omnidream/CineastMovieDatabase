@@ -1,31 +1,54 @@
 ﻿/*LIKES AND DISLIKES*/
-let myLikes = 0;
+let myImdbId;
+let myCaller;
+let myMovieObject;
+let likeOrDislikeKey;
 let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
-document.querySelector(".likeBtn").addEventListener("click", like, false)
+document.querySelector(".btnLike").addEventListener("click", likeDislike)
 
-async function like() {
-    let myImdbId = this.id;
-    let myButton = this;
-    myButton.disabled = true;
 
-    await fetch(cmdbUrl + myImdbId + '/like').then((response) =>
-    {
-        if (response.ok) {
-            myButton.disabled = false;
-            return response.json();
-        }
-        else
-            throw new Error('Something went wrong when calling CmdbAPI, sorry.');
-    })
-        .then(data => (myLikes = data.numberOfLikes))
-        .then(updateNumberOfLikes)
-        .catch((error) => {
-            console.log(error)
-        });
+async function likeDislike() {
+    myImdbId = this.dataset.imdbid;
+    myCaller = this;
+    likeOrDislikeKey = checkLikeDislike(myCaller)
+    myCaller.disabled = true;
+    myMovieObject = await GetCmdbApi();
+    console.log(myMovieObject);
+    updateNumberOfLikesDislikes()
+    myCaller.disabled = false;
 }
 
-function updateNumberOfLikes() {
-    document.querySelector(".snippety").innerHTML = "Likes: " + myLikes;
+function GetCmdbApi() {
+    return fetch(cmdbUrl + myImdbId + likeOrDislikeKey)
+        .then((response) => {
+            if (response.ok)
+                return response.json();
+            else
+                throw new Error('Something went wrong when calling CmdbAPI, sorry.');
+        })
+        .then(data => data)
+        .catch((error) => { console.log(error) });
+}
+
+function checkLikeDislike(myCaller) {
+    let result = '/dislike'
+    if (myCaller.dataset.btnType === 'like')
+        result = '/like'
+    return result;
+}
+
+function updateNumberOfLikesDislikes() {
+    let allElements = document.querySelectorAll('.likes')
+    let updateThisElement = findElementToUpdate(allElements);
+    updateThisElement.innerHTML = myMovieObject.numberOfLikes;
+}
+
+function findElementToUpdate(myElements) {
+    var i;
+    for (i = 0; i < myElements.length; i++) {
+        if (myElements[i].dataset.imdbid === myImdbId)
+            return myElements[i];
+    }
 }
 
 /*READ MORE PLOT*/
