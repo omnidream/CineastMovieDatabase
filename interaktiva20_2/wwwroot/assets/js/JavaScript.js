@@ -6,7 +6,7 @@ let likeOrDislikeKey;
 let allLikeButtons;
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
-//AddEventListenerToButtons(allDislikeButtons) = AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
+//AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
 function AddEventListenerToButtons(buttons) {
     let i;
@@ -17,8 +17,8 @@ function AddEventListenerToButtons(buttons) {
 
 
 async function likeDislike() {
-    myImdbId = this.dataset.imdbid;
     myCallerButton = this;
+    myImdbId = myCallerButton.dataset.imdbid;
     likeOrDislikeKey = checkLikeDislike(myCallerButton)
     myCallerButton.disabled = true;
     myMovieObject = await GetCmdbApi();
@@ -90,7 +90,6 @@ let neverRatedList = document.querySelector('.neverRatedList');
 let divTopRated = document.querySelector('#topFlex');
 let divMostPopular = document.querySelector('#mostPopularFlex');
 let divNeverRated = document.querySelector('#neverRatedFlex');
-
 
 let topRatedMovies = Array.from(topRatedList.children);
 let mostPopularMovies = Array.from(mostPopularList.children);
