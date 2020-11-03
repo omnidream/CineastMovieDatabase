@@ -4,7 +4,7 @@ let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
 let allLikeButtons;
-let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
+const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 //AddEventListenerToButtons(allDislikeButtons) = AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
