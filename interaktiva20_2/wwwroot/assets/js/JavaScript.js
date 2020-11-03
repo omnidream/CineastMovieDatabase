@@ -1,21 +1,29 @@
 ﻿/*LIKES AND DISLIKES*/
 let myImdbId;
-let myCaller;
+let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
-const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/'; 
-document.querySelector(".btnLike").addEventListener("click", likeDislike)
+let allLikeButtons;
+let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
+AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
+//AddEventListenerToButtons(allDislikeButtons) = AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
+
+function AddEventListenerToButtons(buttons) {
+    let i;
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", likeDislike)
+    }
+}
 
 
 async function likeDislike() {
     myImdbId = this.dataset.imdbid;
-    myCaller = this;
-    likeOrDislikeKey = checkLikeDislike(myCaller)
-    myCaller.disabled = true;
+    myCallerButton = this;
+    likeOrDislikeKey = checkLikeDislike(myCallerButton)
+    myCallerButton.disabled = true;
     myMovieObject = await GetCmdbApi();
-    console.log(myMovieObject);
     updateNumberOfLikesDislikes()
-    myCaller.disabled = false;
+    myCallerButton.disabled = false;
 }
 
 function GetCmdbApi() {
@@ -38,10 +46,13 @@ function checkLikeDislike(myCaller) {
 }
 
 function updateNumberOfLikesDislikes() {
-    let allElements = document.querySelectorAll('.likes')
-    let updateThisElement = findElementToUpdate(allElements);
+    let updateThisElement = findElementToUpdate(document.querySelectorAll('.likes'));
     updateThisElement.innerHTML = myMovieObject.numberOfLikes;
+
+    //let updateThisElement = findElementToUpdate(document.querySelectorAll('.dislkies'));
+    //updateThisElement.innerHTML = myMovieObject.numberOfDislkies;
 }
+
 
 function findElementToUpdate(myElements) {
     var i;
