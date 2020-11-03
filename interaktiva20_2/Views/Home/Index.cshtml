@@ -15,28 +15,19 @@
     </header>
 }
 
-<div id="anchorTopRated">
 <h2 class="topListHeader">Top Rated Movies</h2>
+<div class="topRatedList" id="anchorTopRated">
     @foreach (var movie in Model.TopRatedMovies)
     {
-        <!--Carousel from https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/-->
         <div class="movieContainer">
             <div class="movieCell">
                 <div class="movieCellContent">
                     <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                     <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
-
-
-
+                    
                     <p class="likes" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
-                    
-                    
-                    
                     <p><button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button>
-
-
-
 
                     <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                     <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
@@ -52,8 +43,8 @@
     }
 </div>
 
-<div id="anchorMostPopular">
 <h2 class="topListHeader">Most Popular Movies</h2>
+<div class="mostPopularList" id="anchorMostPopular">
     @foreach (var movie in Model.MostPopularMovies)
     {
         <div class="movieContainer">
@@ -76,14 +67,14 @@
     }
 </div>
 
-<div id="anchorNeverRated">
-<h2 class="topListHeader">Most Disliked Movies</h2>
+<h2 class="topListHeader">Have You Seen This?</h2>
+<div class="neverRatedList" id="anchorNeverRated">
+    <p>Never Rated Movies</p>
     @foreach (var movie in Model.NeverRatedMovies)
     {
         <div class="movieContainer">
             <div class="movieCell">
                 <div class="movieCellContent">
-                    <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
                     <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                     <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
                     <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>

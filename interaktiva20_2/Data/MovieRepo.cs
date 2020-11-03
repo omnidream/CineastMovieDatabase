@@ -12,7 +12,7 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
-        private int numberOfMovies = 1;
+        private int numberOfMovies = 5;
         private int numberOfNeverRatedMovies = 0;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;

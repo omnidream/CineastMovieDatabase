@@ -160,3 +160,7 @@ nav ul {
 .showAll .readMore .more:before {
     content: 'Read Less';
 }
+
+.movieList{
+    display: none;
+}

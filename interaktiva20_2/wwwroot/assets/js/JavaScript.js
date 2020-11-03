@@ -3,7 +3,7 @@ let myImdbId;
 let myCaller;
 let myMovieObject;
 let likeOrDislikeKey;
-let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
+const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/'; 
 document.querySelector(".btnLike").addEventListener("click", likeDislike)
 
 
@@ -71,3 +71,25 @@ window.onclick = function (event) {
 }
 
 
+/* LAYOUT HOME INDEX */
+let topRatedList = document.querySelector('.topRatedList');
+let mostPopularList = document.querySelector('.mostPopularList');
+let neverRatedList = document.querySelector('.neverRatedList');
+
+let topRatedMovies = Array.from(topRatedList.children);
+let mostPopularMovies = Array.from(mostPopularList.children);
+let neverRatedMovies = Array.from(neverRatedList.children);
+
+topRatedMovies.slice(1).forEach(movie => {
+    movie.classList.add('movieList');
+});
+
+mostPopularMovies.slice(1).forEach(movie => {
+    movie.classList.add('movieList');
+});
+
+neverRatedMovies.slice(1).forEach(movie => {
+    movie.classList.add('movieList');
+});
+
+//Behöver helt klart kortas ner. 
