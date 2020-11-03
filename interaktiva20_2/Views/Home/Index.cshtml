@@ -39,7 +39,7 @@
                         <p class="movieP"><b>IMDb Rating:</b> @Html.DisplayFor(item => movie.ImdbRating)</p>
                         <div class="plot">
                             <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
-                            <div class="readMore"><a class="more"></a></div>
+                            <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
                         </div>
                         @Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })
                     </div>
@@ -65,8 +65,8 @@
                         <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                         <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
                         <div class="plot">
-                            <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
-                            <p>Read more</p>
+                            <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
+                            <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
                         </div>
                     </div>
                     <img class="ticketImg" src="~/assets/images/ticket.svg">
@@ -90,8 +90,8 @@
                         <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                         <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
                         <div class="plot">
-                            <blockquote class="moviePlot">@Html.DisplayFor(item => movie.Plot)</blockquote>
-                            <p>Read more</p>
+                            <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
+                            <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
                         </div>
                     </div>
                     <img class="ticketImg" src="~/assets/images/ticket.svg">

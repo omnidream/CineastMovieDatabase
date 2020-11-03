@@ -53,7 +53,7 @@ function updateNumberOfLikesDislikes() {
     //updateThisElement.innerHTML = myMovieObject.numberOfDislkies;
 }
 
-
+//TODO: Gör till foreach PRIO 3
 function findElementToUpdate(myElements) {
     var i;
     for (i = 0; i < myElements.length; i++) {
@@ -62,22 +62,23 @@ function findElementToUpdate(myElements) {
     }
 }
 
+
 /*READ MORE PLOT*/
 
-let readMoreText = document.querySelector('.moviePlot');
+let readMoreText = document.querySelectorAll('.moviePlot');
 let link = document.querySelector('.more');
+console.log(link);
 let numberOfShownChars = 120;
 
-let shownText = readMoreText.innerHTML.slice(0, numberOfShownChars);
-let hiddenText = readMoreText.innerHTML.slice(numberOfShownChars);
+readMoreText.forEach(plot => {
+    let shownText = plot.innerHTML.slice(0, numberOfShownChars);
+    let hiddenText = plot.innerHTML.slice(numberOfShownChars);
+    plot.innerHTML = shownText + '<span class="moreDots"> ...</span> <span class="trimmedText">' + hiddenText + '</span>';
+})
 
-readMoreText.innerHTML = shownText + '<span class="moreDots"> ...</span> <span class="trimmedText">' + hiddenText + '</span>'
-
-
-window.onclick = function (event) {
+document.onclick = function (event) {
     if (event.target.className === 'more') {
         event.target.parentElement.parentElement.classList.toggle('showAll');
-        console.log(readMoreText)
     }
 }
 
