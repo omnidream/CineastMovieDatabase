@@ -3,8 +3,17 @@ let myImdbId;
 let myCaller;
 let myMovieObject;
 let likeOrDislikeKey;
+let allLikeButtons;
 let cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
-document.querySelector(".btnLike").addEventListener("click", likeDislike)
+AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
+//AddEventListenerToButtons(allDislikeButtons) = AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
+
+function AddEventListenerToButtons(buttons) {
+    let i;
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", likeDislike)
+    }
+}
 
 
 async function likeDislike() {
@@ -38,10 +47,13 @@ function checkLikeDislike(myCaller) {
 }
 
 function updateNumberOfLikesDislikes() {
-    let allElements = document.querySelectorAll('.likes')
-    let updateThisElement = findElementToUpdate(allElements);
+    let updateThisElement = findElementToUpdate(document.querySelectorAll('.likes'));
     updateThisElement.innerHTML = myMovieObject.numberOfLikes;
+
+    //let updateThisElement = findElementToUpdate(document.querySelectorAll('.dislkies'));
+    //updateThisElement.innerHTML = myMovieObject.numberOfDislkies;
 }
+
 
 function findElementToUpdate(myElements) {
     var i;
