@@ -76,20 +76,34 @@ let topRatedList = document.querySelector('.topRatedList');
 let mostPopularList = document.querySelector('.mostPopularList');
 let neverRatedList = document.querySelector('.neverRatedList');
 
+let divTopRated = document.querySelector('#topFlex');
+let divMostPopular = document.querySelector('#mostPopularFlex');
+let divNeverRated = document.querySelector('#neverRatedFlex');
+
+
 let topRatedMovies = Array.from(topRatedList.children);
 let mostPopularMovies = Array.from(mostPopularList.children);
 let neverRatedMovies = Array.from(neverRatedList.children);
 
+topRatedMovies[0].classList.add('topMovie');
+mostPopularMovies[0].classList.add('topMovie');
+neverRatedMovies[0].classList.add('topMovie');
+
+
 topRatedMovies.slice(1).forEach(movie => {
     movie.classList.add('movieList');
+    divTopRated.appendChild(movie);
 });
 
 mostPopularMovies.slice(1).forEach(movie => {
     movie.classList.add('movieList');
+    divMostPopular.appendChild(movie);
 });
 
 neverRatedMovies.slice(1).forEach(movie => {
     movie.classList.add('movieList');
+    divNeverRated.appendChild(movie);
 });
 
 //Behöver helt klart kortas ner. 
+

@@ -1,28 +1,34 @@
 ﻿@model interaktiva20_2.Models.ViewModels.MovieDetailViewModel
 
+@section MyStylesheets
+{
+    <link rel="stylesheet" href="/assets/css/style_details.css?v={random string}">
+    <link rel="stylesheet" href="/assets/css/style_nav_search_bar.css?v={random string}">
+    <link rel="stylesheet" href="/assets/css/responsive_details.css?v={random string}">
+}
+
 
 @section MyHeader
 {
     <header>
         <div class="headerContainer">
-            <div class="headerTextContainer">
-                <h1>Cineast Movie Database</h1>
-                <p>Home for movie lovers</p>
-            </div>
+            <h1>Cineast Movie Database</h1>
+            <p>Home for movie lovers</p>
         </div>
     </header>
 }
+
 <div class="movieCell">
     <img class="ticketImg">
     <h2 id="detailTitle">@Html.DisplayFor(item => Model.Title)</h2>
-<p class="imdbidHidden">@Model.imdbID</p>
+    <p class="imdbidHidden">@Model.imdbID</p>
     <div id="cmdbRating">
         <h3 id="movieRating">Rating</h3>
         <h4>Cineast Rating:</h4>
         <p class="snippety">Likes: @Html.DisplayFor(item => Model.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
 
         <p><button class="likeBtn" id="@Model.imdbID">Like</button><button class="dislikeBtn">Dislike</button></p>
-        
+
         <h4>@Html.DisplayNameFor(item => Model.ImdbRating)</h4>
         <p>@Html.DisplayFor(item => Model.ImdbRating)</p>
     </div>
@@ -30,7 +36,7 @@
     <div>
         <p>
             <b>@Html.DisplayNameFor(item => Model.Year)</b> @Html.DisplayFor(item => Model.Year) | <b>@Html.DisplayNameFor(item => Model.Runtime)</b> @Html.DisplayFor(item => Model.Runtime) |
-            <b>@Html.DisplayNameFor(item => Model.Genre)</b> @Html.DisplayFor(item => Model.Genre) | <b>@Html.DisplayNameFor(item => Model.Language)</b> @Html.DisplayFor(item => Model.Language) | 
+            <b>@Html.DisplayNameFor(item => Model.Genre)</b> @Html.DisplayFor(item => Model.Genre) | <b>@Html.DisplayNameFor(item => Model.Language)</b> @Html.DisplayFor(item => Model.Language) |
             <b>@Html.DisplayNameFor(item => Model.Country)</b> @Html.DisplayFor(item => Model.Country)
         </p>
     </div>

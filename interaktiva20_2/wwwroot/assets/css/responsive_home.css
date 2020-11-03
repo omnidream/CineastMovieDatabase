@@ -1,0 +1,92 @@
+.navContainer{grid-area: mainNav;}
+header{grid-area: head;}
+.searchContainer{grid-area: search;}
+main{grid-area: main;}
+footer{grid-area: footer;}
+
+@media (min-width: 1008px) {
+
+    .container{
+    display:grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "mainNav mainNav mainNav mainNav mainNav mainNav mainNav"
+        "head head head head head head head"
+        "search search search search search search search"
+        ". . main main main . ."
+        "footer footer footer footer footer footer footer";
+    }
+
+    .headerTextContainer {
+        margin-left: 30%;
+        top: 30%;
+    }
+
+    .headerTextContainer h1{
+        font-size: 5rem;
+    }
+    .headerTextContainer p{
+        font-size:2.6rem;
+    }
+    nav {
+        position: fixed;
+        z-index: 1;
+        margin-top: 0;
+        padding:0.6rem 0;
+    }
+
+    nav a {padding: 0 3rem;}
+
+    .topListHeader {
+        font-size: 2.3rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+
+    .movieCellContent {
+        width: 40rem;
+    }
+
+    .moviePlot{
+        margin: 2rem 3.5rem 1rem 3.5rem;
+    }
+
+    .movieNumber {
+    font-size: 3.6rem;
+    transform: rotate(-30deg);
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+    .movieTitle {
+        font-size: 3rem;
+        margin: 5rem auto 4rem auto;
+        font-weight:bold;
+    }
+
+    .moviePoster{
+        margin-top:4.5rem;
+    }
+
+    .movieP{
+        font-size: 1.1rem;
+        padding-top: 0.5rem;
+    }
+    .movieP b{font-weight:bold;}
+
+    .btnLike, .btnDislike {margin: 1rem;}
+
+    .flexMovies {
+    display:block;
+    transform:translateX(-50%);
+    background: #CC1B25;
+    width: 350%;
+    height:5rem;
+}
+
+   /* .flexMovies.movieList{
+        display:inline-flex;
+    }*/
+
+   .movieList .ticketImg{display:none;}
+}
