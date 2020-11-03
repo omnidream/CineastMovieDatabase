@@ -1,6 +1,6 @@
 ﻿/*LIKES AND DISLIKES*/
 let myImdbId;
-let myCaller;
+let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
 let allLikeButtons;
@@ -18,13 +18,12 @@ function AddEventListenerToButtons(buttons) {
 
 async function likeDislike() {
     myImdbId = this.dataset.imdbid;
-    myCaller = this;
-    likeOrDislikeKey = checkLikeDislike(myCaller)
-    myCaller.disabled = true;
+    myCallerButton = this;
+    likeOrDislikeKey = checkLikeDislike(myCallerButton)
+    myCallerButton.disabled = true;
     myMovieObject = await GetCmdbApi();
-    console.log(myMovieObject);
     updateNumberOfLikesDislikes()
-    myCaller.disabled = false;
+    myCallerButton.disabled = false;
 }
 
 function GetCmdbApi() {
