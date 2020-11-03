@@ -13,7 +13,6 @@ namespace interaktiva20_2.Controllers
         {
             this.movieRepo = movieRepo;
         }
-        //TODO: anpassa SearchResult action så den passar syftet
         public async Task<IActionResult> Index()
         {
             try
