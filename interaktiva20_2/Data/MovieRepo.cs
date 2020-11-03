@@ -12,6 +12,7 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
+        //TODO: PRIO 3 Gör så att användaren ska kunna bestämma hur många filmer som ska visas i topplistorna 
         private int numberOfMovies = 1;
         private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
@@ -128,7 +129,7 @@ namespace interaktiva20_2.Data
         #endregion
 
         #region OMDbRepo
-        //TODO: Skapa kontroll så att data faktiskt existerar.
+        //TODO: PRIO 3 Undersök kontroller för null-värden i inhämtad data
         public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
         {
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");

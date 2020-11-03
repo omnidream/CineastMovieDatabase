@@ -53,7 +53,7 @@ function updateNumberOfLikesDislikes() {
     //updateThisElement.innerHTML = myMovieObject.numberOfDislkies;
 }
 
-//TODO: Gör till foreach PRIO 3
+//TODO: PRIO 4 Gör till foreach
 function findElementToUpdate(myElements) {
     var i;
     for (i = 0; i < myElements.length; i++) {
@@ -84,6 +84,7 @@ document.onclick = function (event) {
 
 
 /* LAYOUT HOME INDEX */
+//TODO: PRIO 2 Korta ner Layout Home Index
 let topRatedList = document.querySelector('.topRatedList');
 let mostPopularList = document.querySelector('.mostPopularList');
 let neverRatedList = document.querySelector('.neverRatedList');
@@ -117,5 +118,12 @@ neverRatedMovies.slice(1).forEach(movie => {
     divNeverRated.appendChild(movie);
 });
 
-//Behöver helt klart kortas ner. 
 
+//TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
+//TODO: PRIO 2 Låt search följa med som fixed efter scroll
+//TODO: PRIO 1 Få till searchfunktionen
+//TODO: PRIO 1 Få till sökresultatssidan
+//TODO: PRIO 1 Fixa responsiviteten
+//TODO: PRIO 1 Se till så listorna visas snyggt på Home Index
+//TODO: PRIO 1 Styla like-dislike-knapparna
+//TODO: PRIO 1 Styla detaljsidan

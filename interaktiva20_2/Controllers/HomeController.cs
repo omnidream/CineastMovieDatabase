@@ -23,7 +23,7 @@ namespace interaktiva20_2.Controllers
                 var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
-            //TODO: Skapa en error-sida för våra try-cath på våra controllers actionmetoder
+            //TODO: PRIO 3 Skapa en error-sida (UI) för våra try-cath på våra controllers actionmetoder
             catch (Exception)
             {
                 return RedirectToAction("Error");
