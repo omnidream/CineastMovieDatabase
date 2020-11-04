@@ -93,3 +93,46 @@ nav a {
     text-decoration: none;
     color: #f0e6dd;
 }
+
+/* Style for thumb up and down*/
+
+.btnLike, .btnDislike {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(4px 4px 4px #00000080);
+    transition: 0.3s;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.btnLike:disabled, .btnDislike:disabled {
+    opacity: 0.3;
+}
+
+
+.btnLike:hover, .btnDislike:hover {
+    filter: drop-shadow(0px 0px 0px #00000080);
+    background-position-x: 1px;
+    padding-left: -1px;
+    padding-top: -2px;
+}
+
+.btnLike:active, .btnDislike:active {
+    outline: none;
+}
+
+.btnLike:focus {
+    transform: rotate(-20deg);
+    border: 0px;
+}
+
+.btnLike {
+    background-image: url(/assets/images/thumb-up.png);
+}
+
+.btnDislike {
+    background-image: url(/assets/images/thumb-down.png);
+}
