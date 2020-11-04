@@ -33,16 +33,16 @@
         </figure>
 
         <div class="movieDetails flexItem">
-            @*<p class="imdbidHidden">@Model.imdbID</p>*@
-
             <h3>Rating</h3>
             <div class="flex rating">
                 <h4>Cineast Rating:</h4>
-                <p class="snippety">Likes: @Html.DisplayFor(item => Model.NumberOfLikes) <span class="split"> | </span> Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
 
-                <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">@Html.DisplayFor(item => Model.NumberOfLikes)</p>
-                <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID">@Html.DisplayFor(item => Model.NumberOfDislikes)</p>
+                <p class="likes" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">Likes: @Html.DisplayFor(item => Model.NumberOfLikes)</p> 
                 
+                <span class="split"> | </span> 
+                
+                <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID"> Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
+
                 <button class="btnLike" data-btn-type="like" data-imdbid="@Model.imdbID">Like</button>
                 <button class="btnDisike" data-btn-type="dislike" data-imdbid="@Model.imdbID">Dislike</button>
 

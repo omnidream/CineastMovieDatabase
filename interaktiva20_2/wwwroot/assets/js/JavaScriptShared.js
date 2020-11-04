@@ -68,9 +68,9 @@ function findElementsToUpdate(myElements) {
 function updateElementsInArray(myArray) {
     myArray.forEach(element => {
         if (element.dataset.likeDislikeText === 'likes')
-            element.innerHTML = myMovieObject.numberOfLikes;
+            element.innerHTML = 'Likes: '+ myMovieObject.numberOfLikes;
         else
-            element.innerHTML = myMovieObject.numberOfDislikes;
+            element.innerHTML = 'Dislikes: '+ myMovieObject.numberOfDislikes;
     })
 
 }
@@ -90,7 +90,6 @@ function addStickyClass() {
 
 
 //TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
-//TODO: PRIO 2 Låt search följa med som fixed efter scroll
 //TODO: PRIO 1 Få till searchfunktionen
 //TODO: PRIO 1 Få till sökresultatssidan
 //TODO: PRIO 1 Fixa responsiviteten

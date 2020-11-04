@@ -20,7 +20,6 @@ header p {
     color: #f0e6dd;
 }
 
-
 /* || TOPLISTS || */
 .topListHeader {
     font-size: 1.3rem;
@@ -58,9 +57,11 @@ header p {
     margin-top: 0.5rem;
 }
 
+
 .ticketImg {
     margin: 0.5rem;
 }
+
 
 
 /* Hidden Plot */
@@ -90,5 +91,3 @@ header p {
 }
 
 /*--------------------------------------------------------------------*/
-
-.movieList{}
