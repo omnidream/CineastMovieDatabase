@@ -62,12 +62,11 @@ function findElementToUpdate(myElements) {
     }
 }
 
+/* STICKY SEARCH ON SCROLL */
 window.onscroll = function () { addStickyClass() };
 
 let mySearchBar = document.querySelector('.searchContainer');
 let sticky = mySearchBar.offsetTop;
-console.log(mySearchBar);
-
 
 function addStickyClass() {
     if (window.pageYOffset > sticky) 

@@ -1,7 +1,6 @@
 ﻿/*READ MORE PLOT*/
 let readMoreText = document.querySelectorAll('.moviePlot');
 let link = document.querySelector('.more');
-console.log(link);
 let numberOfShownChars = 130;
 
 readMoreText.forEach(plot => {

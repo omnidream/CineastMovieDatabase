@@ -1,14 +1,24 @@
-﻿.headerContainer {
+﻿img{display:block}
+
+.headerContainer {
     background-color: #252525;
     padding-top: 3rem;
-    padding-bottom: 0.4rem;
+    padding-bottom: 1rem;
     padding-left: 1rem;
 }
 
+main{
+    background-color:#f7fae7f2;
+    padding:2rem;
+    height:100%;
+}
+
+.searchContainer{height:1.2rem;}
 
 header h1 {
     font-size:2rem;
-    padding-bottom:0.2rem;
+    padding-bottom:0.3rem;
 }
 
+b{font-weight:bold}
 
