@@ -3,6 +3,7 @@ let myImdbId;
 let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
+let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDisike'))
@@ -45,22 +46,33 @@ function checkLikeDislike(myCaller) {
 }
 
 function updateNumberOfLikesDislikes() {
-    let updateThisElement;
+    let updateTheseElements;
+    
+    updateTheseElements = findElementsToUpdate(document.querySelectorAll('.likes'));
+    updateElementsInArray(updateTheseElements)
 
-    updateThisElement = findElementToUpdate(document.querySelectorAll('.likes'));
-    updateThisElement.innerHTML = myMovieObject.numberOfLikes;
-
-    updateThisElement = findElementToUpdate(document.querySelectorAll('.dislikes'));
-    updateThisElement.innerHTML = myMovieObject.numberOfDislikes;
+    updateTheseElements = findElementsToUpdate(document.querySelectorAll('.dislikes'));
+    updateElementsInArray(updateTheseElements)
 }
 
 //TODO: PRIO 4 Gör till foreach
-function findElementToUpdate(myElements) {
+function findElementsToUpdate(myElements) {
     var i;
     for (i = 0; i < myElements.length; i++) {
         if (myElements[i].dataset.imdbid === myImdbId)
-            return myElements[i];
+            myElementArray.push(myElements[i])
     }
+    return myElementArray;
+}
+
+function updateElementsInArray(myArray) {
+    myArray.forEach(element => {
+        if (element.dataset.likeDislikeText === 'likes')
+            element.innerHTML = myMovieObject.numberOfLikes;
+        else
+            element.innerHTML = myMovieObject.numberOfDislikes;
+    })
+
 }
 
 /* STICKY SEARCH ON SCROLL */
