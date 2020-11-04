@@ -6,7 +6,9 @@ let likeOrDislikeKey;
 let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
-AddEventListenerToButtons(document.querySelectorAll('.btnDisike'))
+AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
+
+
 
 function AddEventListenerToButtons(buttons) {
     let i;
@@ -14,7 +16,6 @@ function AddEventListenerToButtons(buttons) {
         buttons[i].addEventListener("click", likeDislike)
     }
 }
-
 
 async function likeDislike() {
     myCallerButton = this;
