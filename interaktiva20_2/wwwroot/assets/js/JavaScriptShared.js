@@ -63,60 +63,18 @@ function findElementToUpdate(myElements) {
     }
 }
 
+/* STICKY SEARCH ON SCROLL */
+window.onscroll = function () { addStickyClass() };
 
-/*READ MORE PLOT*/
+let mySearchBar = document.querySelector('.searchContainer');
+let sticky = mySearchBar.offsetTop;
 
-let readMoreText = document.querySelectorAll('.moviePlot');
-let link = document.querySelector('.more');
-console.log(link);
-let numberOfShownChars = 120;
-
-readMoreText.forEach(plot => {
-    let shownText = plot.innerHTML.slice(0, numberOfShownChars);
-    let hiddenText = plot.innerHTML.slice(numberOfShownChars);
-    plot.innerHTML = shownText + '<span class="moreDots"> ...</span> <span class="trimmedText">' + hiddenText + '</span>';
-})
-
-document.onclick = function (event) {
-    if (event.target.className === 'more') {
-        event.target.parentElement.parentElement.classList.toggle('showAll');
-    }
+function addStickyClass() {
+    if (window.pageYOffset > sticky) 
+        mySearchBar.classList.add("sticky");
+    else 
+        mySearchBar.classList.remove("sticky");
 }
-
-
-/* LAYOUT HOME INDEX */
-//TODO: PRIO 2 Korta ner Layout Home Index
-let topRatedList = document.querySelector('.topRatedList');
-let mostPopularList = document.querySelector('.mostPopularList');
-let neverRatedList = document.querySelector('.neverRatedList');
-
-let divTopRated = document.querySelector('#topFlex');
-let divMostPopular = document.querySelector('#mostPopularFlex');
-let divNeverRated = document.querySelector('#neverRatedFlex');
-
-let topRatedMovies = Array.from(topRatedList.children);
-let mostPopularMovies = Array.from(mostPopularList.children);
-let neverRatedMovies = Array.from(neverRatedList.children);
-
-topRatedMovies[0].classList.add('topMovie');
-mostPopularMovies[0].classList.add('topMovie');
-neverRatedMovies[0].classList.add('topMovie');
-
-
-topRatedMovies.slice(1).forEach(movie => {
-    movie.classList.add('movieList');
-    divTopRated.appendChild(movie);
-});
-
-mostPopularMovies.slice(1).forEach(movie => {
-    movie.classList.add('movieList');
-    divMostPopular.appendChild(movie);
-});
-
-neverRatedMovies.slice(1).forEach(movie => {
-    movie.classList.add('movieList');
-    divNeverRated.appendChild(movie);
-});
 
 
 //TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
@@ -127,3 +85,4 @@ neverRatedMovies.slice(1).forEach(movie => {
 //TODO: PRIO 1 Se till så listorna visas snyggt på Home Index
 //TODO: PRIO 1 Styla like-dislike-knapparna
 //TODO: PRIO 1 Styla detaljsidan
+//TODO: Prio 3 Städa bland CSS-filerna och byt namn på style_nav_search_bar till style_shared

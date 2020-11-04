@@ -14,22 +14,68 @@ footer{grid-area: footer;}
         "mainNav mainNav mainNav mainNav mainNav mainNav"
         "head head head head head head"
         "search search search search search search"
-        ". . main main . ."
+        ". main main main main ."
         "footer footer footer footer footer footer ";
-    }
-
-    .header h1{
-        font-size: 2rem;
-    }
-    .header p{
-        font-size:1.3rem;
     }
     nav {
         position: fixed;
         z-index: 1;
         margin-top: 0;
-        padding:0.6rem 0;
+        padding: 0.6rem 0;
     }
 
-    nav a {padding: 0 3rem;}
+    nav a {
+        padding: 0 3rem;
+    }
+
+    header h1 {
+        font-size: 2.1rem;
+    }
+
+    header p {
+        font-size: 1.4rem;
+    }
+
+    h3{
+        font-size:1.4rem;
+        padding:0.5rem 0;
+    }
+    .movieDetails h3 {padding-top: 0}
+
+    h4{
+        font-size:1.2rem;
+        padding: 0.5rem 0;
+    }
+    .movieDetails p{
+        line-height:1.4rem;
+        padding-bottom:0.5rem;
+    }
+
+    .movieInfo {margin-top:2rem;}
+
+    .flex {
+        display: flex;
+    }
+
+    #detailTitle{
+        text-align:center;
+        font-size:2.3rem;
+        padding: 2rem 0 1rem 0;
+    }
+
+    .detailInlineInfo{text-align:center}
+    .rating p{padding-left:2rem;}
+    .rating p .split{font-size:2.1rem}
+
+    .rating button{margin-left:2rem;}
+
+    .split {
+        font-size: 1.6rem;
+        color: gray;
+    }
+
+    .movieDetails {
+        flex: 1;
+        margin: 0 2rem;
+    }
 }

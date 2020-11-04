@@ -1,10 +1,11 @@
 ﻿@model interaktiva20_2.Models.ViewModels.MovieViewModel
 
-@section MyStylesheets
+@section MyAssets
 {
-    <link rel="stylesheet" href="/assets/css/style_home.css?v={random string}"> <!--la till ?v={random string} för att tvinga browsern att reloada css varje gång-->
-    <link rel="stylesheet" href="/assets/css/style_nav_search_bar.css?v={random string}">
+    <link rel="stylesheet" href="/assets/css/StyleHome.css?v={random string}"> <!--la till ?v={random string} för att tvinga browsern att reloada css varje gång-->
     <link rel="stylesheet" href="/assets/css/responsive_home.css?v={random string}">
+    <script src="/assets/js/JavaScriptHome.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+
 }
 
 @section MyHeader
@@ -20,8 +21,7 @@
     </header>
 }
 
-
-<main>
+<main class="content">
     <h2 class="topListHeader" id="anchorTopRated">Top Rated Movies</h2>
     <div class="topRatedList">
         @foreach (var movie in Model.TopRatedMovies)
