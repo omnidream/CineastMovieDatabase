@@ -4,10 +4,19 @@ body {background: #2e2e2e;}
 
 header h1 {font-family: 'Limelight', cursive;}
 header p {font-family: 'Poiret One', cursive;}
-p, h2, h3, h4, blockquote, nav a {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
-header h1, header p{color:#f0e6dd; }
+p, h2, h3, h4, nav a {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
+header h1, header p{color:#dad7bd; }
 
+header h1, header p {
+    text-shadow: -5px -2px 3px #0e0e0e;
+}
 
+nav {
+    position: fixed;
+    z-index: 1;
+    margin-top: 0;
+    padding: 0.6rem 0;
+}
 
 /* Inspiration from: https://www.w3schools.com/howto/howto_js_sticky_header.asp for sticky searchbar */
 
@@ -34,7 +43,7 @@ header h1, header p{color:#f0e6dd; }
     width: 100%;
     position: relative;
     display: flex;
-    padding: 0.3rem;
+    padding: 0.3rem 0rem;
     background: #CC1B25;
 }
 

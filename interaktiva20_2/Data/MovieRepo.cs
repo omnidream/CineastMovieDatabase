@@ -13,7 +13,7 @@ namespace interaktiva20_2.Data
         private string cmdbUrl;
         private string omdbUrl;
         //TODO: PRIO 3 Gör så att användaren ska kunna bestämma hur många filmer som ska visas i topplistorna 
-        private int numberOfMovies = 1;
+        private int numberOfMovies = 5;
         private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
@@ -102,7 +102,7 @@ namespace interaktiva20_2.Data
         {
             return rnd.Next(1, 30);
         }
-
+        //TODO: PRIO 2 Lägg till en No Poster-bild med rätt stl som visas istället om det inte finns en poster
         private bool MovieHasPoster(MovieDetailsDto movie)
         {
             bool result = true;
