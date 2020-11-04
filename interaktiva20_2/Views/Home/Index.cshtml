@@ -100,7 +100,7 @@
                         <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
                         <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfDislikes)</p>
                         <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button>
-                        <button class="btnDisike" data-btn-type="dislike" data-movienumber="@movie.MovieNumber" data-imdbid="@movie.ImdbId">Dislike</button>
+                        <button class="btnDisike" data-btn-type="dislike" data-imdbid="@movie.ImdbId">Dislike</button>
 
                         <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                         <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
