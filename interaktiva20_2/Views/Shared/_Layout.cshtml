@@ -6,22 +6,23 @@
 <head>
     <title>Cineast Movie Database</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <link rel="stylesheet" href="/assets/css/reset.css">
-
-    @RenderSection("MyStyleSheets")
-
-    
-
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/assets/js/JavaScript.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="~/assets/css/StyleReset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/StyleShared.css?v={random string}">
+
+    <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+
+    @RenderSection("MyAssets")
+
 </head>
 
 <body>
     <div class="container">
 
-        @RenderSection("MyHeader", required: false)
+        @RenderSection("MyHeader")
 
         <div class="navContainer">
             <nav>

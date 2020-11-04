@@ -1,5 +1,30 @@
-﻿/* Search bar CSS heavily inspired by: https://codepen.io/huange/pen/rbqsD */
+﻿/* || GENERAL || */
+
+body {background: #2e2e2e;}
+
+header h1 {font-family: 'Limelight', cursive;}
+header p {font-family: 'Poiret One', cursive;}
+p, h2, h3, h4, blockquote, nav a {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
+header h1, header p{color:#f0e6dd; }
+
+
+/* Inspiration from: https://www.w3schools.com/howto/howto_js_sticky_header.asp for sticky searchbar */
+
+.content{padding:1rem;}
+
+.sticky {
+    position: fixed;
+    top: 2rem;
+    width: 100%
+}
+
+.sticky + .content {
+    padding-top: 5rem;
+}
+
+/* Search bar CSS heavily inspired by: https://codepen.io/huange/pen/rbqsD */
 .searchContainer {
+    z-index:1;
     border-top: outset 0.01rem #5b120ec9;
     box-shadow: 0 8px 10px -10px #5B120E;
 }
