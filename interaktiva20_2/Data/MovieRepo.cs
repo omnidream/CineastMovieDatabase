@@ -149,10 +149,18 @@ namespace interaktiva20_2.Data
             {
                 movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
+                myMovieDetails = AddNoPosterIfNoPoster(myMovieDetails);
                 MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
                 movieSummaries.Add(myMovieSummary);
             }
             return movieSummaries;
+        }
+
+        public MovieDetailsDto AddNoPosterIfNoPoster(MovieDetailsDto myMovieDetails)
+        {
+            if (MovieHasPoster(myMovieDetails) == false)
+                myMovieDetails.Poster = "/assets/images/no-poster.png";
+            return myMovieDetails;
         }
 
         #region GetViewModels
@@ -186,5 +194,7 @@ namespace interaktiva20_2.Data
             return new MovieDetailViewModel(movie.Result, ratings.Result);
         } 
         #endregion
+
+
     }
 }
