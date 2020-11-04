@@ -20,6 +20,7 @@
     </header>
 }
 
+
 <main>
     <h2 class="topListHeader" id="anchorTopRated">Top Rated Movies</h2>
     <div class="topRatedList">
@@ -32,8 +33,11 @@
                         <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                         <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
 
-                        <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
-                        <p><button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button> <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId">Dislike</button></p>
+                        <p class="likes movieP" data-toplist="toprated" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
+                        <p class="dislikes movieP" data-toplist="toprated" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+
+                        <button class="btnLike" data-toplist="toprated" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button>
+                        <button class="btnDisike" data-toplist="toprated" data-btn-type="dislike" data-imdbid="@movie.ImdbId">Dislike</button>
 
                         <p class="movieP"><b>Year:</b> @Html.DisplayFor(item => movie.Year)</p>
                         <p class="movieP"><b>IMDb Rating:</b> @Html.DisplayFor(item => movie.ImdbRating)</p>
@@ -61,6 +65,12 @@
                         <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
                         <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                         <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
+
+                        <p class="likes movieP" data-toplist="mostpopular" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
+                        <p class="dislikes movieP" data-toplist="mostpopular" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                        <button class="btnLike" data-toplist="mostpopular" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button>
+                        <button class="btnDisike" data-toplist="mostpopular" data-btn-type="dislike" data-imdbid="@movie.ImdbId">Dislike</button>
+
                         <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
                         <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                         <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
@@ -86,7 +96,12 @@
                     <div class="movieCellContent">
                         <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
                         <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
-                        <p class="cmdbRating">Likes: @Html.DisplayFor(item => movie.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+
+                        <p class="likes movieP" data-toplist="mostpopular" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfLikes)</p>
+                        <p class="dislikes movieP" data-toplist="mostpopular" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">@Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                        <button class="btnLike" data-toplist="mostpopular" data-btn-type="like" data-imdbid="@movie.ImdbId">Like</button>
+                        <button class="btnDisike" data-toplist="mostpopular" data-btn-type="dislike" data-movienumber="@movie.MovieNumber" data-imdbid="@movie.ImdbId">Dislike</button>
+
                         <p>Year: @Html.DisplayFor(item => movie.Year)</p>
                         <p>IMDb Rating: @Html.DisplayFor(item => movie.ImdbRating)</p>
                         <div class="plot">

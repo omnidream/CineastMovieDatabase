@@ -25,9 +25,11 @@
     <div id="cmdbRating">
         <h3 id="movieRating">Rating</h3>
         <h4>Cineast Rating:</h4>
-        <p class="snippety">Likes: @Html.DisplayFor(item => Model.NumberOfLikes) | Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
 
-        <p><button class="likeBtn" id="@Model.imdbID">Like</button><button class="dislikeBtn">Dislike</button></p>
+        <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">@Html.DisplayFor(item => Model.NumberOfLikes)</p>
+        <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID">@Html.DisplayFor(item => Model.NumberOfDislikes)</p>
+        <button class="btnLike" data-btn-type="like" data-imdbid="@Model.imdbID">Like</button>
+        <button class="btnDisike" data-btn-type="dislike" data-imdbid="@Model.imdbID">Dislike</button>
 
         <h4>@Html.DisplayNameFor(item => Model.ImdbRating)</h4>
         <p>@Html.DisplayFor(item => Model.ImdbRating)</p>

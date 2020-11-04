@@ -3,10 +3,9 @@ let myImdbId;
 let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
-let allLikeButtons;
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
-//AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
+AddEventListenerToButtons(document.querySelectorAll('.btnDisike'))
 
 function AddEventListenerToButtons(buttons) {
     let i;
@@ -46,11 +45,13 @@ function checkLikeDislike(myCaller) {
 }
 
 function updateNumberOfLikesDislikes() {
-    let updateThisElement = findElementToUpdate(document.querySelectorAll('.likes'));
+    let updateThisElement;
+
+    updateThisElement = findElementToUpdate(document.querySelectorAll('.likes'));
     updateThisElement.innerHTML = myMovieObject.numberOfLikes;
 
-    //let updateThisElement = findElementToUpdate(document.querySelectorAll('.dislkies'));
-    //updateThisElement.innerHTML = myMovieObject.numberOfDislkies;
+    updateThisElement = findElementToUpdate(document.querySelectorAll('.dislikes'));
+    updateThisElement.innerHTML = myMovieObject.numberOfDislikes;
 }
 
 //TODO: PRIO 4 Gör till foreach
