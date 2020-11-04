@@ -100,9 +100,8 @@ namespace interaktiva20_2.Data
 
         private int GeneratePageNo()
         {
-            return rnd.Next(1, 30);
+            return rnd.Next(1, 50);
         }
-        //TODO: PRIO 2 Lägg till en No Poster-bild med rätt stl som visas istället om det inte finns en poster
         private bool MovieHasPoster(MovieDetailsDto movie)
         {
             bool result = true;
