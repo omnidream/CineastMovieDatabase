@@ -1,6 +1,5 @@
 using interaktiva20_2.Data;
 using interaktiva20_2.Infra;
-using interaktiva20_2.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

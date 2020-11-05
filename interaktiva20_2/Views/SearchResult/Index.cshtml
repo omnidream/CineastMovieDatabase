@@ -19,19 +19,32 @@
 
 <main class="content">
 
-    <h1>Search Result</h1>
+    <h1 class="searchHead">Search Result</h1>
 
-    @foreach (var movie in Model.Search)
-    {
-<div class="searchedMovie">
-    <img src="@movie.Poster" />
-    <h2>@movie.Title</h2>
-    <p>@movie.Year</p>
-    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
-</div>
-    }
+    @{
+        if(Model.Search != null)
+        {
+            foreach (var movie in Model.Search)
+            {
+            <div class="searchedMovie flex">
+                <figure>
+                    <img class="searchPoster" src="@movie.Poster" />
+                </figure>
 
-
+                <div class="flexItem">
+                    <h2>@movie.Title</h2>
+                    <p>@movie.Year</p>
+                    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
+                </div>
+            </div>
+            }
+        }
+        else
+        {
+            <h1>Sorry, no such movie could be found.</h1>
+            <p>Did you spell the title correctly?</p>
+        }
+        }
 
 </main>
 

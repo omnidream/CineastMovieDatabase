@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using interaktiva20_2.Data;
-using interaktiva20_2.Models.DTO;
-using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers
