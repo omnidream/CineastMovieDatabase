@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using interaktiva20_2.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -21,24 +22,25 @@ namespace interaktiva20_2.Controllers
             if (pageNum == 0)
                 pageNum = 1;
 
-            string apiKey = $"&s={searchString}&plot=full&type=movie&page=";
+            var cleanedSearchString = CleanFromSpecialChars(searchString);
+            var singleSpaceString = CleanFromMultipleSpaces(cleanedSearchString);
+
+            string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page=";
             var searchResults = await movieRepo.GetSearchResult(apiKey, pageNum);
                                 
             return View(searchResults);
         }
+
+        private string CleanFromSpecialChars(string searchString)
+        {
+            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-zA-Z ]+", "");
+            return cleanedSearchString;
+        }
+
+        private string CleanFromMultipleSpaces(string cleanedSearchString)
+        {
+            string singleSpacesString = Regex.Replace(cleanedSearchString, " {2,}", " ");
+            return singleSpacesString;
+        }
     }
 }
-/*
- * public async Task<IActionResult> Index(string searchString)
-{
-    var movies = from m in _context.Movie
-                 select m;
-
-    if (!String.IsNullOrEmpty(searchString))
-    {
-        movies = movies.Where(s => s.Title.Contains(searchString));
-    }
-
-    return View(await movies.ToListAsync());
-}
-*/
