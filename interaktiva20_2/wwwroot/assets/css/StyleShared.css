@@ -150,3 +150,9 @@ nav a {
 .btnDislike {
     background-image: url(/assets/images/thumb-down.png);
 }
+
+/* MISC */
+
+.error-icon {
+    width: 50%;
+}
