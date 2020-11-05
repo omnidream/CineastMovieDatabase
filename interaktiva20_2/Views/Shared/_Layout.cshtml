@@ -27,9 +27,9 @@
         <div class="navContainer">
             <nav>
                 <ul>
-                    <li><a href="home/index#anchorTopRated">Top Rated Movies</a></li>
-                    <li><a href="home/index#anchorMostPopular">Most Popular Movies</a></li>
-                    <li><a href="home/index#anchorNeverRated">Never Rated Movies</a></li>
+                    <li>@Html.ActionLink("Top Rated Movies", "Index", "Home", null, null, "anchorTopRated", null, null)</li>
+                    <li>@Html.ActionLink("Most Popular Movies", "Index", "Home", null, null, "anchorMostPopular", null, null)</li>
+                    <li>@Html.ActionLink("Never Rated Movies", "Index", "Home", null, null, "anchorNeverRated", null, null)</li>
                 </ul>
             </nav>
         </div>

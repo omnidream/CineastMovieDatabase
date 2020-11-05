@@ -40,7 +40,12 @@ footer{grid-area: footer;}
         display: grid;
         height: 100vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-template-areas: "mainNav mainNav mainNav mainNav mainNav mainNav mainNav" "head head head head head head head" "search search search search search search search" ". . main main main . ." "footer footer footer footer footer footer footer";
+        grid-template-areas: 
+            "mainNav mainNav mainNav mainNav mainNav mainNav mainNav" 
+            "head head head head head head head" 
+            "search search search search search search search" 
+            ". . main main main . ." 
+            "footer footer footer footer footer footer footer";
     }
 
     .headerTextContainer {
