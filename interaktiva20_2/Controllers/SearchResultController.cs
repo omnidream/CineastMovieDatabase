@@ -33,7 +33,7 @@ namespace interaktiva20_2.Controllers
         //TODO: PRIO 3 Se över möjlighet att flytta ut metoderna så vi håller controllern mer clean
         private string CleanFromSpecialChars(string searchString)
         {
-            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-zA-Z ]+", "");
+            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-öA-Ö' ]+", "");
             return cleanedSearchString;
         }
 
