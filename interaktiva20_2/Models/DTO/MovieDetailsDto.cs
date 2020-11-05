@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace interaktiva20_2.Models.DTO
 {
-    public class MovieDetailsDto
+    public class MovieDetailsDto :IMovieDetailsDto
     {
         public string Title { get; set; }
         public string Year { get; set; }

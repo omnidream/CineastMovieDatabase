@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using interaktiva20_2.Data;
-using interaktiva20_2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace interaktiva20_2.Controllers

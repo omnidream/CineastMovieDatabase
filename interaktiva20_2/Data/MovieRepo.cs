@@ -38,6 +38,7 @@ namespace interaktiva20_2.Data
         {
             return await CallCmdbApi<IEnumerable<CmdbMovieDto>>($"toplist/?type=popularity&count={numberOfMovies}");
         }
+
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
             var apiKey = "s=the a&plot=full&type=movie&page=";
@@ -118,13 +119,11 @@ namespace interaktiva20_2.Data
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
 
+        //TODO: Add poster to searchresults if N/A
         public async Task<ISearchResultDto> GetSearchResult(string apiKey, int pageNum)
         {
             SearchResultDto mySearchObject = new SearchResultDto();
-            do
-            {
-                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + apiKey + pageNum);
-            } while (mySearchObject.Search == null);
+            mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + apiKey + pageNum);
 
             return mySearchObject;
         }
@@ -144,14 +143,14 @@ namespace interaktiva20_2.Data
             {
                 movieNumber++;
                 MovieDetailsDto myMovieDetails = await GetMovieDetails(movie.ImdbId);
-                myMovieDetails = AddNoPosterIfNoPoster(myMovieDetails);
+                myMovieDetails = AddPosterIfNoPoster(myMovieDetails);
                 MovieSummaryDto myMovieSummary = new MovieSummaryDto(movie, myMovieDetails, movieNumber);
                 movieSummaries.Add(myMovieSummary);
             }
             return movieSummaries;
         }
 
-        public MovieDetailsDto AddNoPosterIfNoPoster(MovieDetailsDto myMovieDetails)
+        public MovieDetailsDto AddPosterIfNoPoster(MovieDetailsDto myMovieDetails)
         {
             if (MovieHasPoster(myMovieDetails) == false)
                 myMovieDetails.Poster = "/assets/images/no-poster.png";

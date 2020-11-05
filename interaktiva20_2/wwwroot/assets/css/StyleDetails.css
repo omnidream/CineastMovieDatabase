@@ -22,3 +22,24 @@ header h1 {
 
 b{font-weight:bold}
 
+.searchedMovie {
+    height: 5rem;
+    box-shadow: 0 8px 10px -10px #5b120ec9;
+    margin-top:0.7rem;
+}
+
+figure {
+    padding-bottom: 0.5rem;
+}
+
+.searchPoster{
+    max-height:100%;
+}
+
+.searchHead {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    margin-top: 3rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+
+}
