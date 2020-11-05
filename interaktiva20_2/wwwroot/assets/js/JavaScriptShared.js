@@ -3,7 +3,7 @@ let myImdbId;
 let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
-let myElementArray = [];
+myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
@@ -58,6 +58,7 @@ function updateNumberOfLikesDislikes() {
 
 //TODO: PRIO 4 Gör till foreach
 function findElementsToUpdate(myElements) {
+    myElementArray = [];
     var i;
     for (i = 0; i < myElements.length; i++) {
         if (myElements[i].dataset.imdbid === myImdbId)
