@@ -92,13 +92,13 @@ namespace interaktiva20_2.Data
             SearchResultDto mySearchObject = new SearchResultDto();
             do
             {
-                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GeneratePageNo()}");
+                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GenerateRandomPageNo()}");
             } while (mySearchObject.Search == null);
 
             return mySearchObject;
         }
 
-        private int GeneratePageNo()
+        private int GenerateRandomPageNo()
         {
             return rnd.Next(1, 50);
         }

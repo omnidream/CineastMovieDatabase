@@ -91,10 +91,9 @@ function addStickyClass() {
 
 
 //TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
-//TODO: PRIO 1 Få till searchfunktionen
-//TODO: PRIO 1 Få till sökresultatssidan
 //TODO: PRIO 1 Fixa responsiviteten
 //TODO: PRIO 1 Se till så listorna visas snyggt på Home Index
-//TODO: PRIO 1 Styla like-dislike-knapparna
 //TODO: PRIO 1 Styla detaljsidan
-//TODO: Prio 3 Städa bland CSS-filerna och byt namn på style_nav_search_bar till style_shared
+//TODO: PRIO 3 Städa bland CSS-filerna och byt namn på style_nav_search_bar till style_shared
+//TODO: PRIO 2 Kolla av alla proppar så de har rätt access
+//TODO: PRIO 2 Ta bort onödiga "usings"
