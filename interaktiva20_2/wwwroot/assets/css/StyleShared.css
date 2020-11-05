@@ -149,3 +149,31 @@ nav a {
 .btnDislike {
     background-image: url(/assets/images/thumb-down.png);
 }
+
+/* MISC */
+
+.error-h1 {
+    color: #dad7bd;
+    font-family: Limelight;
+    font-size: 25.5vw;
+    text-align: center;
+    filter: drop-shadow(6px 6px 6px #181818);
+}
+
+.error-h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background: black;
+    line-height: 1.5rem;
+}
+
+.error-container {
+    background-image: url(/assets/images/error-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    margin: 3rem;
+    padding: 4rem;
+}
