@@ -18,14 +18,11 @@ namespace interaktiva20_2.Controllers
 
         public async Task<IActionResult> Index()
         {
-
-            ViewBag.LikeButton = "<button class=\"btnLike\" data-btn-type=\"like\" data-imdbid=\"@movie.ImdbId\"></button>";
             try
             {
                 var viewModel = await movieRepo.GetMovieListsViewModel();
                 return View(viewModel);
             }
-            //TODO: PRIO 3 Skapa en error-sida (UI) för våra try-cath på våra controllers actionmetoder
             catch (Exception)
             {
                 return RedirectToAction("Error");

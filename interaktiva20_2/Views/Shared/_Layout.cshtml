@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!--Trycker undan felet med krav på en icon-->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!--Trycker undan felet med krav på en fav-icon-->
     <link rel="stylesheet" href="~/assets/css/StyleReset.css">
     <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/StyleShared.css?v={random string}">
 
 
-    @RenderSection("MyAssets")
+    @RenderSection("MyAssets", required: false)
 
     <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
 </head>
@@ -22,7 +22,7 @@
 <body>
     <div class="container">
 
-        @RenderSection("MyHeader")
+        @RenderSection("MyHeader", required: false)
 
         <div class="navContainer">
             <nav>
