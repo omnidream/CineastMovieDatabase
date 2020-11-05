@@ -27,27 +27,25 @@
         <div class="navContainer">
             <nav>
                 <ul>
-                    <li><a href="home/index#anchorTopRated">Top Rated Movies</a></li>
-                    <li><a href="home/index#anchorMostPopular">Most Popular Movies</a></li>
-                    <li><a href="home/index#anchorNeverRated">Never Rated Movies</a></li>
+                    <li>@Html.ActionLink("Top Rated Movies", "Index", "Home", null, null, "anchorTopRated", null, null)</li>
+                    <li>@Html.ActionLink("Most Popular Movies", "Index", "Home", null, null, "anchorMostPopular", null, null)</li>
+                    <li>@Html.ActionLink("Never Rated Movies", "Index", "Home", null, null, "anchorNeverRated", null, null)</li>
                 </ul>
             </nav>
         </div>
 
-        <div class="searchContainer">
             <!--Search bar from https://codepen.io/huange/pen/rbqsD-->
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                <button type="submit" class="searchButton">
-                    <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
-                </button>
-            </div>
+            <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post">
+                <div class="search">
+                    <input type="text" class="searchTerm" name="searchString" placeholder="Search for a movie title, if you want to ..." required>
+                    <button type="submit" class="searchButton">
+                        <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
+                    </button>
+                </div>
+            </form>
             <!--End of search bar-->
-        </div>
-
 
         @RenderBody()
-
 
         <footer>
             <p>Vi behöver bestämma hur vi vill ha vår footer också</p>

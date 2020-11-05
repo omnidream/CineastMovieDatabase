@@ -121,5 +121,14 @@ namespace interaktiva20_2.Test
 
         }
 
+        public Task<SearchResultDto> GetSearchResult(string apiKey, int pageNum)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ISearchResultDto> IMovieRepo.GetSearchResult(string apiKey, int pageNum)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

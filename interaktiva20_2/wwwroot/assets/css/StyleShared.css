@@ -50,14 +50,13 @@ nav {
 .searchTerm {
     width: 70%;
     margin-left: auto;
-    border: 3px solid #850202;
+    border: 0.188rem solid #850202;
     border-right: none;
-    padding: 5px;
-    height: 20px;
-    border-radius: 5px 0 0 5px;
+    padding: 0.313rem 0.313rem 0.313rem 1.5rem;
+    height: 1.25rem;
+    border-radius: 0.313rem 0 0 0.313rem;
     outline: none;
     color: #9DBFAF;
-    text-align: center
 }
 
 .searchTerm:focus {
@@ -65,16 +64,16 @@ nav {
 }
 
 .searchButton {
-    width: 40px;
-    height: 36px;
+    width: 2.5rem;
+    height: 2.25rem;
     margin-right: auto;
-    border: 1px solid #850202;
+    border: 0.06rem solid #850202;
     background: #850202;
     text-align: center;
     color: #fff;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 0.3rem 0.3rem 0;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .searchIcon {
