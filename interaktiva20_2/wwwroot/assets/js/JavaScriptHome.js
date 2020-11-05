@@ -17,7 +17,7 @@ document.onclick = function (event) {
 
 /* LAYOUT HOME INDEX */
 //TODO: PRIO 2 Korta ner Layout Home Index
-let myMovieList = document.querySelectorAll('.topList');
+let myMovieList = document.querySelector('.topList');
 //let mostPopularList = document.querySelector('.mostPopularList');
 //let neverRatedList = document.querySelector('.neverRatedList');
 
