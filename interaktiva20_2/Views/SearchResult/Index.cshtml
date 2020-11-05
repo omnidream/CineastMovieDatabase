@@ -2,7 +2,8 @@
 
 @section MyAssets
 {
-
+    <link rel="stylesheet" href="/assets/css/StyleDetails.css?v={random int}">
+    <link rel="stylesheet" href="/assets/css/responsive_details.css?v={random int}">
 }
 
 
@@ -17,14 +18,20 @@
 }
 
 <main class="content">
-    <p>Search Result</p>
+
+    <h1>Search Result</h1>
 
     @foreach (var movie in Model.Search)
     {
-        <img src="@movie.Poster" />
+<div class="searchedMovie">
+    <img src="@movie.Poster" />
+    <h2>@movie.Title</h2>
+    <p>@movie.Year</p>
+    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
+</div>
     }
 
-    
-    
+
+
 </main>
 
