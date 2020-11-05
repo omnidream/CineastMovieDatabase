@@ -40,7 +40,9 @@ namespace interaktiva20_2.Data
         }
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
-            var randomMovies = GetAListOfRandomMovies().Result;
+            var apiKey = "s=the a&plot=full&type=movie&page=";
+
+            var randomMovies = GetSearchResult(apiKey, GeneratePageNo()).Result;
             myNeverRatedList = GetMoviesWithDetailsFromList(randomMovies, numberOfMovies);
             return myNeverRatedList;
         }
@@ -63,7 +65,7 @@ namespace interaktiva20_2.Data
             return myRatings;
         }
 
-        private List<CmdbMovieDto> GetMoviesWithDetailsFromList(SearchResultDto randomMovies, int numberOfMovies)
+        private List<CmdbMovieDto> GetMoviesWithDetailsFromList(ISearchResultDto randomMovies, int numberOfMovies)
         {
             int iterations = numberOfMovies;
             List<CmdbMovieDto> returnList = new List<CmdbMovieDto>();
@@ -87,16 +89,16 @@ namespace interaktiva20_2.Data
                 result = true;
             return result;
         }
-        private async Task<SearchResultDto> GetAListOfRandomMovies()
-        {
-            SearchResultDto mySearchObject = new SearchResultDto();
-            do
-            {
-                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GeneratePageNo()}");
-            } while (mySearchObject.Search == null);
+        //private async Task<SearchResultDto> GetAListOfRandomMovies()
+        //{
+        //    SearchResultDto mySearchObject = new SearchResultDto();
+        //    do
+        //    {
+        //        mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GeneratePageNo()}");
+        //    } while (mySearchObject.Search == null);
 
-            return mySearchObject;
-        }
+        //    return mySearchObject;
+        //}
 
         private int GeneratePageNo()
         {
@@ -107,14 +109,6 @@ namespace interaktiva20_2.Data
             bool result = true;
             if (movie.Poster == "N/A" || movie.Poster == null)
                 result = false;
-            return result;
-        }
-
-        private bool MovieHasPlot(MovieDetailsDto movie)
-        {
-            bool result = false;
-            if (movie.Plot != "N/A" || movie.Poster != null)
-                result = true;
             return result;
         }
 
@@ -133,6 +127,18 @@ namespace interaktiva20_2.Data
         {
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
+
+        public async Task<ISearchResultDto> GetSearchResult(string apiKey, int pageNum)
+        {
+            SearchResultDto mySearchObject = new SearchResultDto();
+            do
+            {
+                mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + apiKey + pageNum);
+            } while (mySearchObject.Search == null);
+
+            return mySearchObject;
+        }
+
         #endregion
         private Task<T> CallCmdbApi<T>(string apiKey)
         {
@@ -192,6 +198,7 @@ namespace interaktiva20_2.Data
 
             return new MovieDetailViewModel(movie.Result, ratings.Result);
         } 
+
         #endregion
 
 

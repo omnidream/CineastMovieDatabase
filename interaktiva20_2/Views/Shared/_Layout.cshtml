@@ -34,16 +34,24 @@
             </nav>
         </div>
 
-        <div class="searchContainer">
             <!--Search bar from https://codepen.io/huange/pen/rbqsD-->
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                <button type="submit" class="searchButton">
-                    <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
-                </button>
-            </div>
+            <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post">
+                <div class="search">
+                    <input type="text" class="searchTerm" name="searchString" placeholder="What are you looking for?">
+                    <button type="submit" class="searchButton">
+                        <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
+                    </button>
+                </div>
+            </form>
             <!--End of search bar-->
-        </div>
+
+        @*<form asp-controller="Movies" asp-action="Index">
+            <p>
+                Title: <input type="text" name="SearchString">
+                <input type="submit" value="Filter" />
+            </p>
+        </form>*@
+
 
 
         @RenderBody()

@@ -13,17 +13,32 @@ namespace interaktiva20_2.Controllers
         {
             this.movieRepo = movieRepo;
         }
-        public async Task<IActionResult> Index()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(string searchString, int pageNum)
         {
-            try
-            {
-                var viewModel = await movieRepo.GetMovieListsViewModel();
-                return View(viewModel);
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("index", "error");
-            }
+            if (pageNum == 0)
+                pageNum = 1;
+
+            string apiKey = $"&s={searchString}&plot=full&type=movie&page=";
+            var searchResults = await movieRepo.GetSearchResult(apiKey, pageNum);
+                                
+            return View(searchResults);
         }
     }
 }
+/*
+ * public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+
+    return View(await movies.ToListAsync());
+}
+*/

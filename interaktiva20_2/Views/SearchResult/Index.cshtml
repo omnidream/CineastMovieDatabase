@@ -1,4 +1,4 @@
-﻿@model interaktiva20_2.Models.ViewModels.MovieViewModel
+﻿@model interaktiva20_2.Models.DTO.ISearchResultDto
 
 @section MyAssets
 {
@@ -17,6 +17,14 @@
 }
 
 <main class="content">
+    <p>Search Result</p>
 
+    @foreach (var movie in Model.Search)
+    {
+        <img src="@movie.Poster" />
+    }
+
+    
+    
 </main>
 
