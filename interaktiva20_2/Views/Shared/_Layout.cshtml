@@ -37,7 +37,7 @@
             <!--Search bar from https://codepen.io/huange/pen/rbqsD-->
             <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post">
                 <div class="search">
-                    <input type="text" class="searchTerm" name="searchString" placeholder="What are you looking for?">
+                    <input type="text" class="searchTerm" name="searchString" placeholder="What are you looking for?" required>
                     <button type="submit" class="searchButton">
                         <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
                     </button>
@@ -45,17 +45,7 @@
             </form>
             <!--End of search bar-->
 
-        @*<form asp-controller="Movies" asp-action="Index">
-            <p>
-                Title: <input type="text" name="SearchString">
-                <input type="submit" value="Filter" />
-            </p>
-        </form>*@
-
-
-
         @RenderBody()
-
 
         <footer>
             <p>Vi behöver bestämma hur vi vill ha vår footer också</p>

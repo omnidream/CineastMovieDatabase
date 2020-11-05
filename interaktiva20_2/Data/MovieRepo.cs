@@ -89,16 +89,6 @@ namespace interaktiva20_2.Data
                 result = true;
             return result;
         }
-        //private async Task<SearchResultDto> GetAListOfRandomMovies()
-        //{
-        //    SearchResultDto mySearchObject = new SearchResultDto();
-        //    do
-        //    {
-        //        mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + $"s=the a&plot=full&type=movie&page={GeneratePageNo()}");
-        //    } while (mySearchObject.Search == null);
-
-        //    return mySearchObject;
-        //}
 
         private int GeneratePageNo()
         {
