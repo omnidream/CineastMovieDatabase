@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <None Include="wwwroot\assets\css\StyleReset.css" />
-    <None Include="wwwroot\assets\css\responsive_home.css" />
-    <None Include="wwwroot\assets\css\StyleHome.css" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,302 @@
+﻿/* || GENERAL || */
+
+body {background: #2e2e2e;}
+.hidden{display: none;}
+header h1, .movieNumber {font-family: 'Limelight', cursive;}
+header p {font-family: 'Poiret One', cursive;}
+p, h2, h3, h4, nav a {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
+header h1, header p{color:#dad7bd; }
+
+header h1, header p {
+    text-shadow: -5px -2px 3px #0e0e0e;
+}
+
+/*|| NAV ||*/
+nav {
+    position: fixed;
+    z-index: 1;
+    margin-top: 0;
+    padding: 0.6rem 0;
+    top: 0;
+}
+
+nav {
+    width: 100%;
+    background-color: #181818;
+    margin-top: -0.2rem;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #f0e6dd;
+}
+
+/* Inspiration from: https://www.w3schools.com/howto/howto_js_sticky_header.asp for sticky searchbar */
+.content {
+    padding: 1rem;
+}
+
+.sticky {
+    position: fixed;
+    top: 2rem;
+    width: 100%
+}
+
+.sticky + .content {
+    padding-top: 10rem;
+}
+
+/*|| END NAV ||*/
+
+/*|| SEARCH ||*/
+/* Search bar CSS heavily inspired by: https://codepen.io/huange/pen/rbqsD */
+.searchContainer {
+    z-index: 1;
+    border-top: outset 0.01rem #5b120ec9;
+    box-shadow: 0 8px 10px -10px #5B120E;
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 0.3rem 0rem;
+    background: #CC1B25;
+}
+
+.searchTerm {
+    width: 70%;
+    margin-left: auto;
+    border: 0.188rem solid #850202;
+    border-right: none;
+    padding: 0.313rem 0.313rem 0.313rem 1.5rem;
+    height: 1.25rem;
+    border-radius: 0.313rem 0 0 0.313rem;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus {
+    color: #111111;
+}
+
+.searchButton {
+    width: 2.5rem;
+    height: 2.25rem;
+    margin-right: auto;
+    border: 0.06rem solid #850202;
+    background: #850202;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0.3rem 0.3rem 0;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+.searchIcon {
+    display: block;
+    margin: auto;
+}
+/*|| END SEARCH ||*/
+
+/*|| HEADER ||*/
+header h1, header p {
+    text-shadow: -5px -2px 3px #0e0e0e;
+}
+
+.headerImg {
+    width: 100%;
+    margin-bottom: -0.2rem;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    margin: 1rem 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    margin: 1rem;
+}
+
+.headerTextContainer {
+    position: absolute;
+    color: #f0e6dd;
+}
+/*|| END HEADER ||*/
+
+
+/* || TOPLISTS || */
+.topListHeader {
+    font-size: 3rem;
+    color: #0e0e0e;
+    text-align: center;
+    padding: 1rem;
+    margin: 2rem 0 1.2rem 0;
+    background-color: #fcebcc;
+    box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 1);
+    transform: rotate(-2deg);
+    width: 90%;
+    text-align: center;
+}
+
+.topList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex-basis: 0;
+}
+
+.movieContainer {
+    width: 300px;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: #d9dbcbf8;
+}
+
+.topMovie .movieNumber {
+    margin-top: -6.5rem;
+    margin-left: -2.5rem;
+}
+
+.topMovie .movieTitle {
+    grid-area: title;
+    font-size: 3rem;
+}
+
+.topMovie .movieCellText {
+    grid-area: text;
+    margin-left: 3rem;
+}
+
+.topMovie .moviePoster {
+    grid-area: poster;
+    max-width: 200px;
+}
+
+.topMovie {
+    display: grid;
+    width: 1000px;
+    grid-template-columns: auto auto;
+    grid-template-areas: "title title" "poster text";
+}
+
+.topMovie .hidden {
+    display: block;
+}
+
+.movieNumber {
+    color: #850202;
+    text-shadow: -1px -1px 0 #131313;
+    position: absolute;
+    font-weight: bold;
+    font-size: 2.15rem;
+    transform: rotate(-27deg);
+    margin-top: 0rem;
+    margin-left: 0rem;
+}
+
+.movieTitle {
+    font-family: 'Poiret One', cursive;
+    font-size: 2rem;
+    margin: 1.2rem 0rem 1.2rem 0rem;
+}
+
+.moviePoster {
+    box-shadow: 4px 4px 10px -1px rgba(0, 0, 0, 1);
+    width: 100%;
+}
+
+.movieCellText {
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+/* || END TOPLISTS || */
+/*---------------------------------------------------------*/
+/* || HIDDEN PLOT */
+
+.more {
+    text-decoration: underline;
+    color: #0000ff;
+}
+
+.moviePlot span.trimmedText {
+    display: none;
+}
+
+.readMore .more:before {
+    content: 'Read More';
+}
+
+.showAll .moviePlot span.moreDots {
+    display: none;
+}
+
+.showAll .moviePlot span.trimmedText {
+    display: inline;
+}
+
+.showAll .readMore .more:before {
+    content: 'Read Less';
+}
+
+/* || END HIDDEN PLOT */
+/*---------------------------------------------------------*/
+/* || THUMB UP DOWN || */
+
+.btnLike, .btnDislike {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(4px 4px 4px #00000080);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.3s;
+}
+
+    .btnLike:disabled, .btnDislike:disabled {
+        opacity: 0.3;
+        filter: drop-shadow(0px 0px 0px #00000080);
+    }
+
+    .btnLike:hover, .btnDislike:hover {
+        filter: drop-shadow(0px 0px 0px #00000080);
+        transition-timing-function: ease-in-out;
+        background-position-x: 1px;
+    }
+
+    .btnLike:focus, .btnDislike:focus {
+        filter: drop-shadow(6px 6px 6px #a5b163);
+        outline: none;
+    }
+
+    .btnLike:hover {
+        transform-origin: bottom left;
+        transform: rotate(-20deg);
+    }
+
+    .btnDislike:hover {
+        transform-origin: top right;
+        transform: rotate(-20deg);
+    }
+
+.btnLike {
+    background-image: url(/assets/images/thumb-up.png);
+}
+
+.btnDislike {
+    background-image: url(/assets/images/thumb-down.png);
+}
+/* || END THUMB UP DOWN || */
+/*---------------------------------------------------------*/

@@ -1,49 +1,9 @@
-/* || HEADER || */
 
-.headerImg {
-    width: 100%;
-    margin-bottom: -0.2rem;
-}
-
-header h1 {
-    font-size: 1.6rem;
-    margin: 1rem 0.5rem;
-}
-
-header p {
-    font-size: 1.1rem;
-    margin: 1rem;
-}
-
-.headerTextContainer {
-    position: absolute;
-    color: #f0e6dd;
-}
-
-/* || TOPLISTS || */
-.topListHeader {
-    font-size: 1.3rem;
-    color: #f0e6dd;
-    text-align: center;
-    padding: 1rem;
-}
 
 .movieCellContent {
-    width: 45%;
+    width: 100%;
     text-align: center;
     position: absolute;
-}
-
-.movieNumber {
-    color: #850202;
-    text-shadow: -1px -1px 0 #131313;
-    font-family: 'Limelight', cursive;
-    position: absolute;
-    font-weight: bold;
-    font-size: 2.15rem;
-    transform: rotate(-27deg);
-    margin-top: 1.8rem;
-    margin-left: 1rem;
 }
 
 .movieTitle {
@@ -64,31 +24,7 @@ header p {
 }
 
 
-
 /* Hidden Plot */
-.more {
-    text-decoration: underline;
-    color: #0000ff;
-}
 
-.moviePlot span.trimmedText {
-    display: none;
-}
-
-.readMore .more:before {
-    content: 'Read More';
-}
-
-.showAll .moviePlot span.moreDots {
-    display: none;
-}
-
-.showAll .moviePlot span.trimmedText {
-    display: inline;
-}
-
-.showAll .readMore .more:before {
-    content: 'Read Less';
-}
 
 /*--------------------------------------------------------------------*/

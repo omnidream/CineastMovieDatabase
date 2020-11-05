@@ -11,7 +11,8 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!--Trycker undan felet med krav på en fav-icon-->
     <link rel="stylesheet" href="~/assets/css/StyleReset.css">
     <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/StyleShared.css?v={random string}">
+    <link rel="stylesheet" href="/assets/css/AStyle.css?v={random string}">
+    <link rel="stylesheet" href="/assets/css/AResponsive.css?v={random string}">
 
 
     @RenderSection("MyAssets", required: false)
@@ -27,9 +28,9 @@
         <div class="navContainer">
             <nav>
                 <ul>
-                    <li>@Html.ActionLink("Top Rated Movies", "Index", "Home", null, null, "anchorTopRated", null, null)</li>
-                    <li>@Html.ActionLink("Most Popular Movies", "Index", "Home", null, null, "anchorMostPopular", null, null)</li>
-                    <li>@Html.ActionLink("Never Rated Movies", "Index", "Home", null, null, "anchorNeverRated", null, null)</li>
+                    <li>@Html.ActionLink("Top Rated", "Index", "Home", null, null, "anchorTopRated", null, null)</li>
+                    <li>@Html.ActionLink("Most Popular", "Index", "Home", null, null, "anchorMostPopular", null, null)</li>
+                    <li>@Html.ActionLink("Never Rated", "Index", "Home", null, null, "anchorNeverRated", null, null)</li>
                 </ul>
             </nav>
         </div>
@@ -48,7 +49,6 @@
         @RenderBody()
 
         <footer>
-            <p>Vi behöver bestämma hur vi vill ha vår footer också</p>
         </footer>
     </div>
     

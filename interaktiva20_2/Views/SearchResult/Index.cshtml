@@ -1,37 +1,39 @@
 ﻿@model interaktiva20_2.Models.DTO.ISearchResultDto
 
-@section MyAssets
-{
-    <link rel="stylesheet" href="/assets/css/StyleDetails.css?v={random int}">
-    <link rel="stylesheet" href="/assets/css/responsive_details.css?v={random int}">
-}
-
-
 @section MyHeader
 {
     <header>
-        <div class="headerContainer">
+        <div class="details-headerContainer">
             <h1>Cineast Movie Database</h1>
             <p>Home for movie lovers</p>
         </div>
     </header>
 }
 
-<main class="content">
+<main class="search-result-content">
 
     <h1>Search Result</h1>
+    @{
+        if (Model.Search != null)
+        {
+            foreach (var movie in Model.Search)
+            {
+            <div class="searchedMovie flex">
+            <img class="searchPoster" src="@movie.Poster" />
+                <div class="flexitem">
+                    <h2>@movie.Title</h2>
+                    <p>@movie.Year</p>
+                    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
+                </div>
+            </div>
+            }
+        }
+        else
+        {
+            <h1>Sorry, no such movie could be found.</h1>
+            <p>Did you spell the title correctly?</p>
 
-    @foreach (var movie in Model.Search)
-    {
-<div class="searchedMovie">
-    <img src="@movie.Poster" />
-    <h2>@movie.Title</h2>
-    <p>@movie.Year</p>
-    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
-</div>
+        }
     }
-
-
-
 </main>
 

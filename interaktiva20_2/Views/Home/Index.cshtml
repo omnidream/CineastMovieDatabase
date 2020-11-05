@@ -2,8 +2,6 @@
 
 @section MyAssets
 {
-    <link rel="stylesheet" href="/assets/css/StyleHome.css?v={random string}"> <!--la till ?v={random string} för att tvinga browsern att reloada css varje gång-->
-    <link rel="stylesheet" href="/assets/css/responsive_home.css?v={random string}">
     <script src="/assets/js/JavaScriptHome.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
 }
 
@@ -12,7 +10,7 @@
     <header>
         <div class="headerContainer">
             <div class="headerTextContainer">
-                <h1>Cineast Movie Database</h1>
+                <img src="~/assets/images/logga.png" />
                 <p>Home for movie lovers</p>
             </div>
             <img class="headerImg" src="/assets/images/hero.jpg">
@@ -22,100 +20,91 @@
 
 <main class="content">
     <h2 class="topListHeader" id="anchorTopRated">Top Rated Movies</h2>
-    <div class="topRatedList">
+    <div class="topRatedList topList">
         @foreach (var movie in Model.TopRatedMovies)
         {
             <div class="movieContainer">
-                <div class="movieCell">
-                    <div class="movieCellContent">
-                        <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
-                        <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
-                        <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
-
-                        <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @Html.DisplayFor(item => movie.NumberOfLikes)</p>
-                        <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                <p class="movieNumber">No @movie.MovieNumber</p>
+                <h4 class="movieTitle">@movie.Title</h4>
+                    <img class="moviePoster" src="@movie.Poster">
+                <div class="movieCellContent">
+                    <div class="movieCellText">
+                        <p class="likes" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @movie.NumberOfLikes</p>
+                        <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @movie.NumberOfDislikes</p>
 
                         <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
                         <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
 
-                        <p class="movieP hidden"><b>Year:</b> @Html.DisplayFor(item => movie.Year)</p>
-                        <p class="movieP hidden"><b>IMDb Rating:</b> @Html.DisplayFor(item => movie.ImdbRating)</p>
+                        <p class="hidden"><b>Year:</b> @movie.Year</p>
+                        <p class="hidden"><b>IMDb Rating:</b> @movie.ImdbRating</p>
                         <div class="plot hidden">
-                            <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
+                            <p class="moviePlot">@movie.Plot</p>
                             <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
                         </div>
                         <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })</p>
                     </div>
-                    <img class="ticketImg hidden" src="~/assets/images/ticket.svg">
                 </div>
             </div>
         }
     </div>
-    <div class="flexMovies" id="topFlex"></div>
 
 
     <h2 class="topListHeader" id="anchorMostPopular">Most Popular Movies</h2>
-    <div class="mostPopularList">
+    <div class="mostPopularList topList">
         @foreach (var movie in Model.MostPopularMovies)
         {
-        <div class="movieContainer">
-            <div class="movieCell">
+            <div class="movieContainer">
+                <p class="movieNumber">No @movie.MovieNumber</p>
+                <h4 class="movieTitle">@movie.Title</h4>
+                <img class="moviePoster" src="@movie.Poster">
                 <div class="movieCellContent">
-                    <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
-                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
-                    <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
+                    <div class="movieCellText">
+                        <p class="likes" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @movie.NumberOfLikes</p>
+                        <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @movie.NumberOfDislikes</p>
 
-                    <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @Html.DisplayFor(item => movie.NumberOfLikes)</p>
-                    <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                        <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
+                        <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
 
-                    <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
-                    <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
-
-                    <p class="movieP hidden"><b>Year:</b> @Html.DisplayFor(item => movie.Year)</p>
-                    <p class="movieP hidden"><b>IMDb Rating:</b> @Html.DisplayFor(item => movie.ImdbRating)</p>
-                    <div class="plot hidden">
-                        <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
-                        <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
+                        <p class="hidden"><b>Year:</b> @movie.Year</p>
+                        <p class="hidden"><b>IMDb Rating:</b> @movie.ImdbRating</p>
+                        <div class="plot hidden">
+                            <p class="moviePlot">@movie.Plot</p>
+                            <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
+                        </div>
+                        <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })</p>
                     </div>
-                    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })</p>
                 </div>
-                <img class="ticketImg hidden" src="~/assets/images/ticket.svg">
             </div>
-        </div>
         }
     </div>
-    <div class="flexMovies" id="mostPopularFlex"></div>
 
 
     <h2 class="topListHeader" id="anchorNeverRated">Have You Seen This?</h2>
-    <div class="neverRatedList">
+    <div class="neverRatedList topList">
         @foreach (var movie in Model.NeverRatedMovies)
         {
-        <div class="movieContainer">
-            <div class="movieCell">
+            <div class="movieContainer">
+                <p class="movieNumber">No @movie.MovieNumber</p>
+                <h4 class="movieTitle">@movie.Title</h4>
+                <img class="moviePoster" src="@movie.Poster">
                 <div class="movieCellContent">
-                    <p class="movieNumber">No @Html.DisplayFor(item => movie.MovieNumber)</p>
-                    <h4 class="movieTitle">@Html.DisplayFor(item => movie.Title)</h4>
-                    <img class="moviePoster" src="@Html.DisplayFor(item => movie.Poster)">
+                    <div class="movieCellText">
+                        <p class="likes" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @movie.NumberOfLikes</p>
+                        <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @movie.NumberOfDislikes</p>
 
-                    <p class="likes movieP" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId">Likes: @Html.DisplayFor(item => movie.NumberOfLikes)</p>
-                    <p class="dislikes movieP" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId">Dislikes: @Html.DisplayFor(item => movie.NumberOfDislikes)</p>
+                        <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
+                        <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
 
-                    <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
-                    <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
-
-                    <p class="movieP hidden"><b>Year:</b> @Html.DisplayFor(item => movie.Year)</p>
-                    <p class="movieP hidden"><b>IMDb Rating:</b> @Html.DisplayFor(item => movie.ImdbRating)</p>
-                    <div class="plot hidden">
-                        <p class="moviePlot">@Html.DisplayFor(item => movie.Plot)</p>
-                        <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
+                        <p class="hidden"><b>Year:</b> @movie.Year</p>
+                        <p class="hidden"><b>IMDb Rating:</b> @movie.ImdbRating</p>
+                        <div class="plot hidden">
+                            <p class="moviePlot">@movie.Plot</p>
+                            <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
+                        </div>
+                        <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })</p>
                     </div>
-                    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.ImdbId })</p>
                 </div>
-                <img class="ticketImg hidden" src="~/assets/images/ticket.svg">
             </div>
-        </div>
         }
     </div>
-    <div class="flexMovies" id="neverRatedFlex"></div>
 </main>

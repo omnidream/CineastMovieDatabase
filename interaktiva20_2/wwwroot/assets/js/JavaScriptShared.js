@@ -3,7 +3,7 @@ let myImdbId;
 let myCallerButton;
 let myMovieObject;
 let likeOrDislikeKey;
-myElementArray = [];
+let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))

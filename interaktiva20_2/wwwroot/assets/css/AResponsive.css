@@ -1,0 +1,12 @@
+﻿
+@media (max-width: 640px) {
+
+    .topMovie {
+        grid-template-columns: 1fr;
+        grid-template-areas: "title" "poster" " text";
+    }
+
+    .topMovie .moviePoster {max-width: 300px;}
+
+    .topMovie .movieCellText {margin-left: 0rem;}
+}

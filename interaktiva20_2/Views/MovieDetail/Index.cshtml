@@ -1,70 +1,60 @@
 ﻿@model interaktiva20_2.Models.ViewModels.MovieDetailViewModel
 
-@section MyAssets
-{
-    <link rel="stylesheet" href="/assets/css/StyleDetails.css?v={random int}">
-    <link rel="stylesheet" href="/assets/css/responsive_details.css?v={random string}">
-
-}
-
-
 @section MyHeader
 {
     <header>
-        <div class="headerContainer">
+        <div class="details-headerContainer">
             <h1>Cineast Movie Database</h1>
             <p>Home for movie lovers</p>
         </div>
     </header>
 }
 
-<main class="content">
-    <h2 id="detailTitle">@Html.DisplayFor(item => Model.Title)</h2>
+<main class="details-content">
+    <h2 class="details-title">@Model.Title</h2>
     <div>
         <p class="detailInlineInfo">
-            <b>@Html.DisplayNameFor(item => Model.Year)</b> @Html.DisplayFor(item => Model.Year) <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Runtime)</b> @Html.DisplayFor(item => Model.Runtime) <span class="split"> | </span>
-            <b>@Html.DisplayNameFor(item => Model.Genre)</b> @Html.DisplayFor(item => Model.Genre) <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Language)</b> @Html.DisplayFor(item => Model.Language) <span class="split"> | </span>
-            <b>@Html.DisplayNameFor(item => Model.Country)</b> @Html.DisplayFor(item => Model.Country)
+            <b>@Html.DisplayNameFor(item => Model.Year)</b> @Model.Year <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Runtime)</b> @Model.Runtime <span class="split"> | </span>
+            <b>@Html.DisplayNameFor(item => Model.Genre)</b> @Model.Genre <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Language)</b> @Model.Language <span class="split"> | </span>
+            <b>@Html.DisplayNameFor(item => Model.Country)</b> @Model.Country
         </p>
     </div>
     <div class="flex movieInfo">
         <figure>
-            <img class="moviePoster" src="@Html.DisplayFor(item => Model.Poster)" alt="Poster for @Html.DisplayFor(item => Model.Title)">
+            <img class="moviePoster" src="@Model.Poster" alt="Poster for @Model.Title">
         </figure>
 
         <div class="movieDetails flexItem">
             <h3>Rating</h3>
-            <div class="flex rating">
+            <div class="rating">
                 <h4>Cineast Rating:</h4>
 
-                <p class="likes" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">Likes: @Html.DisplayFor(item => Model.NumberOfLikes)</p>
-
-                <span class="split"> | </span>
-
-                <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID"> Dislikes: @Html.DisplayFor(item => Model.NumberOfDislikes)</p>
+                
+                <p class="likes" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">Likes: @Model.NumberOfLikes</p>
+                <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID"> Dislikes: @Model.NumberOfDislikes</p>
 
                 <button class="btnLike" data-btn-type="like" data-imdbid="@Model.imdbID"></button>
                 <button class="btnDislike" data-btn-type="dislike" data-imdbid="@Model.imdbID"></button>
             </div>
 
                 <h4>@Html.DisplayNameFor(item => Model.ImdbRating)</h4>
-                <p>@Html.DisplayFor(item => Model.ImdbRating)</p>
+                <p>@Model.ImdbRating</p>
 
             <div>
                 <h3>@Html.DisplayNameFor(item => Model.Director)</h3>
-                <p>@Html.DisplayFor(item => Model.Director)</p>
+                <p>@Model.Director</p>
             </div>
             <div>
                 <h3>@Html.DisplayNameFor(item => Model.Actors)</h3>
-                <p>@Html.DisplayFor(item => Model.Actors)</p>
+                <p>@Model.Actors</p>
             </div>
             <div>
                 <h3>@Html.DisplayNameFor(item => Model.Awards)</h3>
-                <p>@Html.DisplayFor(item => Model.Awards)</p>
+                <p>@Model.Awards</p>
             </div>
             <div>
                 <h3>@Html.DisplayNameFor(item => Model.Plot)</h3>
-                <p class="movieDetailPlot">@Html.DisplayFor(item => Model.Plot)</p>
+                <p class="movieDetailPlot">@Model.Plot</p>
             </div>
 
         </div>
