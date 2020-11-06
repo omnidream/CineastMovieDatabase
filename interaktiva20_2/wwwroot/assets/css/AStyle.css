@@ -132,7 +132,7 @@ header p {
 
 .headerTextContainer {
     width: 70%;
-    margin: 8vw 0 0 38vw;
+    margin: 10vw 0 0 28vw;
     
 }
 
@@ -341,13 +341,12 @@ header p {
 
 .details-content .moviePoster {
     max-width: 30vw;
-    
 }
 
 .flex {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-content: center;
 }
 
@@ -381,7 +380,7 @@ header p {
 .searchedMovie {
     height: 5rem;
     box-shadow: 0 8px 10px -10px #5b120ec9;
-    margin-top: 0.7rem;
+    padding: 0.7rem;
 }
 
 figure {
@@ -390,7 +389,7 @@ figure {
 
 .searchPoster {
     display: block;
-    max-height: 100%;
+    max-height: 60px;
 }
 
 .search-result-content h1 {
@@ -401,7 +400,11 @@ figure {
     text-align: center;
 }
 
-.searchedMovie flexItem {
-    display: inline-flex;
+.flexitem {
+    margin: 0 0 0 1rem;
+}
+
+.searchedMovie h2 {
+    font-weight: bolder;
 }
 
