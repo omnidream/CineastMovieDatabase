@@ -8,8 +8,6 @@ const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
-
-
 function AddEventListenerToButtons(buttons) {
     let i;
     for (i = 0; i < buttons.length; i++) {
@@ -74,7 +72,6 @@ function updateElementsInArray(myArray) {
         else
             element.innerHTML = 'Dislikes: '+ myMovieObject.numberOfDislikes;
     })
-
 }
 
 /* STICKY SEARCH ON SCROLL */
@@ -92,9 +89,4 @@ function addStickyClass() {
 
 
 //TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
-//TODO: PRIO 1 Fixa responsiviteten
-//TODO: PRIO 1 Se till så listorna visas snyggt på Home Index
-//TODO: PRIO 1 Styla detaljsidan
-//TODO: PRIO 3 Städa bland CSS-filerna och byt namn på style_nav_search_bar till style_shared
 //TODO: PRIO 2 Kolla av alla proppar så de har rätt access
-//TODO: PRIO 2 Ta bort onödiga "usings"

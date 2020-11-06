@@ -1,15 +1,20 @@
 ﻿/* || GENERAL || */
 
 body {background: #2e2e2e;}
-.hidden{display: none;}
-header h1, .movieNumber {font-family: 'Limelight', cursive;}
-header p {font-family: 'Poiret One', cursive;}
-p, h2, h3, h4, nav a {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
-header h1, header p{color:#dad7bd; }
 
-header h1, header p {
-    text-shadow: -5px -2px 3px #0e0e0e;
-}
+.hidden {display: none;}
+
+header h1, .movieNumber {font-family: 'Limelight', cursive;}
+
+header p {font-family: 'Poiret One', cursive;}
+
+p, h2, h3, h4, nav a, .readMore {font-family: 'Montserrat', Arial, Helvetica, sans-serif;}
+
+header h1, header p {color: #dad7bd;}
+
+header h1, header p {text-shadow: -5px -2px 3px #0e0e0e;}
+
+b {font-weight:bold;}
 
 /*|| NAV ||*/
 nav {
@@ -38,11 +43,11 @@ nav a {
     text-decoration: none;
     color: #f0e6dd;
 }
+/*|| END NAV ||*/
 
+/*|| SEARCH ||*/
 /* Inspiration from: https://www.w3schools.com/howto/howto_js_sticky_header.asp for sticky searchbar */
-.content {
-    padding: 1rem;
-}
+.content {padding: 1rem;}
 
 .sticky {
     position: fixed;
@@ -50,13 +55,8 @@ nav a {
     width: 100%
 }
 
-.sticky + .content {
-    padding-top: 10rem;
-}
+.sticky + .content {padding-top: 10rem;}
 
-/*|| END NAV ||*/
-
-/*|| SEARCH ||*/
 /* Search bar CSS heavily inspired by: https://codepen.io/huange/pen/rbqsD */
 .searchContainer {
     z-index: 1;
@@ -131,6 +131,21 @@ header p {
     position: absolute;
     color: #f0e6dd;
 }
+
+.headerTextContainer {
+    width: 70%;
+    margin: 10vw 0 0 28vw;
+    
+}
+
+.headerTextContainer p {
+    margin: 0.5vw;
+    font-size: 4vw;
+}
+.headerTextContainer img {
+    display: block;
+    width: 70%;
+}
 /*|| END HEADER ||*/
 
 
@@ -163,11 +178,6 @@ header p {
     background-color: #d9dbcbf8;
 }
 
-.topMovie .movieNumber {
-    margin-top: -6.5rem;
-    margin-left: -2.5rem;
-}
-
 .topMovie .movieTitle {
     grid-area: title;
     font-size: 3rem;
@@ -188,6 +198,7 @@ header p {
     width: 1000px;
     grid-template-columns: auto auto;
     grid-template-areas: "title title" "poster text";
+    margin-bottom: 2.2rem;
 }
 
 .topMovie .hidden {
@@ -196,13 +207,16 @@ header p {
 
 .movieNumber {
     color: #850202;
-    text-shadow: -1px -1px 0 #131313;
+    text-shadow: 3px 3px 0 #dad7bd;
     position: absolute;
     font-weight: bold;
     font-size: 2.15rem;
     transform: rotate(-27deg);
-    margin-top: 0rem;
-    margin-left: 0rem;
+    margin-top: -2.5rem;
+    margin-left: -3rem;
+    background-color: #a4a4a4;
+    padding: 0.2rem 0.7rem;
+    border: solid;
 }
 
 .movieTitle {
@@ -220,9 +234,14 @@ header p {
     margin: 1rem 0rem 1rem 0rem;
 }
 
+.movie-cell-p {padding-bottom: 0.5rem;}
 /* || END TOPLISTS || */
 /*---------------------------------------------------------*/
 /* || HIDDEN PLOT */
+.readMore {
+    padding: 0.5rem 0 1rem 0;
+    cursor: pointer;
+}
 
 .more {
     text-decoration: underline;
@@ -265,38 +284,166 @@ header p {
     transition: 0.3s;
 }
 
-    .btnLike:disabled, .btnDislike:disabled {
-        opacity: 0.3;
-        filter: drop-shadow(0px 0px 0px #00000080);
-    }
+.btnLike:disabled, .btnDislike:disabled {
+    opacity: 0.3;
+    filter: drop-shadow(0px 0px 0px #00000080);
+}
 
-    .btnLike:hover, .btnDislike:hover {
-        filter: drop-shadow(0px 0px 0px #00000080);
-        transition-timing-function: ease-in-out;
-        background-position-x: 1px;
-    }
+.btnLike:hover, .btnDislike:hover {
+    filter: drop-shadow(0px 0px 0px #00000080);
+    transition-timing-function: ease-in-out;
+    background-position-x: 1px;
+}
 
-    .btnLike:focus, .btnDislike:focus {
-        filter: drop-shadow(6px 6px 6px #a5b163);
-        outline: none;
-    }
+.btnLike:focus, .btnDislike:focus {
+    filter: drop-shadow(6px 6px 6px #a5b163);
+    outline: none;
+}
 
-    .btnLike:hover {
-        transform-origin: bottom left;
-        transform: rotate(-20deg);
-    }
+.btnLike:hover {
+    transform-origin: bottom left;
+    transform: rotate(-20deg);
+}
 
-    .btnDislike:hover {
-        transform-origin: top right;
-        transform: rotate(-20deg);
-    }
+.btnDislike:hover {
+    transform-origin: top right;
+    transform: rotate(-20deg);
+}
 
 .btnLike {
     background-image: url(/assets/images/thumb-up.png);
+    margin: 0.7rem;
 }
 
 .btnDislike {
     background-image: url(/assets/images/thumb-down.png);
+    margin: 0.7rem;
 }
 /* || END THUMB UP DOWN || */
 /*---------------------------------------------------------*/
+/* || DETAILS PAGE */
+.details-headerContainer {margin-top: 3rem;}
+
+.details-content {
+    margin: 0 15%;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    background-color: #f7fae7f2;
+}
+
+.details-title {
+    text-align: center;
+    font-size: 2.3rem;
+    padding: 1rem 0 1rem 0;
+}
+
+.detailInlineInfo {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+}
+
+.split {
+    font-size: 1.6rem;
+    color: gray;
+}
+
+.details-content .moviePoster {
+    max-width: 30vw;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.movieDetails {
+    max-width: 40vw;
+    margin: 0 1rem 0 3rem;
+}
+
+.details-content h3 {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+}
+
+.details-content h4 {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.details-content p {
+    line-height: 1.2rem;
+}
+
+/* || RESULT PAGE */
+.search-result-content {
+    margin: 0 15%;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    background-color: #f7fae7f2;
+}
+
+.searchedMovie {
+    height: 5rem;
+    box-shadow: 0 8px 10px -10px #5b120ec9;
+    padding: 0.7rem;
+}
+
+figure {
+    padding-bottom: 0.5rem;
+}
+
+.searchPoster {
+    display: block;
+    max-height: 60px;
+}
+
+.search-result-content h1 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    margin-top: 3rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.flexitem {
+    margin: 0 0 0 1rem;
+}
+
+.searchedMovie h2 {
+    font-weight: bolder;
+}
+
+/* MISC */
+.error-h1 {
+    color: #dad7bd;
+    font-family: Limelight;
+    font-size: 25.5vw;
+    text-align: center;
+    filter: drop-shadow(6px 6px 6px #181818);
+}
+
+.error-h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background: black;
+    line-height: 1.5rem;
+}
+
+.error-container {
+    background-image: url(/assets/images/error-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    margin: 3rem;
+    padding: 4rem;
+}
+
+p.search-error {
+    font-size:1rem;
+    text-align:center;
+}
