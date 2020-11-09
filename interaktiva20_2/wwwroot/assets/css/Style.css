@@ -1,22 +1,36 @@
 ﻿/* || GENERAL || */
 
-body {background: #2e2e2e;}
+body {
+    background: #2e2e2e;
+}
 
-.hidden {display: none;}
+.hidden {
+    display: none;
+}
 
-header h1, .movieNumber {font-family: 'Limelight', cursive;}
+header h1, .movieNumber {
+    font-family: 'Limelight', cursive;
+}
 
-header p {font-family: 'Poiret One', cursive;}
+header p {
+    font-family: 'Poiret One', cursive;
+}
 
 p, h2, h3, h4, nav a, .readMore, .movie-details-btn {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
-header h1, header p {color: #dad7bd;}
+header h1, header p {
+    color: #dad7bd;
+}
 
-header h1, header p {text-shadow: -5px -2px 3px #0e0e0e;}
+header h1, header p {
+    text-shadow: -5px -2px 3px #0e0e0e;
+}
 
-b {font-weight:bold;}
+b {
+    font-weight: bold;
+}
 
 /*|| NAV ||*/
 nav {
@@ -35,21 +49,23 @@ nav {
     text-align: center;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-around;
-}
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+    }
 
-nav a {
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: white;
-}
+    nav a {
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: white;
+    }
 /*|| END NAV ||*/
 
 /*|| SEARCH ||*/
 /* Inspiration from: https://www.w3schools.com/howto/howto_js_sticky_header.asp for sticky searchbar */
-.content {padding: 1rem;}
+.content {
+    padding: 1rem;
+}
 
 .sticky {
     position: fixed;
@@ -57,11 +73,13 @@ nav a {
     width: 100%
 }
 
-.sticky + .content {padding-top: 10rem;}
+    .sticky + .content {
+        padding-top: 10rem;
+    }
 
 /* Search bar CSS heavily inspired by: https://codepen.io/huange/pen/rbqsD */
 .searchContainer {
-    z-index: 1;
+    
     border-top: outset 0.01rem #5b120ec9;
     box-shadow: 0 8px 10px -10px #5B120E;
 }
@@ -86,9 +104,9 @@ nav a {
     color: #9DBFAF;
 }
 
-.searchTerm:focus {
-    color: #111111;
-}
+    .searchTerm:focus {
+        color: #111111;
+    }
 
 .searchButton {
     width: 2.5rem;
@@ -137,17 +155,17 @@ header p {
 .headerTextContainer {
     width: 70%;
     margin: 10vw 0 0 28vw;
-    
 }
 
-.headerTextContainer p {
-    margin: 0.5vw;
-    font-size: 4vw;
-}
-.headerTextContainer img {
-    display: block;
-    width: 70%;
-}
+    .headerTextContainer p {
+        margin: 0.5vw;
+        font-size: 4vw;
+    }
+
+    .headerTextContainer img {
+        display: block;
+        width: 70%;
+    }
 /*|| END HEADER ||*/
 
 
@@ -203,9 +221,9 @@ header p {
     margin-bottom: 2.2rem;
 }
 
-.topMovie .hidden {
-    display: block;
-}
+    .topMovie .hidden {
+        display: block;
+    }
 
 .movieNumber {
     color: #850202;
@@ -265,22 +283,24 @@ header p {
     font-weight: bold;
 }
 
-.movie-details-btn:hover {
-    filter: drop-shadow(0px 0px 0px #00000080);
-    width: 160px;
-}
+    .movie-details-btn:hover {
+        filter: drop-shadow(0px 0px 0px #00000080);
+        width: 160px;
+    }
 
-.movie-details-btn, a{
+.movie-details-btn, a {
     text-decoration: none;
     color: black;
 }
 
-.movie-details-btn a:visited {
-    text-decoration: none;
-    color: black;
-}
+    .movie-details-btn a:visited {
+        text-decoration: none;
+        color: black;
+    }
 
-.topMovie .likeDislikeBtns{margin: 1rem 0;}
+.topMovie .likeDislikeBtns {
+    margin: 1rem 0;
+}
 
 .neverRatedList .movieNumber {
     display: none;
@@ -373,7 +393,9 @@ header p {
 /* || END THUMB UP DOWN || */
 /*---------------------------------------------------------*/
 /* || DETAILS PAGE */
-.details-headerContainer {margin-top: 3rem;}
+.details-headerContainer {
+    margin-top: 3rem;
+}
 
 .details-content {
     margin: 0 15%;
@@ -453,8 +475,8 @@ header p {
     padding: 1rem;
 }
 
-.searchedMovie .movie-details-btn  {
-    margin-top: 1rem; 
+.searchedMovie .movie-details-btn {
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -479,7 +501,6 @@ figure {
 
 .flexitem {
     margin: 1rem 0 0 0;
-    
 }
 
 .searchedMovie h2 {
@@ -514,6 +535,60 @@ figure {
 }
 
 p.search-error {
-    font-size:1rem;
-    text-align:center;
+    font-size: 1rem;
+    text-align: center;
 }
+/*------------------------------*/
+.searchContainer-main {
+    position: sticky;
+    z-index: 1;
+}
+
+.result-list-container {
+    margin: 0rem;
+    background-color: white;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.7);
+}
+
+#result-list {
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: large;
+}
+
+#results {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #fff;
+    margin: auto;
+    top: 12px;
+    padding: 2rem;
+    padding-top: 0.5rem;
+    box-shadow: 1rem;
+    border: 1px;
+    border-color: black;
+}
+
+.movie-auto-container {
+    display: inline-flex;
+    border-radius: 0.2rem;
+    width: 12rem;
+    height: 5rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.7);
+    transition: 0.3s;
+}
+
+.movie-auto-container:hover {
+    background-color: #dddfab;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.7);
+}
+
+.movie-title, .movie-link {
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+
