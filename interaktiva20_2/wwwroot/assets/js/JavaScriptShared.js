@@ -5,6 +5,7 @@ let myMovieObject;
 let likeOrDislikeKey;
 let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
+const omdbUrl = 'http://www.omdbapi.com/?apikey=fde91161&'
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
@@ -77,7 +78,7 @@ function updateElementsInArray(myArray) {
 /* STICKY SEARCH ON SCROLL */
 window.onscroll = function () { addStickyClass() };
 
-let mySearchBar = document.querySelector('.searchContainer');
+let mySearchBar = document.querySelector('.searchContainer-main');
 let sticky = mySearchBar.offsetTop;
 
 function addStickyClass() {
@@ -92,19 +93,78 @@ function addStickyClass() {
 
 //SEACH RESULT PAGE TO PREVENT OVERSTEPPING NUMBER OF SEARCHED PAGES
 let firstPage = 1;
-let lastPage = document.querySelector('.total-pages').innerHTML
-let currentPage = document.querySelector('#current-page').innerHTML
-let previousBtn = document.querySelector('.search-result-previous-btn')
-let nextBtn = document.querySelector('.search-result-next-btn')
-let firstBtn = document.querySelector('.search-result-first-btn')
-let lastBtn = document.querySelector('.search-result-last-btn')
 
-if (currentPage == firstPage) {
-    previousBtn.disabled = true;
-    firstBtn.disabled = true;
+if (document.querySelector('.total-pages') != null)
+{
+    let lastPage = document.querySelector('.total-pages').innerHTML
+    let currentPage = document.querySelector('#current-page').innerHTML
+    let previousBtn = document.querySelector('.search-result-previous-btn')
+    let nextBtn = document.querySelector('.search-result-next-btn')
+    let firstBtn = document.querySelector('.search-result-first-btn')
+
+    if (currentPage == firstPage) {
+        previousBtn.disabled = true;
+        firstBtn.disabled = true;
+    }
+
+    if (currentPage == lastPage)
+            nextBtn.disabled = true;
 }
 
-if (currentPage == lastPage) {
-    nextBtn.disabled = true;
-    lastBtn.disabled = true;
-}
+
+//AUTOCMPLETE, very much inspired (but adapted) from https://codepen.io/logistus/pen/qJMOKZ
+
+$(document).ready(function () {
+
+    function highlight(word, query) {
+        let check = new RegExp(query, "ig")
+        return word.toString().replace(check, function (matchedText) {
+            return "<u style='background-color: yellow'>" + matchedText + "</u>"
+        })
+    }
+
+    $("#result-list").hide()
+    $("#list").hide()
+
+    $(".searchTerm").keyup(function () {
+        let search = $(this).val()
+        let results = ""
+        if (search == "") {
+            $("#result-list").hide()
+            $(".search-input").removeClass("arrow").addClass("search")
+        } else {
+            $(".search-input").removeClass("search").addClass("arrow")
+        }
+
+        $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", s: search }, function (data) {
+            if (data.Search !== undefined) {
+                $.each(data.Search, function (index, value) {
+                    if (index < 4) {
+                        $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", i: value.imdbID }, function (movieData) {
+                            if (movieData) {
+                                results += '<a class="movie-link" href="/details?imdbid=' + movieData.imdbID + '")>'
+                                results += '<div class="movie-auto-container">'
+                                results += '<div><img src=' + movieData.Poster + ' style="width: 50px; height: auto;" /></div>'
+                                results += '<div>'
+                                results += '<div class="movie-title">' + highlight(movieData.Title, $(".searchTerm").val()) + ' (' + movieData.Year + ')</div>'
+                                results += '</div>'
+                                results += '</div>'
+                                results += '</a>'
+                                $("#results").html(results)
+                            }
+                        })
+                    }
+                });
+                $("#result-list").show()
+            }
+        });
+    });
+
+    $("#searchAgain").click(function () {
+        $("#search").show()
+        $("#list").hide()
+        $("#result-list").hide()
+        $(".search-input").val("")
+    });
+});
+
