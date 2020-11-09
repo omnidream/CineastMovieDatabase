@@ -5,7 +5,7 @@ let myMovieObject;
 let likeOrDislikeKey;
 let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
-const omdbUrl = 'http://www.omdbapi.com/?apikey=fde91161&'
+
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
@@ -55,7 +55,6 @@ function updateNumberOfLikesDislikes() {
     updateElementsInArray(updateTheseElements)
 }
 
-//TODO: PRIO 4 Gör till foreach
 function findElementsToUpdate(myElements) {
     myElementArray = [];
     var i;
@@ -88,8 +87,6 @@ function addStickyClass() {
         mySearchBar.classList.remove("sticky");
 }
 
-//TODO: PRIO 2 Kolla av alla proppar så de har rätt access
-
 
 //SEACH RESULT PAGE TO PREVENT OVERSTEPPING NUMBER OF SEARCHED PAGES
 let firstPage = 1;
@@ -116,7 +113,6 @@ if (document.querySelector('.total-pages') != null)
 
 
 //AUTOCMPLETE, very much inspired (but adapted) from https://codepen.io/logistus/pen/qJMOKZ
-
 $(document).ready(function () {
 
     function highlight(word, query) {

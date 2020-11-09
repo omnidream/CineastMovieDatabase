@@ -13,8 +13,7 @@ namespace interaktiva20_2.Data
     {
         private string cmdbUrl;
         private string omdbUrl;
-        //TODO: PRIO 3 Gör så att användaren ska kunna bestämma hur många filmer som ska visas i topplistorna 
-        private int numberOfMovies = 1;
+        private int numberOfMovies = 4;
         private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;
@@ -114,13 +113,11 @@ namespace interaktiva20_2.Data
         #endregion
 
         #region OMDbRepo
-        //TODO: PRIO 3 Undersök kontroller för null-värden i inhämtad data
         public async Task<MovieDetailsDto> GetMovieDetails(string imdbId)
         {
             return await apiClient.GetAsync<MovieDetailsDto>(omdbUrl + $"i={imdbId}&plot=full");
         }
 
-        //TODO: Add poster to searchresults if N/A
         public async Task<ISearchResultDto> GetSearchResult(string apiKey)
         {
             SearchResultDto mySearchObject = new SearchResultDto();
@@ -189,7 +186,6 @@ namespace interaktiva20_2.Data
             return new MovieDetailViewModel(movie.Result, ratings.Result);
         }
         
-        //TODO: Fixa så att programmet inte krashar vid klick på både movies och series i search result
         public async Task<SearchResultViewModel> GetSearchResultViewModel(string searchString, int pageNum)
         {
             string apiKey = GetApiKey(searchString, pageNum);
@@ -206,10 +202,7 @@ namespace interaktiva20_2.Data
         {
             var cleanedSearchString = CleanFromSpecialChars(searchString);
             var singleSpaceString = CleanFromMultipleSpaces(cleanedSearchString);
-
-            //TODO PRIO 1: Se om det alltid funkar att ha plockat bort &type=movie här!! Blir det fel på neverRated då?
             string apiKey = $"&s={singleSpaceString}&plot=full&page={pageNum}";
-            //string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page={pageNum}";
 
             return apiKey;
         }

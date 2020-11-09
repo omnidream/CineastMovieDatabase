@@ -19,14 +19,10 @@
         {
         <div class="searchPages">
             <div class="detailInlineInfo">
-                <p class="total-search">Total Results: @Model.SearchResult.totalResults</p>
-                <p class="total-pages">Total pages: @Model.TotalPages</p>
-            </div>
-
-            <p>Filter:</p>
-            <div class="detailInlineInfo">
-                <button id="search-movie-btn" class="search-filter-btn movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = 1, searchString = (Model.SearchString+Model.MoviesOnly)})'">Movies</button>
-                <button id="search-series-btn" class="search-filter-btn movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = 1, searchString = (Model.SearchString+Model.SeriesOnly)})'">Series</button>
+                <p>Total Results:</p>
+                <p class="total-search">@Model.SearchResult.totalResults</p>
+                <p>Total pages:</p>
+                <p class="total-pages">@Model.TotalPages</p>
             </div>
 
             <div class="search-result-btn-flex">
@@ -35,8 +31,11 @@
                 <button class="search-result-buttons search-result-next-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage + 1), Model.SearchString})'"></button>
                 <button class="search-result-buttons search-result-last-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'"></button>
             </div>
-            <p id="current-page">Current Page: @Model.CurrentPage</p>
 
+            <div class="detailInlineInfo">
+                <p>Current Page:</p>
+                <p id="current-page">@Model.CurrentPage</p>
+            </div>
         </div>
 
             foreach (var movie in Model.SearchResult.Search)
@@ -57,7 +56,6 @@
         {
             <h1 class="search-error">Sorry, no such movie could be found.</h1>
             <p class="search-error">Did you spell the title correctly?</p>
-
         }
     }
 </main>

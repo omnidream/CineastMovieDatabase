@@ -1,8 +1,4 @@
-﻿<!--Det som ska vara gemensamt på alla sidor-->
-
-<!DOCTYPE html>
-<html lang="en">
-
+﻿<html lang="en">
     <head>
         <title>Cineast Movie Database</title>
         <meta charset="UTF-8">
@@ -13,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/Style.css?v={random string}">
         <link rel="stylesheet" href="/assets/css/Responsive.css?v={random string}">
-        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script> <!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
 
         <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -22,7 +18,7 @@
 
         @RenderSection("MyAssets", required: false)
 
-        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script> <!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
     </head>
 
     <body>
@@ -44,7 +40,7 @@
             <div class="searchContainer-main">
                 <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post" autocomplete="off">
                     <div class="search">
-                        <input type="text" class="searchTerm" name="searchString" placeholder="Search for a movie title, if you want to ..." required>
+                        <input type="text" class="searchTerm" name="searchString" placeholder="Search for a title, if you want to ..." required>
                         <button type="submit" class="searchButton">
                             <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
                         </button>
@@ -52,7 +48,8 @@
                 </form>
                 <div class="result-list-container">
                     <div id="result-list">
-                        Suggestions:
+                        <p>Are you looking for ...</p>
+                        <p class="suggestions">If not, you can continue for more suggestions by clicking the search button above.</p>
                         <div id="results"></div>
                     </div>
                 </div>
@@ -62,7 +59,5 @@
             @RenderBody()
 
         </div>
-    
     </body>
-
 </html>
