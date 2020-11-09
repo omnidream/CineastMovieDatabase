@@ -469,7 +469,7 @@ header p {
     margin: 0.7rem;
 }
 
-.search-result-buttons:disabled{
+.search-result-buttons:disabled {
     opacity: 0.3;
     filter: drop-shadow(0px 0px 0px #00000080);
 }

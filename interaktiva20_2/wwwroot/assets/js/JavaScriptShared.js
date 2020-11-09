@@ -5,7 +5,7 @@ let myMovieObject;
 let likeOrDislikeKey;
 let myElementArray = [];
 const cmdbUrl = 'https://cmdbapi.kaffekod.se/api/';
-const omdbUrl = 'http://www.omdbapi.com/?apikey=fde91161&'
+
 AddEventListenerToButtons(document.querySelectorAll('.btnLike'))
 AddEventListenerToButtons(document.querySelectorAll('.btnDislike'))
 
