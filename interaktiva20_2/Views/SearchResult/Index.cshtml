@@ -32,9 +32,10 @@
                 <button class="search-result-buttons search-result-last-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'"></button>
             </div>
 
-            <p>Current Page:</p>
-            <p id="current-page">@Model.CurrentPage</p>
-
+            <div class="detailInlineInfo">
+                <p>Current Page:</p>
+                <p id="current-page">@Model.CurrentPage</p>
+            </div>
         </div>
 
             foreach (var movie in Model.SearchResult.Search)
