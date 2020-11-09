@@ -280,9 +280,11 @@ header p {
     color: black;
 }
 
+.topMovie .likeDislikeBtns{margin: 1rem 0;}
 
-
-.neverRatedList .movieNumber{display: none;}
+.neverRatedList .movieNumber {
+    display: none;
+}
 
 /* || END TOPLISTS || */
 /*---------------------------------------------------------*/
