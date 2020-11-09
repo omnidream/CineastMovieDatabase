@@ -1,7 +1,4 @@
-﻿using System;
-using interaktiva20_2.Models.DTO;
-using System.Collections.Generic;
-using interaktiva20_2.Data;
+﻿using interaktiva20_2.Models.DTO;
 
 namespace interaktiva20_2.Models.ViewModels
 {
