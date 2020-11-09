@@ -91,5 +91,5 @@ function addStickyClass() {
 //TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
 //TODO: PRIO 2 Kolla av alla proppar så de har rätt access
 
-
+//TODO PRIO 1 Gör så att knapparna inte funkar när man redan är på first (bakåt) eller last page (frammåt)
 let totalPages = document.querySelector('.total-search-pages');
