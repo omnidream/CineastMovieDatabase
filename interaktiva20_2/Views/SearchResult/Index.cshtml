@@ -18,12 +18,14 @@
         {
             foreach (var movie in Model.Search)
             {
-            <div class="searchedMovie flex">
+            <div class="searchedMovie">
                 <img class="searchPoster" src="@movie.Poster" />
                 <div class="flexitem">
                     <h2>@movie.Title</h2>
                     <p>@movie.Year</p>
-                    <p class="actionLink">@Html.ActionLink("To Movie Details", "Index", "MovieDetail", new { imdbid = movie.imdbID })</p>
+                    <a href='@Url.Action("Index", "MovieDetail", new { imdbid = movie.imdbID })'>
+                        <div class="movie-details-btn">To details >></div>
+                    </a>
                 </div>
             </div>
             }
@@ -34,6 +36,7 @@
             <p class="search-error">Did you spell the title correctly?</p>
 
         }
+        @Model.totalResults;
     }
 </main>
 
