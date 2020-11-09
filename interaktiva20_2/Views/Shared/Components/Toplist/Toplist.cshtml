@@ -1,0 +1,33 @@
+﻿@model IEnumerable<interaktiva20_2.Models.DTO.IMovieSummaryDto>
+
+@foreach (var movie in Model)
+{
+    <div class="movieContainer">
+        <p class="movieNumber">No @movie.MovieNumber</p>
+        <h4 class="movieTitle">@movie.Title</h4>
+        <img class="moviePoster" src="@movie.Poster">
+        <div class="movieCellContent">
+            <div class="movieCellText">
+                <div>
+                    <p class="likes movie-cell-p" data-like-dislike-text="likes" data-imdbid="@movie.ImdbId"><b>Likes:</b> @movie.NumberOfLikes</p>
+                    <p class="dislikes movie-cell-p" data-like-dislike-text="dislikes" data-imdbid="@movie.ImdbId"><b>Dislikes:</b> @movie.NumberOfDislikes</p>
+                </div>
+                <div class="likeDislikeBtns">
+                    <button class="btnLike" data-btn-type="like" data-imdbid="@movie.ImdbId"></button>
+                    <button class="btnDislike" data-btn-type="dislike" data-imdbid="@movie.ImdbId"></button>
+                </div>
+                <p class="hidden movie-cell-p"><b>Year:</b> @movie.Year</p>
+                <p class="hidden movie-cell-p"><b>IMDb Rating:</b> @movie.ImdbRating</p>
+                <div class="plot hidden">
+                    <p class="moviePlot">@movie.Plot</p>
+                    <div class="readMore"><a class="more" data-imdbid="@movie.ImdbId"></a></div>
+                </div>
+                <a href='@Url.Action("Index", "MovieDetail", new { imdbid = movie.ImdbId })'>
+                    <div class="movie-details-btn">To details >></div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+}
+

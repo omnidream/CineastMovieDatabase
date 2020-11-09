@@ -1,0 +1,38 @@
+﻿@model interaktiva20_2.Models.ViewModels.MovieViewModel;
+
+@section MyAssets
+{
+    <script src="/assets/js/JavaScriptHome.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+}
+
+@section MyHeader
+{
+    <header>
+        <div class="headerContainer">
+            <div class="headerTextContainer">
+                <img src="~/assets/images/logga.png" />
+                <p>Home for movie lovers</p>
+            </div>
+            <img class="headerImg" src="/assets/images/hero.jpg">
+        </div>
+    </header>
+}
+
+<main class="content">
+    <h2 class="topListHeader" id="anchorTopRated">Top Rated Movies</h2>
+    <div class="topRatedList topList">
+        @(await Component.InvokeAsync("Toplist", Model.TopRatedMovies))
+    </div>
+
+
+    <h2 class="topListHeader" id="anchorMostPopular">Most Popular Movies</h2>
+    <div class="mostPopularList topList">
+        @(await Component.InvokeAsync("Toplist", Model.MostPopularMovies))
+    </div>
+
+
+    <h2 class="topListHeader" id="anchorNeverRated">Have You Seen This?</h2>
+    <div class="neverRatedList topList">
+        @(await Component.InvokeAsync("Toplist", Model.NeverRatedMovies))
+    </div>
+</main>

@@ -1,0 +1,68 @@
+﻿<!--Det som ska vara gemensamt på alla sidor-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Cineast Movie Database</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!--Trycker undan felet med krav på en fav-icon-->
+        <link rel="stylesheet" href="~/assets/css/StyleReset.css">
+        <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat&family=Poiret+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/Style.css?v={random string}">
+        <link rel="stylesheet" href="/assets/css/Responsive.css?v={random string}">
+        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+        @RenderSection("MyAssets", required: false)
+
+        <script src="/assets/js/JavaScriptShared.js?v={random string}" type="module"></script><!--la till ?v={random string} för att tvinga browsern att reloada js varje gång-->
+    </head>
+
+    <body>
+        <div class="container">
+
+            @RenderSection("MyHeader", required: false)
+
+            <div class="navContainer">
+                <nav>
+                    <ul>
+                        <li>@Html.ActionLink("Top Rated", "Index", "Home", null, null, "anchorTopRated", null, null)</li>
+                        <li>@Html.ActionLink("Most Popular", "Index", "Home", null, null, "anchorMostPopular", null, null)</li>
+                        <li>@Html.ActionLink("Never Rated", "Index", "Home", null, null, "anchorNeverRated", null, null)</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--Search bar from https://codepen.io/huange/pen/rbqsD-->
+            <div class="searchContainer-main">
+                <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post" autocomplete="off">
+                    <div class="search">
+                        <input type="text" class="searchTerm" name="searchString" placeholder="Search for a movie title, if you want to ..." required>
+                        <button type="submit" class="searchButton">
+                            <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
+                        </button>
+                    </div>
+                </form>
+                <div class="result-list-container">
+                    <div id="result-list">
+                        Suggestions:
+                        <div id="results"></div>
+                    </div>
+                </div>
+            </div>
+            <!--End of search bar-->
+
+            @RenderBody()
+
+        </div>
+    
+    </body>
+
+</html>

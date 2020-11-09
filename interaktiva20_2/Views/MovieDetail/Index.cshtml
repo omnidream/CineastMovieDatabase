@@ -1,0 +1,64 @@
+﻿@model interaktiva20_2.Models.ViewModels.MovieDetailViewModel
+
+@section MyHeader
+{
+    <header>
+        <div class="details-headerContainer">
+            <h1>Cineast Movie Database</h1>
+            <p>Home for movie lovers</p>
+        </div>
+    </header>
+}
+
+<main class="details-content">
+    <h2 class="details-title">@Model.Title</h2>
+    <div>
+        <p class="detailInlineInfo">
+            <b>@Html.DisplayNameFor(item => Model.Year)</b> @Model.Year <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Runtime)</b> @Model.Runtime <span class="split"> | </span>
+            <b>@Html.DisplayNameFor(item => Model.Genre)</b> @Model.Genre <span class="split"> | </span> <b>@Html.DisplayNameFor(item => Model.Language)</b> @Model.Language <span class="split"> | </span>
+            <b>@Html.DisplayNameFor(item => Model.Country)</b> @Model.Country
+        </p>
+    </div>
+    <div class="flex movieInfo">
+        <figure>
+            <img class="moviePoster" src="@Model.Poster" alt="Poster for @Model.Title">
+        </figure>
+
+        <div class="movieDetails">
+            <h3>Rating</h3>
+            <h4>Cineast Rating:</h4>
+            <div class="rating">
+
+                <div>
+                    <p class="likes" data-like-dislike-text="likes" data-imdbid="@Model.imdbID">Likes: @Model.NumberOfLikes</p>
+                    <p class="dislikes" data-like-dislike-text="dislikes" data-imdbid="@Model.imdbID"> Dislikes: @Model.NumberOfDislikes</p>
+                </div>
+                <div>
+                    <button class="btnLike" data-btn-type="like" data-imdbid="@Model.imdbID"></button>
+                    <button class="btnDislike" data-btn-type="dislike" data-imdbid="@Model.imdbID"></button>
+                </div>
+            </div>
+
+            <h4>@Html.DisplayNameFor(item => Model.ImdbRating)</h4>
+            <p>@Model.ImdbRating</p>
+
+            <div>
+                <h3>@Html.DisplayNameFor(item => Model.Director)</h3>
+                <p>@Model.Director</p>
+            </div>
+            <div>
+                <h3>@Html.DisplayNameFor(item => Model.Actors)</h3>
+                <p>@Model.Actors</p>
+            </div>
+            <div>
+                <h3>@Html.DisplayNameFor(item => Model.Awards)</h3>
+                <p>@Model.Awards</p>
+            </div>
+            <div>
+                <h3>@Html.DisplayNameFor(item => Model.Plot)</h3>
+                <p class="movieDetailPlot">@Model.Plot</p>
+            </div>
+
+        </div>
+    </div>
+</main>
