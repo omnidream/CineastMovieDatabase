@@ -435,7 +435,28 @@ header p {
     max-width: 17rem;
 }
 
-/* || RESULT PAGE */
+/* ||SEARCH RESULT PAGE */
+.search-result-buttons {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0.7rem;
+}
+
+.search-result-first-btn {
+    background-image: url(/assets/images/arrow-first.svg);
+}
+
+.search-result-previous-btn{ background-image: url(/assets/images/arrow-previous.svg);}
+
+.search-result-next-btn{ background-image: url(/assets/images/arrow-next.svg);}
+
+.search-result-last-btn{ background-image: url(/assets/images/arrow-last.svg);}
+
 .search-result-content {
     margin: 0 15%;
     padding: 1rem;
