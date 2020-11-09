@@ -112,7 +112,7 @@ if (document.querySelector('.total-pages') != null)
 }
 
 
-//AUTOCMPLETE
+//AUTOCMPLETE, very much inspired (but adapted) from https://codepen.io/logistus/pen/qJMOKZ
 
 $(document).ready(function () {
 
@@ -136,11 +136,11 @@ $(document).ready(function () {
             $(".search-input").removeClass("search").addClass("arrow")
         }
 
-        $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", s: search }, function (data) {
+        $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", s: search }, function (data) {
             if (data.Search !== undefined) {
                 $.each(data.Search, function (index, value) {
                     if (index < 4) {
-                        $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", i: value.imdbID }, function (movieData) {
+                        $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", i: value.imdbID }, function (movieData) {
                             if (movieData) {
                                 results += '<a class="movie-link" href="/details?imdbid=' + movieData.imdbID + '")>'
                                 results += '<div class="movie-auto-container">'
