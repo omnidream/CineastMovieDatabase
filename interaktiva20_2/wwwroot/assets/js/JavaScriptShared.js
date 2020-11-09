@@ -101,14 +101,17 @@ if (document.querySelector('.total-pages') != null)
     let previousBtn = document.querySelector('.search-result-previous-btn')
     let nextBtn = document.querySelector('.search-result-next-btn')
     let firstBtn = document.querySelector('.search-result-first-btn')
+    let lastBtn = document.querySelector('.search-result-last-btn')
 
     if (currentPage == firstPage) {
         previousBtn.disabled = true;
         firstBtn.disabled = true;
     }
 
-    if (currentPage == lastPage)
-            nextBtn.disabled = true;
+    if (currentPage == lastPage) {
+        nextBtn.disabled = true;
+        lastBtn.disabled = true;
+    }
 }
 
 
