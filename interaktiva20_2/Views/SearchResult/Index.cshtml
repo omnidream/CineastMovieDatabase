@@ -17,16 +17,26 @@
     @{
         if (Model.SearchResult != null)
         {
-            <div class="searchPages">
-                <p class="totalSearch">Total Results: @Model.SearchResult.totalResults;</p>
-                <p class="totalSearch">Number of pages: @Model.TotalPages</p>
+        <div class="searchPages">
+            <p class="totalSearch">Total Results: @Model.SearchResult.totalResults;</p>
+            <p class="total-search-pages">Number of pages: @Model.TotalPages</p>
 
-                <button id="firstPage"></button>
-                <button id="prevPage"></button>
-                <p>Current Page: @Model.CurrentPage</p>
-                <button id="nextPage"></button>
-                <button id="lastPage"></button>
-            </div>
+            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = 1, Model.SearchString})'" >
+                First
+            </button>
+            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage - 1), Model.SearchString})'">
+                Prev
+            </button>
+            
+            <p>Current Page: @Model.CurrentPage</p>
+            
+            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage + 1), Model.SearchString})'">
+                Next
+            </button>
+            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'">
+                Last
+            </button>
+        </div>
 
             foreach (var movie in Model.SearchResult.Search)
             {

@@ -195,6 +195,8 @@ namespace interaktiva20_2.Data
             SearchResultViewModel searchResultVM = new SearchResultViewModel();
             searchResultVM.SearchResult = await GetSearchResult(apiKey);
             searchResultVM.TotalPages = RoundNumberOfPages(searchResultVM.SearchResult.totalResults);
+            searchResultVM.CurrentPage = pageNum;
+            searchResultVM.SearchString = searchString;
 
             return searchResultVM;
         }
@@ -227,6 +229,7 @@ namespace interaktiva20_2.Data
 
             return roundedNum;
         }
+
         #endregion
 
 

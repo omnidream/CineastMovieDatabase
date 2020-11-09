@@ -445,7 +445,7 @@ header p {
 
 .searchedMovie {
     display: flex;
-    justify-content:flex-start; 
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     height: auto;

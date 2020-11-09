@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using interaktiva20_2.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +20,12 @@ namespace interaktiva20_2.Controllers
             if (pageNum == 0)
                 pageNum = 1;
 
+            var viewModel = await movieRepo.GetSearchResultViewModel(searchString, pageNum);
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> Index(int pageNum, string searchString)
+        {
             var viewModel = await movieRepo.GetSearchResultViewModel(searchString, pageNum);
             return View(viewModel);
         }
