@@ -205,7 +205,11 @@ namespace interaktiva20_2.Data
         {
             var cleanedSearchString = CleanFromSpecialChars(searchString);
             var singleSpaceString = CleanFromMultipleSpaces(cleanedSearchString);
-            string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page={pageNum}";
+
+            //TODO PRIO 1: Se om det alltid funkar att ha plockat bort &type=movie här!! Blir det fel på neverRated då?
+            string apiKey = $"&s={singleSpaceString}&plot=full&page={pageNum}";
+            //string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page={pageNum}";
+            
 
             return apiKey;
         }
