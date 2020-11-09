@@ -447,9 +447,12 @@ header p {
     margin: 0.7rem;
 }
 
-.search-result-first-btn {
-    background-image: url(/assets/images/arrow-first.svg);
+.search-result-buttons:disabled{
+    opacity: 0.3;
+    filter: drop-shadow(0px 0px 0px #00000080);
 }
+
+.search-result-first-btn { background-image: url(/assets/images/arrow-first.svg);}
 
 .search-result-previous-btn{ background-image: url(/assets/images/arrow-previous.svg);}
 
