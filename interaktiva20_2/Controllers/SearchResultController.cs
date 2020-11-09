@@ -31,6 +31,8 @@ namespace interaktiva20_2.Controllers
         }
 
 
+
+
         //TODO: PRIO 3 Se över möjlighet att flytta ut metoderna så vi håller controllern mer clean
         private string CleanFromSpecialChars(string searchString)
         {
@@ -43,5 +45,7 @@ namespace interaktiva20_2.Controllers
             string singleSpacesString = Regex.Replace(cleanedSearchString, " {2,}", " ");
             return singleSpacesString;
         }
+
+
     }
 }

@@ -7,7 +7,9 @@ namespace interaktiva20_2.Models.ViewModels
     {
         public string Response { get; set; }
         public string Error { get; set; }
-        public string totalResults { get; set; }
+        public int totalResults { get; set; }
         public List<MovieDetailsDto> Search { get; set; }
+
+
     }
 }
