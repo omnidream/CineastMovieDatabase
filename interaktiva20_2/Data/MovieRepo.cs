@@ -189,7 +189,6 @@ namespace interaktiva20_2.Data
             return new MovieDetailViewModel(movie.Result, ratings.Result);
         }
         
-        //TODO: Fixa så att programmet inte krashar vid klick på både movies och series i search result
         public async Task<SearchResultViewModel> GetSearchResultViewModel(string searchString, int pageNum)
         {
             string apiKey = GetApiKey(searchString, pageNum);

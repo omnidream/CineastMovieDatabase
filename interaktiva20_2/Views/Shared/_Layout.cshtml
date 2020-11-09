@@ -44,7 +44,7 @@
             <div class="searchContainer-main">
                 <form class="searchContainer" asp-controller="SearchResult" asp-action="Index" method="post" autocomplete="off">
                     <div class="search">
-                        <input type="text" class="searchTerm" name="searchString" placeholder="Search for a movie title, if you want to ..." required>
+                        <input type="text" class="searchTerm" name="searchString" placeholder="Search for a title, if you want to ..." required>
                         <button type="submit" class="searchButton">
                             <img class="searchIcon" src="~/assets/images/search-icon-white.svg">
                         </button>
@@ -52,7 +52,8 @@
                 </form>
                 <div class="result-list-container">
                     <div id="result-list">
-                        Suggestions:
+                        <p>Are you looking for ...</p>
+                        <p class="suggestions">If not, you can continue for more suggestions by clicking the search button above.</p>
                         <div id="results"></div>
                     </div>
                 </div>

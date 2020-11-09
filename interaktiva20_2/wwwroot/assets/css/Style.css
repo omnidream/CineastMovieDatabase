@@ -489,6 +489,16 @@ header p {
     background-color: #f7fae7f2;
 }
 
+.search-result-btn-flex{
+    display: inline-flex;
+    width:100%;
+    justify-content: space-between;
+}
+
+#current-page{
+    text-align:center;
+}
+
 .searchedMovie {
     display: flex;
     justify-content: flex-start;
@@ -579,6 +589,8 @@ p.search-error {
     text-align: center;
     font-size: large;
 }
+
+.suggestions{margin:1rem;}
 
 #results {
     display: flex;
