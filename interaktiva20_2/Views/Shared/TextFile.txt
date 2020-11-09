@@ -1,4 +1,0 @@
-﻿
-
-         <button class="btnLike" data-btn-type="like" data-imdbid="@movie.imdbID">Like</button>
-<button class="btnDisike" data-btn-type="dislike" data-imdbid="@movie.imdbID">Dislike</button>
