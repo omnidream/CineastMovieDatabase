@@ -108,5 +108,3 @@ if (currentPage == lastPage) {
     nextBtn.disabled = true;
     lastBtn.disabled = true;
 }
-
-

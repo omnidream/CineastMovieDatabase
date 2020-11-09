@@ -436,6 +436,26 @@ header p {
 }
 
 /* ||SEARCH RESULT PAGE */
+.search-result-first-btn { background-image: url(/assets/images/arrow-first.svg);}
+
+.search-result-previous-btn{ background-image: url(/assets/images/arrow-previous.svg);}
+
+.search-result-next-btn{ background-image: url(/assets/images/arrow-next.svg);}
+
+.search-result-last-btn{ background-image: url(/assets/images/arrow-last.svg);}
+
+.search-result-btn-flex{
+    display:inline-flex;
+    width: 100%;
+    justify-content:space-around;
+}
+
+#current-page{ 
+    font-size: 1.2rem;
+    text-align:center;
+    margin: 1rem;
+}
+
 .search-result-buttons {
     border: 0px;
     background-color: transparent;
@@ -451,14 +471,6 @@ header p {
     opacity: 0.3;
     filter: drop-shadow(0px 0px 0px #00000080);
 }
-
-.search-result-first-btn { background-image: url(/assets/images/arrow-first.svg);}
-
-.search-result-previous-btn{ background-image: url(/assets/images/arrow-previous.svg);}
-
-.search-result-next-btn{ background-image: url(/assets/images/arrow-next.svg);}
-
-.search-result-last-btn{ background-image: url(/assets/images/arrow-last.svg);}
 
 .search-result-content {
     margin: 0 15%;
@@ -501,10 +513,7 @@ figure {
     text-align: center;
 }
 
-.flexitem {
-    margin: 1rem 0 0 0;
-    
-}
+.flexitem {margin: 1rem 0 0 0;}
 
 .searchedMovie h2 {
     font-weight: bolder;
