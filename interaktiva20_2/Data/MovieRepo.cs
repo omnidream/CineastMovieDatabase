@@ -13,7 +13,7 @@ namespace interaktiva20_2.Data
         private string cmdbUrl;
         private string omdbUrl;
         //TODO: PRIO 3 Gör så att användaren ska kunna bestämma hur många filmer som ska visas i topplistorna 
-        private int numberOfMovies = 4;
+        private int numberOfMovies = 1;
         private int numberOfNeverRatedMovies = 1;
         Random rnd = new Random();
         List<CmdbMovieDto> myNeverRatedList;

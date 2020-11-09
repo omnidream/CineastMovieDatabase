@@ -13,21 +13,23 @@
 <main class="search-result-content">
 
     <h1>Search Result</h1>
+
     @{
         if (Model.Search != null)
         {
+            <p>@Model.TotalPages</p>
             foreach (var movie in Model.Search)
             {
-            <div class="searchedMovie">
-                <img class="searchPoster" src="@movie.Poster" />
-                <div class="flexitem">
-                    <h2>@movie.Title</h2>
-                    <p>@movie.Year</p>
-                    <a href='@Url.Action("Index", "MovieDetail", new { imdbid = movie.imdbID })'>
-                        <div class="movie-details-btn">To details >></div>
-                    </a>
+                <div class="searchedMovie">
+                    <img class="searchPoster" src="@movie.Poster" />
+                    <div class="flexitem">
+                        <h2>@movie.Title</h2>
+                        <p>@movie.Year</p>
+                        <a href='@Url.Action("Index", "MovieDetail", new { imdbid = movie.imdbID })'>
+                            <div class="movie-details-btn">To details >></div>
+                        </a>
+                    </div>
                 </div>
-            </div>
             }
         }
         else

@@ -8,5 +8,7 @@ namespace interaktiva20_2.Models.DTO
         public string Error { get; set; }
         public int totalResults { get; set; }
         public List<MovieDetailsDto> Search { get; set; }
+        public int TotalPages { get; set; }
+
     }
 }
