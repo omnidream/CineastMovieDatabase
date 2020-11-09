@@ -189,6 +189,7 @@ namespace interaktiva20_2.Data
             return new MovieDetailViewModel(movie.Result, ratings.Result);
         }
         
+        //TODO: Fixa så att programmet inte krashar vid klick på både movies och series i search result
         public async Task<SearchResultViewModel> GetSearchResultViewModel(string searchString, int pageNum)
         {
             string apiKey = GetApiKey(searchString, pageNum);
@@ -209,13 +210,12 @@ namespace interaktiva20_2.Data
             //TODO PRIO 1: Se om det alltid funkar att ha plockat bort &type=movie här!! Blir det fel på neverRated då?
             string apiKey = $"&s={singleSpaceString}&plot=full&page={pageNum}";
             //string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page={pageNum}";
-            
 
             return apiKey;
         }
         private string CleanFromSpecialChars(string searchString)
         {
-            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-öA-Ö' ]+", "");
+            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-öA-Ö'&= ]+", "");
             return cleanedSearchString;
         }
 
