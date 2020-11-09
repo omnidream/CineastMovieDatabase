@@ -18,22 +18,23 @@
         if (Model.SearchResult != null)
         {
         <div class="searchPages">
-            <p class="totalSearch">Total Results: @Model.SearchResult.totalResults;</p>
-            <p class="total-search-pages">Number of pages: @Model.TotalPages</p>
+            <p class="total-search">Total Results: @Model.SearchResult.totalResults;</p>
+            <p>Total pages: </p>
+            <p class="total-pages">@Model.TotalPages</p>
 
-            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = 1, Model.SearchString})'" >
+            <button class="search-result-buttons" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = 1, Model.SearchString})'" >
                 First
             </button>
-            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage - 1), Model.SearchString})'">
+            <button class="search-result-buttons search-result-previous-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage - 1), Model.SearchString})'">
                 Prev
             </button>
+            <p>Current page:</p>
+            <p id="current-page">@Model.CurrentPage</p>
             
-            <p>Current Page: @Model.CurrentPage</p>
-            
-            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage + 1), Model.SearchString})'">
+            <button class="search-result-buttons search-result-next-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage + 1), Model.SearchString})'">
                 Next
             </button>
-            <button class="movie-details-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'">
+            <button class="search-result-buttons search-result-last-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'">
                 Last
             </button>
         </div>

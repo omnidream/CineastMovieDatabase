@@ -87,9 +87,20 @@ function addStickyClass() {
         mySearchBar.classList.remove("sticky");
 }
 
-
-//TODO: PRIO 3 Generera knappar till likes och dislikes via js istället
 //TODO: PRIO 2 Kolla av alla proppar så de har rätt access
 
-//TODO PRIO 1 Gör så att knapparna inte funkar när man redan är på first (bakåt) eller last page (frammåt)
-let totalPages = document.querySelector('.total-search-pages');
+
+//SEACH RESULT PAGE TO PREVENT OVERSTEPPING NUMBER OF SEARCHED PAGES
+let firstPage = 1;
+let lastPage = document.querySelector('.total-pages').innerHTML
+let currentPage = document.querySelector('#current-page').innerHTML
+let previousBtn = document.querySelector('.search-result-previous-btn')
+let nextBtn = document.querySelector('.search-result-next-btn')
+
+if (currentPage == firstPage)
+    previousBtn.disabled = true;
+
+if (currentPage == lastPage)
+    nextBtn.disabled = true;
+
+
