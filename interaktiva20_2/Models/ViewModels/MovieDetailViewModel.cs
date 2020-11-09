@@ -11,8 +11,6 @@ namespace interaktiva20_2.Models.ViewModels
         public int NumberOfDislikes { get; set; }
         public string imdbID { get; set; }
 
-
-
         [Display(Name = "Year:")]
         public string Year { get; set; }
         [Display(Name = "Runtime:")]

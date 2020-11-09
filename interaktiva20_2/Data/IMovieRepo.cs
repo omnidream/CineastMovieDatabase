@@ -7,7 +7,6 @@ namespace interaktiva20_2.Data
 {
     public interface IMovieRepo
     {
-
         Task<IEnumerable<CmdbMovieDto>> GetTopRatedList(int numberOfMovies);
         Task<IEnumerable<CmdbMovieDto>> GetMostPopularList(int numberOfMovies);
         List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies);

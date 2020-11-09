@@ -19,9 +19,9 @@
         {
         <div class="searchPages">
             <div class="detailInlineInfo">
-                <p>Total Results: </p>
+                <p>Total Results:</p>
                 <p class="total-search">@Model.SearchResult.totalResults</p>
-                <p>Total pages: </p>
+                <p>Total pages:</p>
                 <p class="total-pages">@Model.TotalPages</p>
             </div>
 
@@ -31,6 +31,7 @@
                 <button class="search-result-buttons search-result-next-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = (Model.CurrentPage + 1), Model.SearchString})'"></button>
                 <button class="search-result-buttons search-result-last-btn" onclick="location.href='@Url.Action("Index", "SearchResult", new { pageNum = Model.TotalPages, Model.SearchString})'"></button>
             </div>
+
             <p>Current Page:</p>
             <p id="current-page">@Model.CurrentPage</p>
 
@@ -54,7 +55,6 @@
         {
             <h1 class="search-error">Sorry, no such movie could be found.</h1>
             <p class="search-error">Did you spell the title correctly?</p>
-
         }
     }
 </main>

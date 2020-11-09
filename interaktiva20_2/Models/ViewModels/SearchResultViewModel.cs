@@ -11,7 +11,5 @@ namespace interaktiva20_2.Models.ViewModels
         public ISearchResultDto SearchResult { get; set; }
         public int CurrentPage { get; set; }
         public string SearchString { get; set; }
-        public string MoviesOnly { get; set; } = "&type=movie";
-        public string SeriesOnly { get; set; } = "&type=series";
     }
 }
