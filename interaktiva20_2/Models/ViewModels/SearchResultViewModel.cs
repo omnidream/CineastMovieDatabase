@@ -9,5 +9,6 @@ namespace interaktiva20_2.Models.ViewModels
     {
         public int TotalPages { get; set; }
         public ISearchResultDto SearchResult { get; set; }
+        public int CurrentPage { get; set; }
     }
 }

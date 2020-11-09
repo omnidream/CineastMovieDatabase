@@ -17,7 +17,17 @@
     @{
         if (Model.SearchResult != null)
         {
-            <p>@Model.TotalPages</p>
+            <div class="searchPages">
+                <p class="totalSearch">Total Results: @Model.SearchResult.totalResults;</p>
+                <p class="totalSearch">Number of pages: @Model.TotalPages</p>
+
+                <button id="firstPage"></button>
+                <button id="prevPage"></button>
+                <p>Current Page: @Model.CurrentPage</p>
+                <button id="nextPage"></button>
+                <button id="lastPage"></button>
+            </div>
+
             foreach (var movie in Model.SearchResult.Search)
             {
                 <div class="searchedMovie">
@@ -38,7 +48,6 @@
             <p class="search-error">Did you spell the title correctly?</p>
 
         }
-        @Model.SearchResult.totalResults;
     }
 </main>
 
