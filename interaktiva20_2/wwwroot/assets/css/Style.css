@@ -280,6 +280,10 @@ header p {
     color: black;
 }
 
+
+
+.neverRatedList .movieNumber{display: none;}
+
 /* || END TOPLISTS || */
 /*---------------------------------------------------------*/
 /* || HIDDEN PLOT */
