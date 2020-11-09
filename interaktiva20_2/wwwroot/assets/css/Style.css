@@ -402,12 +402,12 @@ a:visited {
 .flex {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-content: center;
 }
 
 .movieDetails {
-    max-width: 40vw;
+    width: 35rem;
     margin: 0 1rem 0 3rem;
 }
 
@@ -423,6 +423,13 @@ a:visited {
 
 .details-content p {
     line-height: 1.2rem;
+}
+
+.rating {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 17rem;
 }
 
 /* || RESULT PAGE */
