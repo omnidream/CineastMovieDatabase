@@ -21,11 +21,11 @@ namespace interaktiva20_2
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-            else
                 app.UseExceptionHandler("/Error");
+            else
+                app.UseDeveloperExceptionPage();
 
-            app.UseStaticFiles(); //Säger att vi är medvetna om att vi exponerar filerna i wwwroot på webben. Måste ha med för att få in våra assets.
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
