@@ -1,4 +1,4 @@
-﻿@model interaktiva20_2.Models.DTO.ISearchResultDto
+﻿@model interaktiva20_2.Models.ViewModels.SearchResultViewModel
 
 @section MyHeader
 {
@@ -15,10 +15,10 @@
     <h1>Search Result</h1>
 
     @{
-        if (Model.Search != null)
+        if (Model.SearchResult != null)
         {
             <p>@Model.TotalPages</p>
-            foreach (var movie in Model.Search)
+            foreach (var movie in Model.SearchResult.Search)
             {
                 <div class="searchedMovie">
                     <img class="searchPoster" src="@movie.Poster" />
@@ -38,7 +38,7 @@
             <p class="search-error">Did you spell the title correctly?</p>
 
         }
-        @Model.totalResults;
+        @Model.SearchResult.totalResults;
     }
 </main>
 

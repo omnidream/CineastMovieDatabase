@@ -4,6 +4,7 @@ using interaktiva20_2.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace interaktiva20_2.Data
@@ -41,9 +42,9 @@ namespace interaktiva20_2.Data
 
         public List<CmdbMovieDto> GetNeverRatedMovies(int numberOfMovies)
         {
-            var apiKey = "s=the a&plot=full&type=movie&page=";
+            var apiKey = $"s=the a&plot=full&type=movie&page={GeneratePageNo()}";
 
-            var randomMovies = GetSearchResult(apiKey, GeneratePageNo()).Result;
+            var randomMovies = GetSearchResult(apiKey).Result;
             myNeverRatedList = GetMoviesWithDetailsFromList(randomMovies, numberOfMovies);
             return myNeverRatedList;
         }
@@ -120,10 +121,10 @@ namespace interaktiva20_2.Data
         }
 
         //TODO: Add poster to searchresults if N/A
-        public async Task<ISearchResultDto> GetSearchResult(string apiKey, int pageNum)
+        public async Task<ISearchResultDto> GetSearchResult(string apiKey)
         {
             SearchResultDto mySearchObject = new SearchResultDto();
-            mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + apiKey + pageNum);
+            mySearchObject = await apiClient.GetAsync<SearchResultDto>(omdbUrl + apiKey);
 
             return mySearchObject;
         }
@@ -186,8 +187,46 @@ namespace interaktiva20_2.Data
             await Task.WhenAll(taskList);
 
             return new MovieDetailViewModel(movie.Result, ratings.Result);
-        } 
+        }
+        
+        public async Task<SearchResultViewModel> GetSearchResultViewModel(string searchString, int pageNum)
+        {
+            string apiKey = GetApiKey(searchString, pageNum);
+            SearchResultViewModel searchResultVM = new SearchResultViewModel();
+            searchResultVM.SearchResult = await GetSearchResult(apiKey);
+            searchResultVM.TotalPages = RoundNumberOfPages(searchResultVM.SearchResult.totalResults);
 
+            return searchResultVM;
+        }
+
+        private string GetApiKey(string searchString, int pageNum)
+        {
+            var cleanedSearchString = CleanFromSpecialChars(searchString);
+            var singleSpaceString = CleanFromMultipleSpaces(cleanedSearchString);
+            string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page={pageNum}";
+
+            return apiKey;
+        }
+        private string CleanFromSpecialChars(string searchString)
+        {
+            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-öA-Ö' ]+", "");
+            return cleanedSearchString;
+        }
+
+        private string CleanFromMultipleSpaces(string cleanedSearchString)
+        {
+            string singleSpacesString = Regex.Replace(cleanedSearchString, " {2,}", " ");
+            return singleSpacesString;
+        }
+
+        private int RoundNumberOfPages(int totalResults)
+        {
+            double resultsPerPage = 10;
+            double numberOfPages = ((double)totalResults / resultsPerPage);
+            int roundedNum = (int)Math.Ceiling(numberOfPages);
+
+            return roundedNum;
+        }
         #endregion
 
 

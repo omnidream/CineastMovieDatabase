@@ -34,7 +34,7 @@ namespace interaktiva20_2.Models.ViewModels
         [Display(Name = "IMDb Rating:")]
         public string ImdbRating { get; set; }
 
-        public MovieDetailViewModel(MovieDetailsDto movieDetails, CmdbMovieDto myMovie)
+        public MovieDetailViewModel(IMovieDetailsDto movieDetails, ICmdbMovieDto myMovie)
         {
             Title = movieDetails.Title;
             imdbID = movieDetails.imdbID;

@@ -21,31 +21,9 @@ namespace interaktiva20_2.Controllers
             if (pageNum == 0)
                 pageNum = 1;
 
-            var cleanedSearchString = CleanFromSpecialChars(searchString);
-            var singleSpaceString = CleanFromMultipleSpaces(cleanedSearchString);
-
-            string apiKey = $"&s={singleSpaceString}&plot=full&type=movie&page=";
-            var searchResults = await movieRepo.GetSearchResult(apiKey, pageNum);
-                                
-            return View(searchResults);
+            var viewModel = await movieRepo.GetSearchResultViewModel(searchString, pageNum);
+            return View(viewModel);
         }
-
-
-
-
-        //TODO: PRIO 3 Se över möjlighet att flytta ut metoderna så vi håller controllern mer clean
-        private string CleanFromSpecialChars(string searchString)
-        {
-            var cleanedSearchString = Regex.Replace(searchString, @"[^0-9a-öA-Ö' ]+", "");
-            return cleanedSearchString;
-        }
-
-        private string CleanFromMultipleSpaces(string cleanedSearchString)
-        {
-            string singleSpacesString = Regex.Replace(cleanedSearchString, " {2,}", " ");
-            return singleSpacesString;
-        }
-
 
     }
 }
