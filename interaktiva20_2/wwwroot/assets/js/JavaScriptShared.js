@@ -138,7 +138,7 @@ $(document).ready(function () {
         $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", s: search }, function (data) {
             if (data.Search !== undefined) {
                 $.each(data.Search, function (index, value) {
-                    if (index < 4) {
+                    if (index < 3) {
                         $.getJSON("https://www.omdbapi.com/?", { apikey: "fde91161", i: value.imdbID }, function (movieData) {
                             if (movieData) {
                                 results += '<a class="movie-link" href="/details?imdbid=' + movieData.imdbID + '")>'
