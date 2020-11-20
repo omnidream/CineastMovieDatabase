@@ -57,7 +57,7 @@ function updateNumberOfLikesDislikes() {
 
 function findElementsToUpdate(myElements) {
     myElementArray = [];
-    var i;
+    let i;
     for (i = 0; i < myElements.length; i++) {
         if (myElements[i].dataset.imdbid === myImdbId)
             myElementArray.push(myElements[i])
@@ -77,8 +77,8 @@ function updateElementsInArray(myArray) {
 /* STICKY SEARCH ON SCROLL */
 window.onscroll = function () { addStickyClass() };
 
-let mySearchBar = document.querySelector('.searchContainer-main');
-let sticky = mySearchBar.offsetTop;
+const mySearchBar = document.querySelector('.searchContainer-main');
+const sticky = mySearchBar.offsetTop;
 
 function addStickyClass() {
     if (window.pageYOffset > sticky) 
@@ -89,16 +89,16 @@ function addStickyClass() {
 
 
 //SEACH RESULT PAGE TO PREVENT OVERSTEPPING NUMBER OF SEARCHED PAGES
-let firstPage = 1;
+const firstPage = 1;
 
 if (document.querySelector('.total-pages') != null)
 {
-    let lastPage = document.querySelector('.total-pages').innerHTML
-    let currentPage = document.querySelector('#current-page').innerHTML
-    let previousBtn = document.querySelector('.search-result-previous-btn')
-    let nextBtn = document.querySelector('.search-result-next-btn')
-    let firstBtn = document.querySelector('.search-result-first-btn')
-    let lastBtn = document.querySelector('.search-result-last-btn')
+    const lastPage = document.querySelector('.total-pages').innerHTML
+    const currentPage = document.querySelector('#current-page').innerHTML
+    const previousBtn = document.querySelector('.search-result-previous-btn')
+    const nextBtn = document.querySelector('.search-result-next-btn')
+    const firstBtn = document.querySelector('.search-result-first-btn')
+    const lastBtn = document.querySelector('.search-result-last-btn')
 
     if (currentPage == firstPage) {
         previousBtn.disabled = true;
@@ -112,7 +112,7 @@ if (document.querySelector('.total-pages') != null)
 }
 
 
-//AUTOCMPLETE, very much inspired (but adapted) from https://codepen.io/logistus/pen/qJMOKZ
+//AUTOCOMPLETE, very much inspired (but adapted) from https://codepen.io/logistus/pen/qJMOKZ
 $(document).ready(function () {
 
     function highlight(word, query) {
